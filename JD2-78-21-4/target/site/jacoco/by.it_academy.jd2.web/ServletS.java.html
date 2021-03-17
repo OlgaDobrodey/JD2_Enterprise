@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ServletS.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JD2-78-21</a> &gt; <a href="index.source.html" class="el_package">by.it_academy.jd2.web</a> &gt; <span class="el_source">ServletS.java</span></div><h1>ServletS.java</h1><pre class="source lang-java linenums">package by.it_academy.jd2.web;
+
+import by.it_academy.jd2.Person;
+import by.it_academy.jd2.ViewSave;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.concurrent.TimeUnit;
+
+@WebServlet(name = &quot;ServletS&quot;, urlPatterns = &quot;/workclass&quot;)
+<span class="nc" id="L13">public class ServletS extends HttpServlet {</span>
+//    private final String FIRST_NAME = &quot;firstName&quot;;
+//    private final String LAST_NAME = &quot;lastName&quot;;
+//    private final String AGE = &quot;age&quot;;
+<span class="nc" id="L17">    private final String message = &quot;parameters are not in cookies and are not entered&quot;;</span>
+<span class="nc" id="L18">    private String param_save = &quot;ARRAY_NAME_PARAM&quot;;</span>
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+<span class="nc" id="L22">        Person person = new Person();</span>
+     //   String save = &quot;&quot;;
+<span class="nc" id="L24">        String header = req.getHeader(param_save);</span>
+<span class="nc" id="L25">        Boolean save=true;</span>
+      //  String[] strings = req.getParameterMap().get(header);
+<span class="nc bnc" id="L27" title="All 2 branches missed.">         if(header.equals(&quot;cookies&quot;)){save = true;}</span>
+<span class="nc" id="L28">         else save = false;</span>
+
+
+
+
+<span class="nc" id="L33">        String firstName = req.getParameter(person.getFIRST_NAME());</span>
+<span class="nc" id="L34">        String lastName = req.getParameter(person.getLAST_NAME());</span>
+<span class="nc" id="L35">        String ageName = req.getParameter(person.getAGE());</span>
+         // Map&lt;String, String&gt; map = new HashMap&lt;&gt;();
+        String[] parameterOne;// = new String[0];
+        String[] parameterTwo;//= new String[0];
+        String[] parameterThree;
+        try {
+<span class="nc bnc" id="L41" title="All 2 branches missed.">            if(save){ parameterOne = getString(req, resp, firstName, person.getFIRST_NAME());</span>
+<span class="nc" id="L42">                parameterTwo = getString(req, resp, lastName, person.getLAST_NAME());</span>
+<span class="nc" id="L43">                parameterThree = getString(req,resp,ageName, person.getAGE());}</span>
+            else
+<span class="nc" id="L45">            {parameterOne = getSession(req, resp, firstName, person.getFIRST_NAME());</span>
+<span class="nc" id="L46">                parameterTwo = getSession(req, resp, lastName, person.getLAST_NAME());</span>
+<span class="nc" id="L47">                parameterThree = getSession(req,resp,ageName, person.getAGE());}</span>
+<span class="nc" id="L48">            resp.setContentType(&quot;text/html&quot;);</span>
+<span class="nc" id="L49">            PrintWriter writer = resp.getWriter();</span>
+<span class="nc" id="L50">            writer.write(&quot;&lt;p&gt; Hello, &quot; + parameterOne[1] + &quot; &quot; + parameterTwo[1] +&quot; this age=&quot;+parameterThree[1]+ &quot;!&lt;p&gt;&quot;);</span>
+<span class="nc" id="L51">        } catch (Exception e) {</span>
+            //e.printStackTrace();
+<span class="nc" id="L53">            PrintWriter writer = resp.getWriter();</span>
+<span class="nc" id="L54">            writer.println(&quot;Error: &quot; + message);</span>
+<span class="nc" id="L55">            writer.println(e.toString());</span>
+<span class="nc" id="L56">        }</span>
+<span class="nc" id="L57">    }</span>
+
+    private String[] getSession(HttpServletRequest req, HttpServletResponse resp, String parameterValue, String parameterName) throws Exception {
+<span class="nc" id="L60">        HttpSession session = req.getSession();</span>
+<span class="nc" id="L61">        String printParametrValue = &quot;&quot;;</span>
+
+<span class="nc bnc" id="L63" title="All 4 branches missed.">        if (parameterValue != null &amp;&amp; parameterValue.trim().length() &gt; 0) {</span>
+<span class="nc" id="L64">            printParametrValue = parameterValue;</span>
+<span class="nc" id="L65">            session.setAttribute(parameterName,parameterValue);</span>
+
+<span class="nc" id="L67">            String[] parameter = {parameterName, printParametrValue};</span>
+<span class="nc" id="L68">            return parameter;</span>
+        }
+
+
+<span class="nc bnc" id="L72" title="All 2 branches missed.">        if(session.getAttribute(parameterName)!=null){</span>
+<span class="nc" id="L73">            printParametrValue = session.getAttribute(parameterName).toString();</span>
+<span class="nc" id="L74">            String[] parameter = {parameterName, printParametrValue};</span>
+<span class="nc" id="L75">            return parameter;</span>
+        }
+
+<span class="nc" id="L78">        throw new Exception();</span>
+    }
+
+    private String[] getString(HttpServletRequest req, HttpServletResponse resp, String parameterValue, String parameterName) throws Exception {
+
+<span class="nc" id="L83">        String printParametrValue = &quot;&quot;;</span>
+
+<span class="nc bnc" id="L85" title="All 4 branches missed.">        if (parameterValue != null &amp;&amp; parameterValue.trim().length() &gt; 0) {</span>
+<span class="nc" id="L86">            printParametrValue = parameterValue;</span>
+<span class="nc" id="L87">            Cookie cookie = new Cookie(parameterName, parameterValue);</span>
+<span class="nc" id="L88">            cookie.setMaxAge(Math.toIntExact(TimeUnit.MINUTES.toSeconds(5)));</span>
+<span class="nc" id="L89">            resp.addCookie(cookie);</span>
+<span class="nc" id="L90">            String[] parameter = {parameterName, printParametrValue};</span>
+<span class="nc" id="L91">            return parameter;</span>
+        }
+
+<span class="nc" id="L94">        Cookie[] cookies = req.getCookies();</span>
+<span class="nc bnc" id="L95" title="All 2 branches missed.">        for (Cookie cookie : cookies) {</span>
+<span class="nc bnc" id="L96" title="All 2 branches missed.">            if (cookie.getName().equals(parameterName)) {</span>
+<span class="nc" id="L97">                printParametrValue = cookie.getValue();</span>
+<span class="nc" id="L98">                String[] parameter = {parameterName, printParametrValue};</span>
+<span class="nc" id="L99">                return parameter;</span>
+            }
+        }
+<span class="nc" id="L102">        throw new Exception();</span>
+    }
+}
+
+
+
+
+
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
