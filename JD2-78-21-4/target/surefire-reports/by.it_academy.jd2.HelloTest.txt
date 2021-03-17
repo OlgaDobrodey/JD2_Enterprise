@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: by.it_academy.jd2.HelloTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.128 s - in by.it_academy.jd2.HelloTest
