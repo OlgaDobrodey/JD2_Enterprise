@@ -1,29 +1,32 @@
 package by.it_academy.jd2;
 
 public class Person {
-    private final String FIRST_NAME = "firstName";
-    private final String LAST_NAME = "lastName";
-    private final String AGE = "age";
-    private String param_save = "ARRAY_NAME_PARAM";
+    private String firstName;
+    private String lastName;
+    private int age;
 
-    public String getFIRST_NAME() {
-        return FIRST_NAME;
+
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getLAST_NAME() {
-        return LAST_NAME;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getAGE() {
-        return AGE;
+    public String getLastName() {
+        return lastName;
     }
 
-    public String getParam_save() {
-        return param_save;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public void setParam_save(String param_save) {
-        this.param_save = param_save;
+    public int getAge() {
+        return age;
     }
-    //= "lastName";
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 }

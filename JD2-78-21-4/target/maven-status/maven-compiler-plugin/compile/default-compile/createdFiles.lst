@@ -1,8 +1,8 @@
 by\it_academy\jd2\web\PrintServlet.class
 by\it_academy\jd2\web\SecurityFilter.class
 by\it_academy\jd2\ViewSave.class
-by\it_academy\jd2\web\ServletS.class
 by\it_academy\jd2\web\ServletWithCookies.class
+by\it_academy\jd2\web\ServletSessiaAndCookies.class
 by\it_academy\jd2\Hello.class
 by\it_academy\jd2\web\HelloServlet.class
 by\it_academy\jd2\Person.class

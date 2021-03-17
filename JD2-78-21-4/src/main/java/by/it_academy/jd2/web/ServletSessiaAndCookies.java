@@ -11,72 +11,59 @@ import java.util.concurrent.TimeUnit;
 
 @WebServlet(name = "ServletS", urlPatterns = "/workclass")
 public class ServletSessiaAndCookies extends HttpServlet {
-//    private final String FIRST_NAME = "firstName";
-//    private final String LAST_NAME = "lastName";
-//    private final String AGE = "age";
-    private final String message = "parameters are not in cookies and are not entered";
-    private String param_save = "ARRAY_NAME_PARAM";
+    private final String FIRST_NAME = "firstName";
+    private final String LAST_NAME = "lastName";
+    private final String AGE = "age";
+    private String TYPE_SAVE = "ARRAY_NAME_PARAM";
+    private final String MESSAGE_EXCEPTION = "parameters are not in cookies and are not entered";
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Person person = new Person();
-        String header = req.getHeader(param_save);
-        Boolean save=true;
-        if(header.equals("cookies")){save = true;}
-         else save = false;
+        String header = req.getHeader(TYPE_SAVE);
 
-
-
-
-        String firstName = req.getParameter(person.getFIRST_NAME());
-        String lastName = req.getParameter(person.getLAST_NAME());
-        String ageName = req.getParameter(person.getAGE());
-        String parameterOne;
-        String parameterTwo;
-        String parameterThree;
         try {
-            if(save){ parameterOne = getString(req, resp, firstName, person.getFIRST_NAME());
-                parameterTwo = getString(req, resp, lastName, person.getLAST_NAME());
-                parameterThree = getString(req,resp,ageName, person.getAGE());}
-            else
-            {parameterOne = getSession(req, resp, firstName, person.getFIRST_NAME());
-                parameterTwo = getSession(req, resp, lastName, person.getLAST_NAME());
-                parameterThree = getSession(req,resp,ageName, person.getAGE());}
+            if (ViewSave.COOKIES == ViewSave.valueOf(header)) {
+                person.setFirstName(getStringFromParameterOrCookies(req, resp, FIRST_NAME));
+                person.setLastName(getStringFromParameterOrCookies(req, resp, LAST_NAME));
+                person.setAge(Integer.parseInt(getStringFromParameterOrCookies(req, resp, AGE)));
+
+            } else if (ViewSave.SESSION == ViewSave.valueOf(header)) {
+                person.setFirstName(getStringFromParameterOrSessia(req, FIRST_NAME));
+                person.setLastName(getStringFromParameterOrSessia(req, LAST_NAME));
+                person.setAge(Integer.parseInt(getStringFromParameterOrSessia(req, AGE)));
+            }
+
             resp.setContentType("text/html");
             PrintWriter writer = resp.getWriter();
-            writer.write("<p> Hello, " + parameterOne + " " + parameterTwo +" this age="+parameterThree+ "!<p>");
+            writer.write("<p> Hello, " + person.getFirstName() + " " + person.getLastName()
+                    + " this age=" + person.getAge() + "!<p>");
         } catch (Exception e) {
-
             PrintWriter writer = resp.getWriter();
-            writer.println("Error: " + message);
-            writer.println(e.toString());
+            writer.write("Error: " + e.toString());
+
         }
     }
 
-    private String getSession(HttpServletRequest req, HttpServletResponse resp, String parameterValue, String parameterName) throws Exception {
+    private String getStringFromParameterOrSessia(HttpServletRequest req, String parameterName) throws IllegalArgumentException {
+        String parameterValue = req.getParameter(parameterName);
         HttpSession session = req.getSession();
-        String printParametrValue = "";
 
         if (parameterValue != null && parameterValue.trim().length() > 0) {
-            printParametrValue = parameterValue;
-            session.setAttribute(parameterName,parameterValue);
-
-            String parameter = printParametrValue;
-            return parameter;
+            String printParametrValue = parameterValue;
+            session.setAttribute(parameterName, parameterValue);
+            return printParametrValue;
         }
-
-
-        if(session.getAttribute(parameterName)!=null){
-            printParametrValue = session.getAttribute(parameterName).toString();
-            String parameter =  printParametrValue;
-            return parameter;
+        if (!session.isNew()) {
+            String printParametrValue = session.getAttribute(parameterName).toString();
+            return printParametrValue;
         }
-
-        throw new Exception();
+        throw new IllegalArgumentException(MESSAGE_EXCEPTION);
     }
 
-    private String getString(HttpServletRequest req, HttpServletResponse resp, String parameterValue, String parameterName) throws Exception {
-
+    private String getStringFromParameterOrCookies(HttpServletRequest req, HttpServletResponse resp, String parameterName) throws IllegalArgumentException {
+        String parameterValue = req.getParameter(parameterName);
         String printParametrValue = "";
 
         if (parameterValue != null && parameterValue.trim().length() > 0) {
@@ -86,7 +73,6 @@ public class ServletSessiaAndCookies extends HttpServlet {
             resp.addCookie(cookie);
             return printParametrValue;
         }
-
         Cookie[] cookies = req.getCookies();
         for (Cookie cookie : cookies) {
             if (cookie.getName().equals(parameterName)) {
@@ -94,7 +80,7 @@ public class ServletSessiaAndCookies extends HttpServlet {
                 return printParametrValue;
             }
         }
-        throw new Exception();
+        throw new IllegalArgumentException(MESSAGE_EXCEPTION);
     }
 }
 
