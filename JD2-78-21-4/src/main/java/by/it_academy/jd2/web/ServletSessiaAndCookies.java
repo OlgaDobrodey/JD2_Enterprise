@@ -10,7 +10,7 @@ import java.io.PrintWriter;
 import java.util.concurrent.TimeUnit;
 
 @WebServlet(name = "ServletS", urlPatterns = "/workclass")
-public class ServletS extends HttpServlet {
+public class ServletSessiaAndCookies extends HttpServlet {
 //    private final String FIRST_NAME = "firstName";
 //    private final String LAST_NAME = "lastName";
 //    private final String AGE = "age";
@@ -31,8 +31,8 @@ public class ServletS extends HttpServlet {
         String firstName = req.getParameter(person.getFIRST_NAME());
         String lastName = req.getParameter(person.getLAST_NAME());
         String ageName = req.getParameter(person.getAGE());
-        String parameterOne;// = new String[0];
-        String parameterTwo;//= new String[0];
+        String parameterOne;
+        String parameterTwo;
         String parameterThree;
         try {
             if(save){ parameterOne = getString(req, resp, firstName, person.getFIRST_NAME());
@@ -46,7 +46,7 @@ public class ServletS extends HttpServlet {
             PrintWriter writer = resp.getWriter();
             writer.write("<p> Hello, " + parameterOne + " " + parameterTwo +" this age="+parameterThree+ "!<p>");
         } catch (Exception e) {
-            //e.printStackTrace();
+
             PrintWriter writer = resp.getWriter();
             writer.println("Error: " + message);
             writer.println(e.toString());
