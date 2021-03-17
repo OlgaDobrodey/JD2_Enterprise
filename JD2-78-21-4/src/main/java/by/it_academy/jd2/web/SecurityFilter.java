@@ -11,7 +11,7 @@ public class SecurityFilter implements Filter {
 
     @Override
     public void init(FilterConfig config) throws ServletException {
-        String act = config.getInitParameter("activ");
+        String act = config.getInitParameter("active");
         if (act != null) {
             active = (act.toUpperCase().equals("TRUE"));
         }
