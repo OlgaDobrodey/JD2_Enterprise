@@ -1,7 +1,7 @@
-package by.it_academy.jd2.web;
+package by.it_academy.jd2.web.servlets;
 
-import by.it_academy.jd2.Person;
-import by.it_academy.jd2.ViewSave;
+import by.it_academy.jd2.core.dto.Person;
+import by.it_academy.jd2.web.servlets.api.ViewSave;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 

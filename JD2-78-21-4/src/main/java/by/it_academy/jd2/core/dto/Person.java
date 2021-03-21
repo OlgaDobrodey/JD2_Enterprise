@@ -1,4 +1,4 @@
-package by.it_academy.jd2;
+package by.it_academy.jd2.core.dto;
 
 public class Person {
     private String firstName;

@@ -6,7 +6,7 @@
     <display-name>JD2-78-21-4</display-name>
     <filter>
         <filter-name>SecurityFilter</filter-name>
-        <filter-class>by.it_academy.jd2.web.SecurityFilter</filter-class>
+        <filter-class>by.it_academy.jd2.web.filters.SecurityFilter</filter-class>
         <init-param>
             <param-name>active</param-name>
             <param-value>true</param-value>
@@ -16,9 +16,12 @@
         <filter-name>SecurityFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-
-
-
+    <listener>
+        <listener-class>by.it_academy.jd2.web.listeners.SessionChangeListener</listener-class>
+    </listener>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
 
     <!--    <servlet>-->
     <!--        <servlet-name>HelloServlet</servlet-name>-->

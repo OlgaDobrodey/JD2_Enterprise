@@ -1,4 +1,4 @@
-package by.it_academy.jd2.web;
+package by.it_academy.jd2.web.filters;
 
 import jakarta.servlet.*;
 
