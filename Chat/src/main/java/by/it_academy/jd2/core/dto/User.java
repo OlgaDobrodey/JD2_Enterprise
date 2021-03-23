@@ -1,8 +1,5 @@
 package by.it_academy.jd2.core.dto;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class User {
 
     private String name;

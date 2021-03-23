@@ -6,25 +6,25 @@ import java.util.Date;
 
 public class Message {
 
-    private User Sender;
-    private User Receiver;
+    private User sender;
+    private User receiver;
     private String date;
     private String message;
 
     public Message(User sender, User receiver, String message) {
-        this.Sender = sender;
-        this.Receiver = receiver;
+        this.sender = sender;
+        this.receiver = receiver;
         this.message = message;
         SimpleDateFormat dateTime = new SimpleDateFormat("dd.MM.yyyy hh:mm:ss");
         this.date = dateTime.format(new Date());
     }
 
     public String getSender() {
-        return Sender.getLogin();
+        return sender.getLogin();
     }
 
     public String getReceiver() {
-        return Receiver.getLogin();
+        return receiver.getLogin();
     }
 
     public String getDate() {
@@ -37,6 +37,6 @@ public class Message {
 
     @Override
     public String toString() {
-        return date+ " От: " + Sender.getName() +" Cообщениe: " + message + "\n";
+        return date+ " От: " + sender.getName() +" Cообщениe: " + message + "\n";
     }
 }
