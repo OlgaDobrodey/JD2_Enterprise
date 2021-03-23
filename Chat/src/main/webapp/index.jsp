@@ -1,41 +1,20 @@
+
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="java.util.*, java.text.*" %>
-
-<%!
-String getFormattedDate(){
-    SimpleDateFormat sdf =new SimpleDateFormat("dd.MM.yyyy hh:mm:ss");
-    return sdf.format(new Date());
-}
-%>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
- <head>
-   <title>SignUp</title>
-   <meta charset="utf-8">
- </head>
- <body>
-<p> <%= getFormattedDate() %></p>
-<form action="hello" method="GET">
-
-    <h1>Зарегистрироваться</h1>
-    <p>Пожалуйста, заполните эту форму, чтобы создать учетную запись.</p>
-    <hr>
-
-    Логин<br>
-    <input type="text" placeholder="Введите логин" name="login" required><br><br>
-
-    Пароль<br>
-    <input type="password" placeholder="Введите пароль" name="psw" required><br><br>
-
-     ФИО<br>
-     <input type="text" placeholder="Введите ФИО" name="name" required><br><br>
-
-     Дата рождения<br>
-     <input type="date" name="birthday" required><br><br>
-    <hr>
-     <button type="submit" >Зарегистрироваться</button>
-
- </form>
- </body>
+<head>
+    <title>Start</title>
+    <meta charset="utf-8">
+</head>
+<body>
+<form action="signIn" method="get" >
+    И так приступим! У тебя есть два способа
+    <p>Авторизация</p>
+    <button type="submit">Войти</button><br><br>
+</form>
+<form action="signUp" method="get" >
+    <p>Регистрация</p>
+    <button type="submit">Войти</button><br><br>
+</form>
+</body>
 </html>

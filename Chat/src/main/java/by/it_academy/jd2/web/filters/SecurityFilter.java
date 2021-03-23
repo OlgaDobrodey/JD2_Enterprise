@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.logging.LogRecord;
 
-@WebFilter(urlPatterns = {"/orders","/chats","/message"})
+@WebFilter(urlPatterns = {"/chats","/message"})
 public class SecurityFilter implements Filter {
 
     @Override
@@ -24,7 +24,7 @@ public class SecurityFilter implements Filter {
         }
         else{
             chain.doFilter(request, response);
-            res.sendRedirect(contexPath+"/login");
+            res.sendRedirect(contexPath+"/signIn");
         }
-    }
+   }
 }

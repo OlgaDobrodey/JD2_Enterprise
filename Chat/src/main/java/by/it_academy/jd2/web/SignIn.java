@@ -11,13 +11,13 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet(name = "SignUp", urlPatterns = "/signUp")
-public class SignUp extends HttpServlet {
+@WebServlet(name = "SignIn", urlPatterns = "/signIn")
+public class SignIn extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String path = req.getContextPath() + "/signUp";
+        String path = req.getContextPath()+"/signIn";
         resp.sendRedirect(path);
     }
-}
 
+}

@@ -1,23 +1,39 @@
 package by.it_academy.jd2;
 
-import by.it_academy.jd2.web.servlets.api.ViewSave;
+import by.it_academy.jd2.core.dto.DataMessage;
+import by.it_academy.jd2.core.dto.Message;
+import by.it_academy.jd2.core.dto.User;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ex {
+
+
     public static void main(String[] args) {
-        String a="";
-        String b = null;
-//        System.out.println(a.isEmpty());
-//        System.out.println(ViewSave.COOKIES.toString());
-//        System.out.println( ViewSave.COOKIES.name());
-        ViewSave cookies = ViewSave.valueOf("COOKIES");
-        System.out.println(cookies);;
-        ViewSave.valueOf("ffff");
+
+        User userOlga = new User();
+        userOlga.setName("Olga");
+        userOlga.setLogin("Olga1");
+        userOlga.setPassword("123");
+        userOlga.setBirthday("11.12.2011");
+        User userSasha = new User();
+        userSasha.setName("Sasha");
+        userSasha.setLogin("Sasha1");
+        userSasha.setPassword("123");
+        userSasha.setBirthday("11.12.2011");
+         Message message = new Message(userOlga, userSasha, "asddff");
+        Message message2= new Message(userSasha,userOlga,"dfngkdj");
+
+        DataMessage.saveMessage(message);DataMessage.saveMessage(message2);
 
 
-
-
+        if (DataMessage.searchMessageUserLoginAndPsw(userSasha.getLogin()).size()!=0) {
+            for (Message message1 : DataMessage.searchMessageUserLoginAndPsw(userSasha.getLogin())) {
+                System.out.println(message1.toString());
+            }
+        } else
+            System.out.println(" У вас пока нет сообщений!!!");
     }
-
-
-    }
+}
 

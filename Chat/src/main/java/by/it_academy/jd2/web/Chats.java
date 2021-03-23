@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "Chats", urlPatterns = "/chats")
-public class ServletChats extends HttpServlet {
+public class Chats extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         getServletContext().getRequestDispatcher("/indexChats.jsp").forward(req, resp);

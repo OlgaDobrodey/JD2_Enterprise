@@ -12,9 +12,35 @@
     <listener>
         <listener-class>by.it_academy.jd2.web.listeners.SessionChangeListener</listener-class>
     </listener>
-<!--    <welcome-file-list>-->
-<!--        <welcome-file>index.jsp</welcome-file>-->
-<!--    </welcome-file-list>-->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    <servlet>
+        <servlet-name>SignIn</servlet-name>
+        <jsp-file>/indexSignIn.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SignIn</servlet-name>
+        <url-pattern>/signIn</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SignUp</servlet-name>
+        <jsp-file>/indexSignUp.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SignUp</servlet-name>
+        <url-pattern>/signUp</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Menu</servlet-name>
+        <jsp-file>/indexMenu.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Menu</servlet-name>
+        <url-pattern>/menu</url-pattern>
+    </servlet-mapping>
+
+
 
     <!--    <servlet>-->
     <!--        <servlet-name>HelloServlet</servlet-name>-->
