@@ -1,4 +1,4 @@
-package by.it_academy.jd2.web;
+package by.it_academy.jd2.web.servlets;
 
 import by.it_academy.jd2.core.dto.*;
 import jakarta.servlet.ServletException;
@@ -16,6 +16,7 @@ public class ServletMessage extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Set<String> set = DataStorageUsers.getUsersLogin();
+        set.add("Jkmud");set.add("asd");
         req.setAttribute("setUsers",set);
         getServletContext().getRequestDispatcher("/indexMessage.jsp").forward(req, resp);
     }
@@ -30,10 +31,8 @@ public class ServletMessage extends HttpServlet {
         String text = req.getParameter(Constants.MESSAGE);
         Message message = new Message(userSender, userReceiver, text);
         DataMessage.saveMessage(message);
-        Set<String> set = DataStorageUsers.getUsersLogin();
-        req.setAttribute("setUsers",set);
+
         session.setAttribute("send",true);
         getServletContext().getRequestDispatcher("/indexMessage.jsp").forward(req, resp);
     }
 }
-

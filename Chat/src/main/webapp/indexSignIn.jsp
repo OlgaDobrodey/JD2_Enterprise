@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
@@ -8,8 +8,15 @@
     <meta charset="utf-8">
 </head>
 <body>
+<c:if test="${Boolean.parseBoolean(userNo)}">
+    <h4><span style='color: red;'>Не верный логин или пароль<br>
+       Авторизация не выполнена, попробуйте снова!
+    </span></h4>
+</c:if>
+<%request.setAttribute("userNo", false);%>
 
-<form action="servletSignIn" method="get">
+
+<form action="signIn" method="post">
     <h1>Авторизация</h1>
     <hr>
     Логин<br>

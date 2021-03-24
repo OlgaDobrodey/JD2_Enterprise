@@ -4,9 +4,6 @@ import by.it_academy.jd2.core.dto.DataMessage;
 import by.it_academy.jd2.core.dto.Message;
 import by.it_academy.jd2.core.dto.User;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class ex {
 
 
@@ -28,12 +25,17 @@ public class ex {
         DataMessage.saveMessage(message);DataMessage.saveMessage(message2);
 
 
-        if (DataMessage.searchMessageUserLoginAndPsw(userSasha.getLogin()).size()!=0) {
-            for (Message message1 : DataMessage.searchMessageUserLoginAndPsw(userSasha.getLogin())) {
+        if (DataMessage.searchMessageUserLogin(userSasha.getLogin()).size()!=0) {
+            for (Message message1 : DataMessage.searchMessageUserLogin(userSasha.getLogin())) {
                 System.out.println(message1.toString());
             }
         } else
             System.out.println(" У вас пока нет сообщений!!!");
+        String a = "true";
+
+        boolean b =Boolean.parseBoolean(a);
+        System.out.println(b);
     }
+
 }
 

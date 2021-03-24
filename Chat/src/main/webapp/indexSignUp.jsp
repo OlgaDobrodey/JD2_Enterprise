@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="java.util.*, java.text.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%!
-String getFormattedDate(){
-    SimpleDateFormat sdf =new SimpleDateFormat("dd.MM.yyyy hh:mm:ss");
-    return sdf.format(new Date());
-}
-%>
 
+<c:if test="${Boolean.parseBoolean(userNo)}">
+    <h4><span style='color: red;'>Пользователь с таким логином уже существует!<br>
+        Попробуйте снова!
+    </span></h4>
+</c:if>
+<%request.setAttribute("userNo", false);%>
 <html>
- <head>
-   <title>SignUp</title>
-   <meta charset="utf-8">
- </head>
- <body>
-<p> <%= getFormattedDate() %></p>
-<form method="get" action="hello" >
 
+<head>
+    <title>SignUp</title>
+    <meta charset="utf-8">
+</head>
+<body>
+
+<form method="post" action="signUp">
     <h1>Зарегистрироваться</h1>
     <p>Пожалуйста, заполните эту форму, чтобы создать учетную запись.</p>
     <hr>
@@ -28,14 +28,14 @@ String getFormattedDate(){
     Пароль<br>
     <input type="password" placeholder="Введите пароль" name="psw" required><br><br>
 
-     ФИО<br>
-     <input type="text" placeholder="Введите ФИО" name="name" required><br><br>
+    ФИО<br>
+    <input type="text" placeholder="Введите ФИО" name="name" required><br><br>
 
-     Дата рождения<br>
-     <input type="date" name="birthday" required><br><br>
+    Дата рождения<br>
+    <input type="date" name="birthday" required><br><br>
     <hr>
-     <button type="submit" >Зарегистрироваться</button>
+    <button type="submit">Зарегистрироваться</button>
 
- </form>
- </body>
+</form>
+</body>
 </html>

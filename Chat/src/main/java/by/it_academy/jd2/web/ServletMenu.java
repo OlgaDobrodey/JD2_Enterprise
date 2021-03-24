@@ -12,7 +12,6 @@ import java.io.IOException;
 public class ServletMenu extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String path = req.getContextPath() + "/menu";
-        resp.sendRedirect(path);
+        getServletContext().getRequestDispatcher("/indexMenu.jsp").forward(req, resp);
     }
 }

@@ -1,5 +1,6 @@
 package by.it_academy.jd2.web.filters;
 
+import by.it_academy.jd2.core.dto.Constants;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
@@ -7,8 +8,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.util.Locale;
-import java.util.logging.LogRecord;
 
 @WebFilter(urlPatterns = {"/chats","/message"})
 public class SecurityFilter implements Filter {
@@ -19,12 +18,11 @@ public class SecurityFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
         String contexPath = req.getContextPath();
         HttpSession session = req.getSession();
-        if((session!=null)&&(session.getAttribute("user")!=null)){
+        if((session!=null)&&(session.getAttribute(Constants.USER_SENDER)!=null)){
             chain.doFilter(request, response);
         }
         else{
-            chain.doFilter(request, response);
-            res.sendRedirect(contexPath+"/signIn");
+           res.sendRedirect(contexPath+"/signIn");
         }
    }
 }

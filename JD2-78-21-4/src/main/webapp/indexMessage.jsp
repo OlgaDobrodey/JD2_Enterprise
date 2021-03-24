@@ -7,6 +7,7 @@
 <head>
     <title>Message</title>
     <meta charset="utf-8">
+
 </head>
 <body>
 <%
@@ -17,17 +18,24 @@
         request.getSession().setAttribute("send", null);
     }
 %>
+<select  name="country">
+<c:forEach var="a" items="${setUsers}">
+    <option value="US"> ${a}<br></option>
+</c:forEach>
+  </select>
+<%--<c:forEach var="a" items="${setUsers}">--%>
+<%--    ${a}<br>--%>
+
 <p>Отправить сообщение</p>
 <hr>
+<form method="POST" action="message" type="get">
 
-<form method="POST" action="message" >
-
-    Кому:<select name="userReceiver">
+    Кому:<select  name="userReceiver">
     <c:forEach var="a" items="${setUsers}">
-        <option value="${a}"> ${a}<br></option>
+        <option value="userReceiver"> ${a}<br></option>
     </c:forEach>
 </select>
-    <%--        <input type="text" name="userReceiver">--%>
+    <input type="text" name="userReceiver">
     <br><br>
 
     Сообщение:<br>
