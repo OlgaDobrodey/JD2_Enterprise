@@ -24,7 +24,13 @@
     Пароль<br>
     <input type="password" placeholder="Введите пароль" name="psw" required><br><br>
     <hr>
-    <button type="submit">Войти</button>
+    <button type="submit">Войти</button><br><br>
+</form>
+<form action="signUp" method="get">
+    <hr>
+    Еще не зарегистрированы <br><br>
+    <button type="submit">Регистрация</button>
+
 </form>
 </body>
 </html>

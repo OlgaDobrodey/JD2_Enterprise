@@ -34,8 +34,14 @@
     Дата рождения<br>
     <input type="date" name="birthday" required><br><br>
     <hr>
-    <button type="submit">Зарегистрироваться</button>
+    <button type="submit">Зарегистрироваться</button><br><br>
 
+</form>
+<form action="signIn" method="get">
+    <hr>
+    Если уже зарегистрированы <br><br>
+    <button type="submit">Авторизация</button>
+    <br><br>
 </form>
 </body>
 </html>

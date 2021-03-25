@@ -19,12 +19,7 @@ import java.util.List;
 public class Chats extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        final HttpSession session = req.getSession();
-        final User attribute = (User)session.getAttribute(Constants.USER_SENDER);
-        final List<Message> listMessages = DataMessage.searchMessageUserLogin(attribute.getLogin());
-        req.setAttribute("listMessages",listMessages);
 
-        //  DataMessage.searchMessageUserLogin(userSender.getLogin());
             getServletContext().getRequestDispatcher("/indexChats.jsp").forward(req, resp);
         }
 }

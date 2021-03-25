@@ -6,8 +6,9 @@
     <meta charset="utf-8">
 </head>
 <body>
+И так приступим!
 <form action="signIn" method="get">
-    И так приступим!
+
     <hr>
     <p>Авторизация</p>
     <button type="submit">Войти</button>
