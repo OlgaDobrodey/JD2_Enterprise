@@ -1,6 +1,10 @@
 package by.it_academy.jd2.web;
 
-import by.it_academy.jd2.core.dto.*;
+import by.it_academy.jd2.core.Constants;
+import by.it_academy.jd2.core.tool.DataMessage;
+import by.it_academy.jd2.core.tool.DataStorageUsers;
+import by.it_academy.jd2.core.view.Message;
+import by.it_academy.jd2.core.view.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,7 +20,7 @@ public class ServletMessage extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Set<String> set = DataStorageUsers.getUsersLogin();
-        req.setAttribute("setUsers",set);
+        req.setAttribute("setUsers",set);             //список логинов всех пользователей
         getServletContext().getRequestDispatcher("/indexMessage.jsp").forward(req, resp);
     }
 
@@ -30,9 +34,9 @@ public class ServletMessage extends HttpServlet {
         String text = req.getParameter(Constants.MESSAGE);
         Message message = new Message(userSender, userReceiver, text);
         DataMessage.saveMessage(message);
-        Set<String> set = DataStorageUsers.getUsersLogin();
+        Set<String> set = DataStorageUsers.getUsersLogin();   //список логинов всех пользователей
         req.setAttribute("setUsers",set);
-        session.setAttribute("send",true);
+        session.setAttribute("send",true);      //aгумент отвечающий за дополнительный коментарий "Cобщение отправлено"
         getServletContext().getRequestDispatcher("/indexMessage.jsp").forward(req, resp);
     }
 }

@@ -3,12 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<c:if test="${Boolean.parseBoolean(userNo)}">
+<c:if test="${Boolean.parseBoolean(invalidUserLogin)}">
     <h4><span style='color: red;'>Пользователь с таким логином уже существует!<br>
         Попробуйте снова!
     </span></h4>
 </c:if>
-<%request.setAttribute("userNo", false);%>
+<%request.setAttribute("invalidUserLogin", false);%>
 <html>
 
 <head>

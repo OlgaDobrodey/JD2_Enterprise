@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c80432d7-f83d-4a04-b1fe-419393503748" name="Default Changelist" comment="Added project chat project steep 3,4,5,6">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chat/src/main/webapp/indexChats.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Chat/src/main/webapp/indexChats.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="c80432d7-f83d-4a04-b1fe-419393503748" name="Default Changelist" comment="Added homework: recipient selection item in index Message.jsp, established sending messages to yourself and other recipients" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,7 +23,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Chat" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
@@ -52,6 +49,7 @@
       <option name="presentableId" value="Default" />
       <updated>1615964380758</updated>
       <workItem from="1616512794919" duration="1367000" />
+      <workItem from="1616595121826" duration="239000" />
     </task>
     <task id="LOCAL-00001" summary="Added project -first commit">
       <created>1615964465174</created>
@@ -67,7 +65,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616512919313</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added homework: recipient selection item in index Message.jsp, established sending messages to yourself and other recipients">
+      <created>1616595282209</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1616595282209</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -88,6 +93,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added project -first commit" />
     <MESSAGE value="Added project chat project steep 3,4,5,6" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added project chat project steep 3,4,5,6" />
+    <MESSAGE value="Added homework: recipient selection item in index Message.jsp, established sending messages to yourself and other recipients" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added homework: recipient selection item in index Message.jsp, established sending messages to yourself and other recipients" />
   </component>
 </project>

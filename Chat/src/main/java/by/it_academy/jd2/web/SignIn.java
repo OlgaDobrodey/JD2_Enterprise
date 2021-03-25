@@ -1,8 +1,8 @@
 package by.it_academy.jd2.web;
 
-import by.it_academy.jd2.core.dto.Constants;
-import by.it_academy.jd2.core.dto.DataStorageUsers;
-import by.it_academy.jd2.core.dto.User;
+import by.it_academy.jd2.core.Constants;
+import by.it_academy.jd2.core.tool.DataStorageUsers;
+import by.it_academy.jd2.core.view.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -32,7 +32,7 @@ public class SignIn extends HttpServlet {
             String path = req.getContextPath() + "/menu";
             resp.sendRedirect(path);
         } else {
-            req.setAttribute("userNo",true);
+            req.setAttribute("invalidUserLogin",true);      // Дополнительного комментарий "Не верный логин или пароль"                                      // Авторизация не выполнена, попробуйте снова!
             getServletContext().getRequestDispatcher("/indexSignIn.jsp").forward(req, resp);
         }
     }

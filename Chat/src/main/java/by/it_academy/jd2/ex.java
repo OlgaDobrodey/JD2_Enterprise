@@ -1,8 +1,8 @@
 package by.it_academy.jd2;
 
-import by.it_academy.jd2.core.dto.DataMessage;
-import by.it_academy.jd2.core.dto.Message;
-import by.it_academy.jd2.core.dto.User;
+import by.it_academy.jd2.core.tool.DataMessage;
+import by.it_academy.jd2.core.view.Message;
+import by.it_academy.jd2.core.view.User;
 
 public class ex {
 

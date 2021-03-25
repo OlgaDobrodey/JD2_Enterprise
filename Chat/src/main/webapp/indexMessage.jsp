@@ -27,7 +27,7 @@
         <option value="${a}"> ${a}<br></option>
     </c:forEach>
 </select>
-    <%--        <input type="text" name="userReceiver">--%>
+
     <br><br>
 
     Сообщение:<br>

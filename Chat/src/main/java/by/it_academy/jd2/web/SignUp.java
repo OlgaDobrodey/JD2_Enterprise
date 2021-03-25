@@ -1,8 +1,8 @@
 package by.it_academy.jd2.web;
 
-import by.it_academy.jd2.core.dto.Constants;
-import by.it_academy.jd2.core.dto.DataStorageUsers;
-import by.it_academy.jd2.core.dto.User;
+import by.it_academy.jd2.core.Constants;
+import by.it_academy.jd2.core.tool.DataStorageUsers;
+import by.it_academy.jd2.core.view.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -29,7 +29,7 @@ public class SignUp extends HttpServlet {
         user.setBirthday(req.getParameter(Constants.BIRTHDAY));
         User userSearch = DataStorageUsers.searchUserLogin(user.getLogin());
         if(userSearch!=null){
-            req.setAttribute("userNo",true);
+            req.setAttribute("invalidUserLogin",true);
             getServletContext().getRequestDispatcher("/indexSignUp.jsp").forward(req, resp);
         }
         DataStorageUsers.saveUsers(user);

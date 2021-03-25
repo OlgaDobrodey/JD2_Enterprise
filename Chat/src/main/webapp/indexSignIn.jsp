@@ -8,12 +8,12 @@
     <meta charset="utf-8">
 </head>
 <body>
-<c:if test="${Boolean.parseBoolean(userNo)}">
+<c:if test="${Boolean.parseBoolean(invalidUserLogin)}">
     <h4><span style='color: red;'>Не верный логин или пароль<br>
        Авторизация не выполнена, попробуйте снова!
     </span></h4>
 </c:if>
-<%request.setAttribute("userNo", false);%>
+<%request.setAttribute("invalidUserLogin", false);%>
 
 
 <form action="signIn" method="post">

@@ -1,4 +1,4 @@
-package by.it_academy.jd2.core.dto;
+package by.it_academy.jd2.core.view;
 
 public class User {
 
@@ -44,11 +44,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", birthday=" + birthday +
-                '}';
+        return String.format(" %s(имя %s)",getLogin(),getName());
     }
 }
