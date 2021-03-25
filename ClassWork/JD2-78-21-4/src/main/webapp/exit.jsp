@@ -10,9 +10,17 @@
     <meta charset="utf-8">
 </head>
 <body>
-<%=(String)request.getSession().getAttribute("list")%><br>
-<c:forEach var="a" items="${list}">
-    ${a}<br>
-</c:forEach>
+<%--<%=(String) request.getSession().getAttribute("list")%><br>--%>
+
+<c:if test="${list.size()==0}">
+    <c:out value="z c.lf gjgfk"/>
+</c:if>
+
+<c:if test="${list!=null}">
+    <c:forEach var="a" items="${list}">
+
+        ${a}<br>
+    </c:forEach>
+</c:if>
 </body>
 </html>

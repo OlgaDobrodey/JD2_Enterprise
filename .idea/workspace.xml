@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c80432d7-f83d-4a04-b1fe-419393503748" name="Default Changelist" comment="Added homework: recipient selection item in index Message.jsp, established sending messages to yourself and other recipients" />
+    <list default="true" id="c80432d7-f83d-4a04-b1fe-419393503748" name="Default Changelist" comment="Added homework: recipient selection item in index Message.jsp, established sending messages to yourself and other recipients">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,6 +52,7 @@
       <updated>1615964380758</updated>
       <workItem from="1616512794919" duration="1367000" />
       <workItem from="1616595121826" duration="239000" />
+      <workItem from="1616656320843" duration="841000" />
     </task>
     <task id="LOCAL-00001" summary="Added project -first commit">
       <created>1615964465174</created>
@@ -72,7 +75,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616595282209</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added finish version chat">
+      <created>1616656368955</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1616656368962</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -94,6 +104,7 @@
     <MESSAGE value="Added project -first commit" />
     <MESSAGE value="Added project chat project steep 3,4,5,6" />
     <MESSAGE value="Added homework: recipient selection item in index Message.jsp, established sending messages to yourself and other recipients" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added homework: recipient selection item in index Message.jsp, established sending messages to yourself and other recipients" />
+    <MESSAGE value="Added finish version chat" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added finish version chat" />
   </component>
 </project>

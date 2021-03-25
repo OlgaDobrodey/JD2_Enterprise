@@ -1,0 +1,35 @@
+<web-app version="5.0" xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+          https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         metadata-complete="false">
+    <display-name>JD2-78-21-4</display-name>
+    <filter>
+        <filter-name>SecurityFilter</filter-name>
+        <filter-class>by.it_academy.jd2.web.filters.SecurityFilter</filter-class>
+        <init-param>
+            <param-name>active</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <listener>
+        <listener-class>by.it_academy.jd2.web.listeners.SessionChangeListener</listener-class>
+    </listener>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!--    <servlet>-->
+    <!--        <servlet-name>HelloServlet</servlet-name>-->
+    <!--        <servlet-class>by.it_academy.jd2.web.HelloServlet</servlet-class>-->
+    <!--    </servlet>-->
+    <!--    <servlet-mapping>-->
+    <!--        <servlet-name>HelloServlet</servlet-name>-->
+    <!--        <url-pattern>/test</url-pattern>-->
+
+</web-app>
+
