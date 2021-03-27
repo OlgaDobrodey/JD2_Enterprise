@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 
 <%@ page import="by.it_academy.jd2.core.view.User" %>
-<%@ page import="by.it_academy.jd2.core.view.Message" %>
-<%@ page import="java.util.List" %>
 <%@ page import="by.it_academy.jd2.core.tool.DataMessage" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 <html>
@@ -17,15 +14,7 @@
 <% User userSender = (User) request.getSession().getAttribute("userSender");%>
 <p><span style='color: red;'> Получатель <%=userSender.getName()%> </span></p>
 
-    <%
-    if (DataMessage.searchMessageUserLogin(userSender.getLogin()).size() != 0) {
-        for (Message message : DataMessage.searchMessageUserLogin(userSender.getLogin())) {
-            out.write("<p><span style='color: black;'>" + message.toString() + "</span></p>");
-        }
-    } else {
-        out.write("<p><span style='color: black;'> У вас пока нет сообщений!!!</span></p>");
-    }
-%>
+<%out.write(DataMessage.printMessasgeUserLogin(userSender));%>
 
 <br><br>
 <hr>

@@ -11,10 +11,17 @@ public class AllMessage {
 
     private AllMessage() {
     }
-    public static List<Message> getAllMessage(){
-        if(AllMessage==null){
-            AllMessage= new ArrayList<>();
-        }return AllMessage;
+
+    public static List<Message> getAllMessage() {
+        if (AllMessage == null) {
+            synchronized (AllMessage.class) {
+                if (AllMessage == null) {
+                    AllMessage = new ArrayList<>();
+                }
+
+            }
+        }
+        return AllMessage;
     }
 }
 

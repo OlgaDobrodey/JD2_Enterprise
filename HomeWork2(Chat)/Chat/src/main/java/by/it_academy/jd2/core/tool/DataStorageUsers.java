@@ -28,11 +28,11 @@ public class DataStorageUsers {
             }
         } return null;
     }
+
     public static Set<String> getUsersLogin(){
         HashSet<String> usersLogin = new HashSet<>();
         for (User user : AllUsers.getAllUsers()) {
             usersLogin.add(user.getLogin());
-
         }
         return usersLogin;
     }

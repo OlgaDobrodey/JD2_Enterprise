@@ -10,9 +10,16 @@ public class AllUsers {
 
     private AllUsers() {
     }
-    public static Set<User> getAllUsers(){
-        if(AllUsers==null){
-            AllUsers= new HashSet<>();
-        }return AllUsers;
+
+    public static Set<User> getAllUsers() {
+        if (AllUsers == null) {
+            synchronized (AllUsers.class) {
+                if (AllUsers == null) {
+                    AllUsers = new HashSet<>();
+                }
+
+            }
+        }
+        return AllUsers;
     }
 }
