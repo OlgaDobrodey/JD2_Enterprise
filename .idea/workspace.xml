@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c80432d7-f83d-4a04-b1fe-419393503748" name="Default Changelist" comment="Added Test file in Home work1">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork1(CookiesAndSession)/JD2-78-21-4/src/main/java/by/it_academy/jd2/ex.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork1(CookiesAndSession)/JD2-78-21-4/src/main/webapp/ex.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork1(CookiesAndSession)/JD2-78-21-4/src/main/webapp/exit.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/ex.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/storage/AllMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/storage/AllMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/storage/AllUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/storage/AllUsers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/tool/DataMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/tool/DataMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/tool/DataStorageUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/tool/DataStorageUsers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/view/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/view/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/view/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/view/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/web/filters/SecurityFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/web/filters/SecurityFilter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,15 +35,13 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -58,6 +59,7 @@
       <workItem from="1616595121826" duration="239000" />
       <workItem from="1616656320843" duration="841000" />
       <workItem from="1616693415533" duration="236000" />
+      <workItem from="1616940206790" duration="3000" />
     </task>
     <task id="LOCAL-00001" summary="Added project -first commit">
       <created>1615964465174</created>

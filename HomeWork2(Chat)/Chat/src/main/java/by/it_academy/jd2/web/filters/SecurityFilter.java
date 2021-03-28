@@ -9,6 +9,10 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
+/**
+ *  Class SecurityFilter for url
+ */
+
 @WebFilter(urlPatterns = {"/chats","/message"})
 public class SecurityFilter implements Filter {
 
