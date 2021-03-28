@@ -10,12 +10,24 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Class ServletWithCookies  (name = "ServletWithCookies", urlPatterns = "/cookies")
+ * Class print key and value parameters view "key=parameter"
+ * Key name: firstName, lastName
+ * Save parameter in session or cookies (the value is set in header)
+ */
 @WebServlet(name = "ServletWithCookies", urlPatterns = "/cookies")
 public class ServletWithCookies extends HttpServlet {
     private final String FIRST_NAME = "firstName";
     private final String LAST_NAME = "lastName";
     private final String message = "parameters are not in cookies and are not entered";
 
+    /**
+     * Override method doGet print key and value parameters view "key=parameter"
+     * @param req
+     * @param resp
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
@@ -37,6 +49,15 @@ public class ServletWithCookies extends HttpServlet {
         }
     }
 
+    /**
+     * Metod getStringFromParameterOrCookies get parameter from request or cookies.
+     * Throws an error if there are no parameters
+     * @param req
+     * @param resp
+     * @param parameterName
+     * @return printParametrValue
+     * @throws IllegalArgumentException
+     */
     private String getStringFromParameterOrCookies(HttpServletRequest req, HttpServletResponse resp, String parameterValue, String parameterName) throws Exception {
 
         String printParametrValue = "";

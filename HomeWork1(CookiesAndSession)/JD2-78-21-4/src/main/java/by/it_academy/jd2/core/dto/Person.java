@@ -3,6 +3,11 @@ package by.it_academy.jd2.core.dto;
 import by.it_academy.jd2.utils.ApacheCommonsLang3;
 
 /**
+ *
+ *  Home work №1
+ *  Mk-JD2-78-21-4
+ *  @author Olga Dobrodey
+ *
  * Person class initializes Person with parameters
  * firstName, lastName, age;
  *
@@ -51,6 +56,7 @@ public class Person {
     public int getAge() {
         return age;
     }
+
     /**
      * method getAge();
      * @param age - int

@@ -10,8 +10,20 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
 
+/**
+ * Class PrintServlet(name = "PrintServlet", urlPatterns = "/print");
+ * Class print key and value parameters view "key=parameter"
+ * Note:  names of all keys are different
+ * */
 @WebServlet(name = "PrintServlet", urlPatterns = "/print")
 public class PrintServlet extends HttpServlet {
+    /**
+     *Override metod doGet print key and value parameters view "key=parameter"
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
