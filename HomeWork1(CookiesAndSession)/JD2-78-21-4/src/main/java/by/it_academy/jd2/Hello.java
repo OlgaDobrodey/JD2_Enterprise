@@ -1,6 +1,4 @@
 package by.it_academy.jd2;
-
-
 import by.it_academy.jd2.utils.ApacheCommonsLang3;
 /**
  * Home work №1

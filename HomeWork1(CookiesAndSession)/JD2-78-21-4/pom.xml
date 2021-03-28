@@ -22,7 +22,6 @@
     </properties>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
@@ -63,45 +62,15 @@
             <artifactId>jakarta.servlet.jsp-api</artifactId>
             <version>3.0.0</version>
             <scope>provided</scope>
-
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
-<!--            <plugin>-->
-<!--                <groupId>org.codehaus.mojo</groupId>-->
-<!--                <artifactId>tomcat-maven-plugin</artifactId>-->
-<!--                <version>1.1</version>-->
-<!--                <executions>-->
-<!--                    <execution><id>TomcatServer10</id>-->
-<!--                        <phase>install</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>undeploy</goal>-->
-<!--                            <goal>deploy</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--                <configuration>-->
-<!--                    <url>http://localhost:8080/manager/text</url>-->
-<!--                    <server>TomcatServer10</server>-->
-<!--                    <path>/${project.build.finalName}</path>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
             <plugin>
-                            <groupId>org.apache.tomcat.maven</groupId>
-                            <artifactId>tomcat7-maven-plugin</artifactId>
-                            <version>2.2</version>
-<!--                            <executions>-->
-<!--                                <execution>-->
-<!--                                    <configuration>-->
-<!--                                        <url>http://localhost:8080/manager/text</url>-->
-<!--                                        <server>TomcatServer10</server>-->
-<!--                                        <path>/${project.build.finalName}</path>-->
-<!--                                    </configuration>-->
-<!--                                </execution>-->
-<!--                            </executions>-->
-                        </plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -156,19 +125,26 @@
                 <artifactId>maven-project-info-reports-plugin</artifactId>
                 <version>3.1.1</version>
             </plugin>
-            <!--            <plugin>-->
-            <!--                <groupId>org.apache.maven.plugins</groupId>-->
-            <!--                <artifactId>maven-javadoc-plugin</artifactId>-->
-            <!--                <version>3.2.0</version>-->
-            <!--                <configuration>-->
-            <!--                    <show>public</show>-->
-            <!--                    <nohelp>true</nohelp>-->
-            <!--                </configuration>-->
-            <!--            </plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <show>public</show>
+                    <nohelp>true</nohelp>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.6</version>
+                <configuration>
+                    <excludes>
+                        <exclude>by/it_academy/jd2/web/**/*</exclude>
+<!--                        <exclude>by/it_academy/jd2/core/Constants.*</exclude>-->
+<!--                        <exclude>by/it_academy/jd2/core/storage/*.*</exclude>-->
+                    </excludes>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
@@ -191,10 +167,6 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
-<!--                        <configuration>-->
-<!--                            <dataFile>target/jacoco.exec</dataFile>-->
-<!--                            <outputDirectory>target/jacoco</outputDirectory>-->
-<!--                        </configuration>-->
                     </execution>
                 </executions>
             </plugin>

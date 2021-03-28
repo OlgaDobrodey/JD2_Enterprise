@@ -1,12 +1,10 @@
 package by.it_academy.jd2;
 
-import by.it_academy.jd2.utils.ApacheCommonsLang3;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
