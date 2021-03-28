@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c80432d7-f83d-4a04-b1fe-419393503748" name="Default Changelist" comment="Added a new folder classification. Folders created HomeWork1, HomeWork2, ClassWork" />
+    <list default="true" id="c80432d7-f83d-4a04-b1fe-419393503748" name="Default Changelist" comment="Added Test file in Home work1">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork1(CookiesAndSession)/JD2-78-21-4/src/main/java/by/it_academy/jd2/ex.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork1(CookiesAndSession)/JD2-78-21-4/src/main/webapp/ex.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork1(CookiesAndSession)/JD2-78-21-4/src/main/webapp/exit.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/ex.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -88,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616693567695</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added Test file in Home work1">
+      <created>1616909282747</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1616909282747</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -112,6 +125,7 @@
     <MESSAGE value="Added homework: recipient selection item in index Message.jsp, established sending messages to yourself and other recipients" />
     <MESSAGE value="Added finish version chat" />
     <MESSAGE value="Added a new folder classification. Folders created HomeWork1, HomeWork2, ClassWork" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a new folder classification. Folders created HomeWork1, HomeWork2, ClassWork" />
+    <MESSAGE value="Added Test file in Home work1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Test file in Home work1" />
   </component>
 </project>
