@@ -1,8 +1,6 @@
 package by.it_academy.jd2.core;
 
-/**
- * Class Contatans
- */
+
 public class Constants {
     public static final String LOGIN = "login";
     public static final String PASSWORD = "psw";
