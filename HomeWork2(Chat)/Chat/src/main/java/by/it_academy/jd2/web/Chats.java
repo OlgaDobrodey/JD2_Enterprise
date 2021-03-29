@@ -15,6 +15,9 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * seng RequestDispatcher on print messages
+ */
 @WebServlet(name = "Chats", urlPatterns = "/chats")
 public class Chats extends HttpServlet {
     @Override

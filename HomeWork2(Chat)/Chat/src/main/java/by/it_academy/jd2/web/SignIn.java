@@ -13,6 +13,9 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
+/**
+ * Class Sign In chat
+ */
 @WebServlet(name = "SignIn", urlPatterns = "/signIn")
 public class SignIn extends HttpServlet {
 

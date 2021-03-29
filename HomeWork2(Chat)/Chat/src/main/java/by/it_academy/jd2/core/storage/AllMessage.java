@@ -4,6 +4,10 @@ import by.it_academy.jd2.core.view.Message;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * application memory containing messages
+ */
 public class AllMessage {
     private static List<Message> AllMessage;
 

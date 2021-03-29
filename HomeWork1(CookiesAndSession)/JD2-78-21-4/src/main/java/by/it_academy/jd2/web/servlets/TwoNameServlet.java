@@ -22,8 +22,8 @@ public class TwoNameServlet extends HttpServlet {
      * Override method doGet print key and value parameters view "key=parameter"
      * @param req
      * @param resp
-     * @throws ServletException
-     * @throws IOException
+     * @throws ServletException -Exception
+     * @throws IOException -Exception
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

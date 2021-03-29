@@ -8,6 +8,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
+/**
+ * Class send on form menu
+ */
 @WebServlet(name = "Menu", urlPatterns = "/menu")
 public class ServletMenu extends HttpServlet {
     @Override

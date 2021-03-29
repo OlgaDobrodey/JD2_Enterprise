@@ -8,15 +8,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * Class contains method work whith messages
+ */
 public class DataMessage {
 
 
-
+    /**Method save message in application memory
+     * @param message String
+     */
     public static void saveMessage(Message message) {
         AllMessage.getAllMessage().add(message);
     }
 
 
+    /**Method search list messages for User with login
+     * @param login user String
+     * @return list messages
+     */
     public static List<Message> searchMessageUserLogin(String login) {
         List<Message> messagesUser = new ArrayList<>();
         for (Message message : AllMessage.getAllMessage()) {
@@ -28,7 +37,10 @@ public class DataMessage {
     }
 
 
-
+    /**Method print list messager for user with login
+     * @param userSender User
+     * @return text messages String
+     */
     public static String printMessasgeUserLogin(User userSender) {
         StringBuilder result = new StringBuilder();
         if (DataMessage.searchMessageUserLogin(userSender.getLogin()).size() != 0) {

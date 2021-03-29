@@ -10,7 +10,10 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 
-
+/**
+ * Filter for url "/chats","/message","/menu"
+ * send Redirect contexPath+"/signIn"
+ */
 @WebFilter(urlPatterns = {"/chats","/message","/menu"})
 public class SecurityFilter implements Filter {
 

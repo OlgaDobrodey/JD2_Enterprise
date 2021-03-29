@@ -15,6 +15,9 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Set;
 
+/**
+ * Class send messages
+ */
 @WebServlet(name = "Message", urlPatterns = "/message")
 public class ServletMessage extends HttpServlet {
     @Override

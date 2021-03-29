@@ -6,6 +6,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 
+/**
+ *
+ application memory containing users
+ */
 public class AllUsers {
     private static Set<User> AllUsers;
 

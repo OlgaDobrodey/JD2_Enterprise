@@ -6,16 +6,23 @@ import by.it_academy.jd2.core.view.User;
 import java.util.HashSet;
 import java.util.Set;
 
-
+/**
+ * Class contains method work with users
+ */
 public class DataStorageUsers {
 
-
-
+    /**Method save users in application memory
+     * @param user User
+     */
     public static void saveUsers(User user){
         AllUsers.getAllUsers().add(user);
     }
 
-
+    /**Method search user whith PSW and login in application memory
+     * @param login user String
+     * @param psw user String
+     * @return user User
+     */
 
     public static User searchUserLoginAndPsw(String login,String psw){
         for (User allUser : AllUsers.getAllUsers()) {
@@ -25,6 +32,10 @@ public class DataStorageUsers {
 
         } return null;
     }
+    /**Method search user with  and login in application memory
+     * @param login user String
+     * @return user User
+     */
 
 
     public static User searchUserLogin(String login){
@@ -36,6 +47,10 @@ public class DataStorageUsers {
     }
 
 
+    /**
+     * Method gets all user logins of the application
+     * @return users Set
+     */
     public static Set<String> getUsersLogin(){
         HashSet<String> usersLogin = new HashSet<>();
         for (User user : AllUsers.getAllUsers()) {

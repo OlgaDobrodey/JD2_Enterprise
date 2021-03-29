@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c80432d7-f83d-4a04-b1fe-419393503748" name="Default Changelist" comment="Added Test file in Home work1">
-      <change beforePath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/storage/AllMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/storage/AllMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/storage/AllUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/storage/AllUsers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/tool/DataMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/tool/DataMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/tool/DataStorageUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/tool/DataStorageUsers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/view/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/view/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/view/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/core/view/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/web/filters/SecurityFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork2(Chat)/Chat/src/main/java/by/it_academy/jd2/web/filters/SecurityFilter.java" afterDir="false" />
-    </list>
+    <list default="true" id="c80432d7-f83d-4a04-b1fe-419393503748" name="Default Changelist" comment="Added Javadoc in Home work2" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,6 +51,7 @@
       <workItem from="1616656320843" duration="841000" />
       <workItem from="1616693415533" duration="236000" />
       <workItem from="1616940206790" duration="3000" />
+      <workItem from="1616940226609" duration="231000" />
     </task>
     <task id="LOCAL-00001" summary="Added project -first commit">
       <created>1615964465174</created>
@@ -103,7 +95,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616909282747</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added Javadoc in Home work2">
+      <created>1616940447557</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1616940447557</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,6 +127,7 @@
     <MESSAGE value="Added finish version chat" />
     <MESSAGE value="Added a new folder classification. Folders created HomeWork1, HomeWork2, ClassWork" />
     <MESSAGE value="Added Test file in Home work1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Test file in Home work1" />
+    <MESSAGE value="Added Javadoc in Home work2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Javadoc in Home work2" />
   </component>
 </project>

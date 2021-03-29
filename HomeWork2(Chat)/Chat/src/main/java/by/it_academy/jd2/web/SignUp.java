@@ -12,6 +12,9 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
+/**
+ * Class Sign Up chat
+ */
 @WebServlet(name = "SignUp", urlPatterns = "/signUp")
 public class SignUp extends HttpServlet {
 
