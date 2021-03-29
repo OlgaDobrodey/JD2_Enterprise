@@ -13,7 +13,7 @@ import java.io.IOException;
  *  Class SecurityFilter for url
  */
 
-@WebFilter(urlPatterns = {"/chats","/message"})
+@WebFilter(urlPatterns = {"/chats","/message","/menu"})
 public class SecurityFilter implements Filter {
 
     @Override

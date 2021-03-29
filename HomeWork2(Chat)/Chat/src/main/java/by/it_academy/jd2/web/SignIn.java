@@ -18,6 +18,8 @@ public class SignIn extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        if(!session .isNew()){ session.removeAttribute(Constants.USER_SENDER);}
         getServletContext().getRequestDispatcher("/indexSignIn.jsp").forward(req, resp);
     }
 

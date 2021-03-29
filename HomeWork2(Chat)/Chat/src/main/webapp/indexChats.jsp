@@ -2,6 +2,7 @@
 
 <%@ page import="by.it_academy.jd2.core.view.User" %>
 <%@ page import="by.it_academy.jd2.core.tool.DataMessage" %>
+<%@ page import="by.it_academy.jd2.core.Constants" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 <html>
@@ -27,7 +28,8 @@
     <button type="submit">Выход в меню</button>
     <br><br>
 </form>
-<form action="index.jsp">
+<form action="signIn">
+<%--    <%request.getSession().setAttribute(Constants.USER_SENDER,null);%>--%>
     <button type="submit">Выйти из приложения</button>
     <br><br>
 </form>

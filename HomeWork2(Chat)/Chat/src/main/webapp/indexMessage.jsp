@@ -1,3 +1,4 @@
+<%@ page import="by.it_academy.jd2.core.Constants" %>
 <!DOCTYPE html>
 
 <%@ page contentType="text/html;charset=UTF-8" %>
@@ -43,7 +44,7 @@
     <button type="submit">Выход в меню</button>
     <br><br>
 </form>
-<form action="index.jsp">
+<form action="signIn">
     <button type="submit">Выйти из приложения</button>
     <br><br>
 </form>
