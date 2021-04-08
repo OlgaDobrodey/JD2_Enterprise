@@ -4,16 +4,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>by.it-academy.jd2</groupId>
-    <artifactId>JD2-78-21</artifactId>
+    <artifactId>HomeWork3</artifactId>
     <version>0.0.0-SHAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>JD2-78-21</name>
-    <url>http://www.example.com</url>
+    <name>HomeWork3</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
         <java.version>11</java.version>
+
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <maven.tomcat.url>http://localhost:8080/manager/text</maven.tomcat.url>
@@ -22,19 +24,12 @@
     </properties>
 
     <dependencies>
-
-        <dependency>
-            <groupId>jakarta.servlet</groupId>
-            <artifactId>jakarta.servlet-api</artifactId>
-            <version>5.0.0</version>
-            <scope>provided</scope>
-        </dependency>
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.11</version>
         </dependency>
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -47,11 +42,12 @@
             <version>5.7.1</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>5.0.0</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.glassfish.web</groupId>
@@ -63,7 +59,6 @@
             <artifactId>jakarta.servlet.jsp-api</artifactId>
             <version>3.0.0</version>
             <scope>provided</scope>
-
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -72,41 +67,14 @@
         </dependency>
     </dependencies>
 
+
     <build>
         <plugins>
-<!--            <plugin>-->
-<!--                <groupId>org.codehaus.mojo</groupId>-->
-<!--                <artifactId>tomcat-maven-plugin</artifactId>-->
-<!--                <version>1.1</version>-->
-<!--                <executions>-->
-<!--                    <execution><id>TomcatServer10</id>-->
-<!--                        <phase>install</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>undeploy</goal>-->
-<!--                            <goal>deploy</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--                <configuration>-->
-<!--                    <url>http://localhost:8080/manager/text</url>-->
-<!--                    <server>TomcatServer10</server>-->
-<!--                    <path>/${project.build.finalName}</path>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
             <plugin>
-                            <groupId>org.apache.tomcat.maven</groupId>
-                            <artifactId>tomcat7-maven-plugin</artifactId>
-                            <version>2.2</version>
-<!--                            <executions>-->
-<!--                                <execution>-->
-<!--                                    <configuration>-->
-<!--                                        <url>http://localhost:8080/manager/text</url>-->
-<!--                                        <server>TomcatServer10</server>-->
-<!--                                        <path>/${project.build.finalName}</path>-->
-<!--                                    </configuration>-->
-<!--                                </execution>-->
-<!--                            </executions>-->
-                        </plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -161,19 +129,21 @@
                 <artifactId>maven-project-info-reports-plugin</artifactId>
                 <version>3.1.1</version>
             </plugin>
-            <!--            <plugin>-->
-            <!--                <groupId>org.apache.maven.plugins</groupId>-->
-            <!--                <artifactId>maven-javadoc-plugin</artifactId>-->
-            <!--                <version>3.2.0</version>-->
-            <!--                <configuration>-->
-            <!--                    <show>public</show>-->
-            <!--                    <nohelp>true</nohelp>-->
-            <!--                </configuration>-->
-            <!--            </plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <show>public</show>
+                    <nohelp>true</nohelp>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.6</version>
+                <configuration>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
@@ -196,10 +166,10 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
-<!--                        <configuration>-->
-<!--                            <dataFile>target/jacoco.exec</dataFile>-->
-<!--                            <outputDirectory>target/jacoco</outputDirectory>-->
-<!--                        </configuration>-->
+                        <configuration>
+                            <dataFile>target/jacoco.exec</dataFile>
+                            <outputDirectory>target/jacoco</outputDirectory>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
