@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c80432d7-f83d-4a04-b1fe-419393503748" name="Default Changelist" comment="Added Home Work 3 (steep 1,2)">
+    <list default="true" id="c80432d7-f83d-4a04-b1fe-419393503748" name="Default Changelist" comment="Added Home Work 1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/src/main/java/by/it_academy/jd2/core/dto/Airports.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/src/main/java/by/it_academy/jd2/core/dto/AllAirports.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/src/main/java/by/it_academy/jd2/core/dto/ConnectionBase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/src/main/java/by/it_academy/jd2/core/dto/SelectStringConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/src/main/java/by/it_academy/jd2/web/servlets/AirportsServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/src/main/java/by/it_academy/jd2/web/servlets/ChoiceFlightServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/src/main/webapp/airports.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/src/main/webapp/choice.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/src/main/webapp/flight.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/src/main/webapp/img/1068.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/src/main/webapp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/src/packege.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,18 +39,16 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/HomeWork1(CookiesAndSession)/JD2-78-21-4" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ClassWork" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -114,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617871586765</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added Home Work 1">
+      <created>1617873839016</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1617873839016</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,6 +160,7 @@
     <MESSAGE value="Added Test file in Home work1" />
     <MESSAGE value="Added Javadoc in Home work2" />
     <MESSAGE value="Added Home Work 3 (steep 1,2)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Home Work 3 (steep 1,2)" />
+    <MESSAGE value="Added Home Work 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Home Work 1" />
   </component>
 </project>

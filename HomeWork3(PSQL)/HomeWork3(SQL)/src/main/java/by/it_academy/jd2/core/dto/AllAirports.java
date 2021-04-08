@@ -28,7 +28,8 @@ public class AllAirports {
                 airports.setCity(rs.getString(3));
                 airports.setCoordinates(rs.getString(4));
                 airports.setTimesone(rs.getString(5));
-                getAllAirports().add(airports);
+                getAllAirports().add(airports)
+
             }
 
         } catch (SQLException throwables) {
