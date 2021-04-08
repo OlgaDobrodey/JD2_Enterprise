@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c80432d7-f83d-4a04-b1fe-419393503748" name="Default Changelist" comment="Added Javadoc in Home work2" />
+    <list default="true" id="c80432d7-f83d-4a04-b1fe-419393503748" name="Default Changelist" comment="Added Home Work 3 (steep 1,2)">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,16 +25,18 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/HomeWork1(CookiesAndSession)/JD2-78-21-4" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -52,6 +56,7 @@
       <workItem from="1616693415533" duration="236000" />
       <workItem from="1616940206790" duration="3000" />
       <workItem from="1616940226609" duration="231000" />
+      <workItem from="1617871453445" duration="1075000" />
     </task>
     <task id="LOCAL-00001" summary="Added project -first commit">
       <created>1615964465174</created>
@@ -102,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616940447557</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added Home Work 3 (steep 1,2)">
+      <created>1617871586765</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1617871586765</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,6 +140,7 @@
     <MESSAGE value="Added a new folder classification. Folders created HomeWork1, HomeWork2, ClassWork" />
     <MESSAGE value="Added Test file in Home work1" />
     <MESSAGE value="Added Javadoc in Home work2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Javadoc in Home work2" />
+    <MESSAGE value="Added Home Work 3 (steep 1,2)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Home Work 3 (steep 1,2)" />
   </component>
 </project>

@@ -53,6 +53,18 @@ public class DataMessage {
         }
         return result.toString();
     }
+    public static String printMessasgeUserLoginC(User userSender) {
+        StringBuilder result = new StringBuilder();
+        if (DataMessage.searchMessageUserLogin(userSender.getLogin()).size() != 0) {
+            for (Message message : DataMessage.searchMessageUserLogin(userSender.getLogin())) {
+                result.append(message.toString());
+
+            }
+        } else {
+            result.append("У вас пока нет сообщений!!!");
+        }
+        return result.toString();
+    }
 
 }
 

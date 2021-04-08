@@ -4,6 +4,7 @@
 <%@ page import="by.it_academy.jd2.core.tool.DataMessage" %>
 <%@ page import="by.it_academy.jd2.core.Constants" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
@@ -15,7 +16,9 @@
 <% User userSender = (User) request.getSession().getAttribute("userSender");%>
 <p><span style='color: red;'> Получатель <%=userSender.getName()%> </span></p>
 
-<%out.write(DataMessage.printMessasgeUserLogin(userSender));%>
+<%--<%out.write(DataMessage.printMessasgeUserLogin(userSender));%>--%>
+
+<c:out value="${DataMessage.printMessasgeUserLoginC(userSender)}"/>
 
 <br><br>
 <hr>
