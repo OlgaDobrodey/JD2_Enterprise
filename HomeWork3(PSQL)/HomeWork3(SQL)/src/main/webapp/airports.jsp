@@ -14,6 +14,9 @@
 </head>
 <body>
 <h1>Список аэропортов с сортировкой по городу</h1>
+<form action="index.jsp" >
+    <button type="submit">Назад</button>
+</form>
 <table border="2">
 <body>
 <form action="airports" method="post">
@@ -27,15 +30,14 @@
 
     </tr>
 
-    <c:forEach items="${AllAirports.getAllAirports()}"
-               var="airports">
+    <c:forEach items="${listA}" var="airport">
         <tr>
 
-            <td width="10%">${airports.getAirport_code()}</td>
-            <td width="20%">${airports.getAirport_name()}</td>
-            <td width="20%">${airports.getCity()}</td>
-            <td width="30%">${airports.getCoordinates()}</td>
-            <td width="20%">${airports.getTimesone()}</td>
+            <td width="10%">${airport.getAirport_code()}</td>
+            <td width="20%">${airport.getAirport_name()}</td>
+            <td width="20%">${airport.getCity()}</td>
+            <td width="30%">${airport.getCoordinates()}</td>
+            <td width="20%">${airport.getTimesone()}</td>
 
         </tr>
     </c:forEach>

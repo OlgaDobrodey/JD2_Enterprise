@@ -11,13 +11,14 @@ import java.util.List;
 public class AllAirports {
     private static List<Airports> AllAirport;
 
-
+    private static String listAllAirportsOrderByCity ="Select * from airports order by city";
     private AllAirports()  {
     }
 
 
-    public static void sendAllAirports(Connection connection) {
-        String AllAirports = SelectStringConstants.listAllAirportsOrderByCity;
+    public static List<Airports> getAllAirports(Connection connection) {
+        String AllAirports = listAllAirportsOrderByCity;
+        List<Airports> AllAirport=new ArrayList<>();
         try (PreparedStatement pStatement = connection.prepareStatement(AllAirports);
              ResultSet rs = pStatement.executeQuery()) {
 
@@ -28,31 +29,22 @@ public class AllAirports {
                 airports.setCity(rs.getString(3));
                 airports.setCoordinates(rs.getString(4));
                 airports.setTimesone(rs.getString(5));
-                getAllAirports().add(airports)
+                AllAirport.add(airports);
 
             }
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-    }
-
-
-    public static List<Airports> getAllAirports() {
-        if (AllAirport == null) {
-            synchronized (AllAirports.class) {
-                if (AllAirport == null) {
-                    AllAirport = new ArrayList<>();
-                }
-            }
-        }
         return AllAirport;
     }
+
+
 
     public static Airports ListOfTitlesForAirports(Connection connection) {
 
         Airports title = new Airports();
-        String AllAirports = SelectStringConstants.listAllAirportsOrderByCity;
+        String AllAirports = listAllAirportsOrderByCity;
          try (PreparedStatement pStatement = connection.prepareStatement(AllAirports);
                  ResultSet rs = pStatement.executeQuery()) {
              ResultSetMetaData metaData = rs.getMetaData();

@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 
 @WebServlet(name = "Airports", urlPatterns = "/airports")
@@ -25,10 +26,10 @@ public class AirportsServlet extends HttpServlet {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        AllAirports.getAllAirports();
+        List<Airports> allAirports = AllAirports.getAllAirports(connection);
         Airports airports = AllAirports.ListOfTitlesForAirports(connection);
         req.setAttribute("title",airports);
-        AllAirports.sendAllAirports(connection);
+        req.setAttribute("listA",allAirports );
         req.getRequestDispatcher("/airports.jsp").forward(req, resp);
     }
 

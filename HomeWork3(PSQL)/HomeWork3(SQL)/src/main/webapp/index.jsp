@@ -2,12 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.util.*, java.text.*" %>
 
-<%!
-String getFormattedDate(){
-    SimpleDateFormat sdf =new SimpleDateFormat("dd.MM.yyyy hh:mm:ss");
-    return sdf.format(new Date());
-}
-%>
+
 
 <html>
  <head>
@@ -15,11 +10,20 @@ String getFormattedDate(){
    <meta charset="utf-8">
  </head>
  <body>
-<p> <%= getFormattedDate() %></p>
-<form action="hello" method="GET">
-First Name: <input type="text" name="firstName"/>
-Last Name: <input type="text" name="lastName"/>
-<input type="submit" value="Нажми меня"/>
-</form>
+ <h1>Домашнее задание №4airports</h1>
+ <form action="airports" method="get">
+     <p>Задание 1: вывести список всех аэропортов с параметрами</p>
+         <button type="submit">Войти</button><br><br>
+     </form>
+ <hr>
+     <form action="choice" method="get">
+         <p>Задание 2: сделать выборку по рейсам </p>
+
+         <button type="submit">Войти</button>
+
+     </form>
+     <hr>
+
+
  </body>
 </html>
