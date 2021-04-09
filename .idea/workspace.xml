@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c80432d7-f83d-4a04-b1fe-419393503748" name="Default Changelist" comment="Added Home Work 1">
+    <list default="true" id="c80432d7-f83d-4a04-b1fe-419393503748" name="Default Changelist" comment="Added Home Work 3 stepp 1,2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/src/main/java/by/it_academy/jd2/core/dto/Airports.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/src/main/java/by/it_academy/jd2/core/dto/AllAirports.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/src/main/java/by/it_academy/jd2/core/dto/ConnectionBase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/src/main/java/by/it_academy/jd2/core/dto/SelectStringConstants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/src/main/java/by/it_academy/jd2/web/servlets/AirportsServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/src/main/java/by/it_academy/jd2/web/servlets/ChoiceFlightServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/src/main/webapp/airports.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/src/main/webapp/choice.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/src/main/webapp/flight.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/src/main/webapp/img/1068.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/src/main/webapp/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork3(SQL)/src/packege.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork3(PSQL)/HomeWork3(SQL)/src/main/java/by/it_academy/jd2/core/dto/AllAirports.java" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork3(PSQL)/HomeWork3(SQL)/src/main/java/by/it_academy/jd2/core/dto/AllAirports.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork3(PSQL)/HomeWork3(SQL)/src/main/java/by/it_academy/jd2/core/dto/SelectStringConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork3(PSQL)/HomeWork3(SQL)/src/main/java/by/it_academy/jd2/core/dto/SelectStringConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork3(PSQL)/HomeWork3(SQL)/src/main/java/by/it_academy/jd2/web/servlets/ChoiceFlightServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork3(PSQL)/HomeWork3(SQL)/src/main/java/by/it_academy/jd2/web/servlets/ChoiceFlightServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork3(PSQL)/HomeWork3(SQL)/src/main/webapp/flight.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork3(PSQL)/HomeWork3(SQL)/src/main/webapp/flight.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +29,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ClassWork" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/HomeWork3(PSQL)/HomeWork3(SQL)" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
@@ -69,6 +59,7 @@
       <workItem from="1616940206790" duration="3000" />
       <workItem from="1616940226609" duration="231000" />
       <workItem from="1617871453445" duration="1075000" />
+      <workItem from="1617876215463" duration="150000" />
     </task>
     <task id="LOCAL-00001" summary="Added project -first commit">
       <created>1615964465174</created>
@@ -133,7 +124,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617873839016</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added Home Work 3 stepp 1,2">
+      <created>1617876341919</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1617876341919</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,6 +159,7 @@
     <MESSAGE value="Added Javadoc in Home work2" />
     <MESSAGE value="Added Home Work 3 (steep 1,2)" />
     <MESSAGE value="Added Home Work 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Home Work 1" />
+    <MESSAGE value="Added Home Work 3 stepp 1,2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Home Work 3 stepp 1,2" />
   </component>
 </project>
