@@ -22,9 +22,9 @@
     <p>Параметры поиска:</p>
     <tr>
 
-        <td>Параметр не задан</td>
+        <td>Аэропорт отправления</td>
         <td>${departureAirport}</td>
-        <td>Параметр не задан</td>
+        <td>Аэропорт прилета</td>
         <td>${arrivalAirport}</td>
 
     </tr>
@@ -33,57 +33,78 @@
 <form method="get" action="choice">
 
     <button type="submit">Назад</button>
-    <br><br>
+    <br>
 </form>
-<br><br>
+<br>
 <hr>
+
 
 <form method="post" action="flight">
 
     <%
-        Connection conn = (Connection) request.getAttribute("conn");
-        String departureAirport = (String) request.getAttribute("departureAirport");
-        String arrivalAirport = (String)request.getAttribute("arrivalAirport");
-        String scheduledDeparture = (String) request.getAttribute("scheduledDeparture");
-        String scheduledArrival = (String)request.getAttribute("scheduledArrival");
-        final Flights title = (Flights)request.getAttribute("title");
+        Connection conn = (Connection) request.getSession().getAttribute("conn");
+        String departureAirport = (String) request.getSession().getAttribute("departureAirport");
+        String arrivalAirport = (String) request.getSession().getAttribute("arrivalAirport");
+
+        final Flights title = (Flights) request.getSession().getAttribute("title");
+        Integer pageNumber = (Integer) request.getSession().getAttribute("page");
 
 
     %>
-
+    <h4>Страница <%=pageNumber%> из <c:out value="${sizelist}"/>
+    </h4>
     <%
-        List<Flights> list = AllFlights.getChoiceFlights(conn, departureAirport, arrivalAirport, scheduledDeparture, scheduledArrival);
+        List<Flights> list = AllFlights.getChoiceFlightsNoDateWithPage(conn, departureAirport, arrivalAirport, pageNumber);
 
     %>
-        <%
-    if(list.size()==0){
-       out.write(" <p>Рейсов с заданными параметрами не найдено</p>");}
-    else{
-        out.write("  <table border=\"2\">\n" +
-                "            <body>\n" +
-                "            <tr>");
-        out.write("<td>"+title.getFlight_no()+"</td>");
-        out.write("<td>"+title.getStatus()+"</td>");
-        out.write("<td>"+title.getScheduled_departure()+"</td>");
-        out.write("<td>"+title.getScheduled_arrival()+"</td>");
-        out.write("<td>"+title.getDeparture_airport()+"</td>");
-        out.write("<td>"+title.getArrival_airport()+"</td></tr>");
+    <%
+        if (list.size() == 0) {
+            out.write(" <p>Рейсов с заданными параметрами не найдено</p>");
+        } else {
+            out.write("  <table border=\"2\">\n" +
+                    "            <body>\n" +
+                    "            <tr>");
+            out.write("<td>" + title.getFlight_no() + "</td>");
+            out.write("<td>" + title.getStatus() + "</td>");
+            out.write("<td>" + title.getScheduled_departure() + "</td>");
+            out.write("<td>" + title.getScheduled_arrival() + "</td>");
+            out.write("<td>" + title.getDeparture_airport() + "</td>");
+            out.write("<td>" + title.getArrival_airport() + "</td></tr>");
 
-    for (Flights fly : list) {
-        out.write("  <tr>\n" +
-                    "<td>"+fly.getFlight_no()+"</td>");
-         out.write("<td>"+fly.getStatus()+"</td>");
-         out.write("<td>"+fly.getScheduled_departure()+"</td>");
-         out.write("<td>"+fly.getScheduled_arrival()+"</td>");
-         out.write("<td>"+fly.getDeparture_airport()+"</td>");
-         out.write("<td>"+fly.getArrival_airport()+"</td></tr>");
+            for (Flights fly : list) {
+                out.write("  <tr>\n" +
+                        "<td>" + fly.getFlight_no() + "</td>");
+                out.write("<td>" + fly.getStatus() + "</td>");
+                out.write("<td>" + fly.getScheduled_departure() + "</td>");
+                out.write("<td>" + fly.getScheduled_arrival() + "</td>");
+                out.write("<td>" + fly.getDeparture_airport() + "</td>");
+                out.write("<td>" + fly.getArrival_airport() + "</td></tr>");
 
+            }
+            out.write("</body></table>");
         }
-        out.write("</body></table>");
-    }
     %>
 
 </form>
+<br>
+<c:if test="${page!=1}">
+    <form action="flight" method="post">
+        <button type="submit">
+            Предыдущая №<%=pageNumber - 1%>
+        </button>
+        <br>
+    </form>
+</c:if>
+
+<br>
+<c:if test="${page<sizelist}">
+<form action="flight" method="get">
+    <button type="submit">
+             Следующая страницa №<%=pageNumber + 1%>
+    </button>
+    <br>
+</form>
+</c:if>
 
 <br>
 <hr>

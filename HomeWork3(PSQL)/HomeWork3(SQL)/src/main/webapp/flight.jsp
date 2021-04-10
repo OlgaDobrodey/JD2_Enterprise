@@ -50,13 +50,6 @@
 </table>
 <br><br>
 <hr>
-<%--<% HttpSession session1 = request.getSession();--%>
-<%--Connection conn = (Connection) session1.getAttribute("conn");--%>
-<%--String departureAirport=(String) session1.getAttribute("departureAirport");--%>
-<%--String arrivalAirport=(String)session1.getAttribute("arrivalAirport");--%>
-<%--LocalDate scheduledDeparture=(LocalDate)session1.getAttribute("scheduledDeparture");--%>
-<%--LocalDate scheduledArrival=(LocalDate)session1.getAttribute("scheduledArrival");--%>
-<%--List<Flights> choiceFlights = AllFlights.getChoiceFlights(conn,departureAirport,arrivalAirport,scheduledDeparture,scheduledArrival);--%>
 
 <form method="post" action="flight">
 

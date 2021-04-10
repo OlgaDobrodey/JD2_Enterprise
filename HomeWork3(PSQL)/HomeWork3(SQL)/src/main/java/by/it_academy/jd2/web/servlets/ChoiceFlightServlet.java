@@ -36,11 +36,12 @@ public class ChoiceFlightServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
+
         String departureAirport = req.getParameter("departureAirport");
         String arrivalAirport = req.getParameter("arrivalAirport");
         String scheduledDeparture = req.getParameter("scheduledDeparture");
         String scheduledArrival = req.getParameter("scheduledArrival");
+
 
         Flights flights = AllFlights.ListOfTitlesForFlightsWhithAllParam(connection);
 
@@ -50,11 +51,22 @@ public class ChoiceFlightServlet extends HttpServlet {
         req.setAttribute("arrivalAirport", arrivalAirport);
         req.setAttribute("scheduledDeparture", scheduledDeparture);
         req.setAttribute("scheduledArrival", scheduledArrival);
+        List<Flights> choiceFlights = AllFlights.getChoiceFlights(connection, departureAirport, arrivalAirport, scheduledDeparture, scheduledArrival);
 
  if ((scheduledDeparture.equals("1900-01-01")) && (scheduledArrival.equals("1900-01-01"))) {
+     final HttpSession session = req.getSession();
+     session.setAttribute("page",1);
+     session.setAttribute("title", flights);
+     session.setAttribute("conn", connection);
+     session.setAttribute("departureAirport", departureAirport);
+     session.setAttribute("arrivalAirport", arrivalAirport);
+     int ceil = (int)Math.ceil(choiceFlights.size() / 25.0);
+
+     session.setAttribute("sizelist",ceil);
+
     req.getRequestDispatcher("/flightArport.jsp").forward(req, resp);
 } else {
-    List<Flights> choiceFlights = AllFlights.getChoiceFlights(connection, departureAirport, arrivalAirport, scheduledDeparture, scheduledArrival);
+
     req.setAttribute("list", choiceFlights);
     req.getRequestDispatcher("/flight.jsp").forward(req, resp);
 }

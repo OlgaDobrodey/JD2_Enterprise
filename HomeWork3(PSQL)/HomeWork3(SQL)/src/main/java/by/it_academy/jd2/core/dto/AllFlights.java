@@ -20,9 +20,9 @@ public class AllFlights {
             + " WHERE ( departure_airport='%s') and ( arrival_airport='%s')";
     private static String SchDEPNonNuul = " and (scheduled_departure BETWEEN '%s' AND '%s')";
     private static String SchArrNonNuul =" and (scheduled_arrival BETWEEN '%s' AND '%s')";
-    private static String OrderBy = " order by scheduled_departure"
+    private static String OrderBy = " order by scheduled_departure";
+     private static String Page =" offset %d fetch next 25 rows only";
 
-    ;
 
     private static String ChoiceFlights1 = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, arrival_airport from flights WHERE (departure_airport='DME') and (arrival_airport='LED')";
 
@@ -50,6 +50,23 @@ public class AllFlights {
 
         return getFlightsList(connection, select);
     }
+
+    public static List<Flights> getChoiceFlightsNoDateWithPage
+            (Connection connection, String depAirport, String arrAirport,Integer page) {
+
+        //Determine the time intervals
+
+        String select = String.format(ChoiceFlights+OrderBy+Page,depAirport,arrAirport,25*(page.intValue()-1));
+
+
+        //Fill in the list with flights
+
+        return getFlightsList(connection, select);
+    }
+
+
+
+
 
     public static List<Flights> getChoiceFlightsExperement(Connection connection) {
         String select = SelectExperement;
