@@ -6,8 +6,8 @@
   Time: 19:32
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="by.it_academy.jd2.core.dto.AllFlights" %>
-<%@ page import="by.it_academy.jd2.core.dto.Flights" %>
+<%@ page import="by.it_academy.jd2.core.dto.tool.AllFlights" %>
+<%@ page import="by.it_academy.jd2.core.dto.view.Flights" %>
 
 <%@ page import="java.sql.Connection" %>
 <%@ page import="jakarta.servlet.http.HttpSession" %>
@@ -29,21 +29,21 @@
     <p>Параметры поиска:</p>
     <tr>
         <c:if test="${!scheduledDeparture.equals('1900-01-01')}">
-            <td>${scheduledDeparture}</td>
+            <td width="20%">${scheduledDeparture}</td>
         </c:if>
         <c:if test="${scheduledDeparture.equals('1900-01-01')}">
-            <td>Параметр на задан</td>
+            <td width="20%">Параметр на задан</td>
         </c:if>
 
-        <td>${departureAirport}</td>
+        <td width="20%">${departureAirport}</td>
         <c:if test="${!scheduledArrival.equals('1900-01-01')}">
-            <td>${scheduledArrival}</td>
+            <td width="20%">${scheduledArrival}</td>
         </c:if>
         <c:if test="${scheduledArrival.equals('1900-01-01')}">
-            <td>Параметр на задан</td>
+            <td width="20%">Параметр на задан</td>
         </c:if>
 
-        <td>${arrivalAirport}</td>
+        <td width="20%">${arrivalAirport}</td>
 
     </tr>
     </body>
@@ -60,23 +60,23 @@
         <table border="2">
             <body>
             <tr>
-                <td>${title.getFlight_no()}</td>
-                <td>${title.getStatus()}</td>
-                <td>${title.getScheduled_departure()}</td>
-                <td>${title.getScheduled_arrival()}</td>
-                <td>${title.getDeparture_airport()}</td>
-                <td>${title.getArrival_airport()}</td>
+                <td width="20%">${title.getFlight_no()}</td>
+                <td width="20%">${title.getStatus()}</td>
+                <td width="20%">${title.getScheduled_departure()}</td>
+                <td width="20%">${title.getScheduled_arrival()}</td>
+                <td width="20%">${title.getDeparture_airport()}</td>
+                <td width="20%">${title.getArrival_airport()}</td>
             </tr>
             <c:forEach items="${list}"
                        var="fly">
 
                 <tr>
-                    <td>${fly.getFlight_no()}</td>
-                    <td>${fly.getStatus()}</td>
-                    <td>${fly.getScheduled_departure()}</td>
-                    <td>${fly.getScheduled_arrival()}</td>
-                    <td>${fly.getDeparture_airport()}</td>
-                    <td>${fly.getArrival_airport()}</td>
+                    <td width="20%">${fly.getFlight_no()}</td>
+                    <td width="20%">${fly.getStatus()}</td>
+                    <td width="20%">${fly.getScheduled_departure()}</td>
+                    <td width="20%">${fly.getScheduled_arrival()}</td>
+                    <td width="20%">${fly.getDeparture_airport()}</td>
+                    <td width="20%">${fly.getArrival_airport()}</td>
                 </tr>
 
             </c:forEach>

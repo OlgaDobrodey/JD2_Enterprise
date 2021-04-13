@@ -1,4 +1,4 @@
-package by.it_academy.jd2.core.dto;
+package by.it_academy.jd2.core.dto.view;
 
 import java.awt.*;
 import java.sql.Connection;
@@ -34,22 +34,6 @@ public class Flights {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public LocalDate getScheduled_departure1() {
-        return scheduled_departure1;
-    }
-
-    public void setScheduled_departure1(LocalDate scheduled_departure1) {
-        this.scheduled_departure1 = scheduled_departure1;
-    }
-
-    public LocalDate getScheduled_arrival1() {
-        return scheduled_arrival1;
-    }
-
-    public void setScheduled_arrival1(LocalDate scheduled_arrival1) {
-        this.scheduled_arrival1 = scheduled_arrival1;
     }
 
     public String getScheduled_departure() {
@@ -89,8 +73,6 @@ public class Flights {
         return "Flights{" +
                 "flight_no='" + flight_no + '\'' +
                 ", status='" + status + '\'' +
-                ", scheduled_departure1=" + scheduled_departure1 +
-                ", scheduled_arrival1=" + scheduled_arrival1 +
                 ", scheduled_departure='" + scheduled_departure + '\'' +
                 ", scheduled_arrival='" + scheduled_arrival + '\'' +
                 ", departure_airport='" + departure_airport + '\'' +

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<%@ page import="by.it_academy.jd2.core.dto.AllAirports" %>
-<%@ page import="by.it_academy.jd2.core.dto.Airports" %>
+<%@ page import="by.it_academy.jd2.core.dto.tool.AllAirports" %>
+<%@ page import="by.it_academy.jd2.core.dto.view.Airports" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -19,7 +19,7 @@
 </form>
 <table border="2">
 <body>
-<form action="airports" method="post">
+
     <tr>
 
         <td width="10%">${title.getAirport_code()}</td>
@@ -41,7 +41,7 @@
 
         </tr>
     </c:forEach>
-    </form>
+
     </body>
     </table>
     </body>

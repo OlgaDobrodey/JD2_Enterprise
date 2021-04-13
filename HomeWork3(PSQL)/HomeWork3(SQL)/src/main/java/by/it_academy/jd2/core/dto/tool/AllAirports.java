@@ -1,5 +1,7 @@
-package by.it_academy.jd2.core.dto;
+package by.it_academy.jd2.core.dto.tool;
 
+
+import by.it_academy.jd2.core.dto.view.Airports;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,6 +17,11 @@ public class AllAirports {
     private AllAirports()  {
     }
 
+    /**
+     * <p>The method returns a list of all airports in the database</p>
+     * <p>@param connection</p>
+     * <p>@return list of all airports </p>
+     */
 
     public static List<Airports> getAllAirports(Connection connection) {
         String AllAirports = listAllAirportsOrderByCity;
@@ -39,7 +46,11 @@ public class AllAirports {
         return AllAirport;
     }
 
-
+    /**
+     * The method returns list of titles for table airports
+     * @param connection
+     * @return object airports
+     */
 
     public static Airports ListOfTitlesForAirports(Connection connection) {
 

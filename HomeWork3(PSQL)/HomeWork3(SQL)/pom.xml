@@ -65,6 +65,12 @@
             <artifactId>postgresql</artifactId>
             <version>42.2.19</version>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 
@@ -143,6 +149,11 @@
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.6</version>
                 <configuration>
+                    <excludes>
+                        <exclude>by/it_academy/jd2/web/**/*</exclude>
+<!--                        <exclude>by/it_academy/jd2/core/Constants.*</exclude>-->
+<!--                        <exclude>by/it_academy/jd2/core/storage/*.*</exclude>-->
+                    </excludes>
                 </configuration>
                 <executions>
                     <execution>
