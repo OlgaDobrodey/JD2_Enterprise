@@ -148,6 +148,7 @@
                         <exclude>by/it_academy/jd2/web/**/*</exclude>
                         <exclude>by/it_academy/jd2/core/Constants.*</exclude>
                         <exclude>by/it_academy/jd2/core/storage/*.*</exclude>
+                        <exclude>by/it_academy/jd2/core/tool/api/*.*</exclude>
                     </excludes>
                 </configuration>
                 <executions>

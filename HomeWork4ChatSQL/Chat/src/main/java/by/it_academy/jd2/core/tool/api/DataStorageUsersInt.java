@@ -9,4 +9,5 @@ public interface DataStorageUsersInt {
     User searchUserLoginAndPsw(String login,String psw);
     User searchUserLogin(String login);
     Set<String> getUsersLogin();
+    int deleteUser(String login);
 }

@@ -20,6 +20,9 @@ public class DataMessage implements DataMessageInt {
     private String  insert = "INSERT INTO chat.messages" +
             "(id_message, sender_login, receiver_login, message, date_msg)" +
             " VALUES (?, ?, ?, ?, ?)";
+    private String deleteMessageSender ="DELETE FROM chat.messages WHERE sender_login ='%s'";
+    private String deleteMessageReceiver = "DELETE FROM chat.messages WHERE receiver_login ='%s'";
+
     public DataMessage(Connection connection) {
         this.connection = connection;
     }
@@ -79,6 +82,12 @@ public class DataMessage implements DataMessageInt {
         }
         return result.toString();
     }
+    /**Method print list messager for user with login
+     * Method used, when print list message with technology JSTL
+     * @param userSender User
+     * @return text messages String
+     *
+     */
 
     public String printMessasgeUserLoginC(User userSender) {
         StringBuilder result = new StringBuilder();
@@ -94,6 +103,44 @@ public class DataMessage implements DataMessageInt {
         }
         return result.toString();
     }
+
+    /**
+     * delete all message with login_sender "
+     * @param login - User sender login(String)
+     * @return count delete message
+     */
+    @Override
+    public int deleteMessageSender(String login) {
+        String select = String.format(deleteMessageSender,login);
+        try(PreparedStatement ps = connection.prepareStatement(select)) {
+
+            int result =ps.executeUpdate();
+            return result;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return -1;
+        }
+
+    }
+    /**
+     * delete all message with login_receiver "
+     * @param login - User receiver login(String)
+     * @return count delete message
+     */
+
+    @Override
+    public int deleteMessageReceiver(String login) {
+        String select = String.format(deleteMessageReceiver,login);
+        try(PreparedStatement ps = connection.prepareStatement(select)) {
+            int result =ps.executeUpdate();
+            return result;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return -1;
+        }
+
+    }
+
 
 }
 

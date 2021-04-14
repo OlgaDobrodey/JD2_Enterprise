@@ -13,4 +13,15 @@ public interface DataMessageInt {
     String printMessasgeUserLogin(User userSender);
 
     String printMessasgeUserLoginC(User userSender);
+
+    int deleteMessageSender(String login);
+
+    int deleteMessageReceiver(String login);
+
+
+
+
+
+
+
 }

@@ -8,8 +8,7 @@ import java.util.Set;
 
 
 /**
- *
- application memory containing users
+ * Application memory containing users
  */
 public class AllUsers {
 
@@ -21,7 +20,11 @@ public class AllUsers {
     }
 
 
-
+    /**
+     *
+     * @param connection -connection with Base Data
+     * @return set all users chat
+     */
     public static Set<User> getAllUsers(Connection connection) {
         Set<User> AllUser = new HashSet<>();
         try (PreparedStatement pStatement = connection.prepareStatement(select);

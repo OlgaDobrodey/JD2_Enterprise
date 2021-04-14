@@ -3,6 +3,8 @@ package by.it_academy.jd2.core.tool;
 import by.it_academy.jd2.core.storage.AllUsers;
 import by.it_academy.jd2.core.tool.api.DataStorageUsersInt;
 import by.it_academy.jd2.core.view.User;
+import by.it_academy.jd2.data.DaoFactory;
+import by.it_academy.jd2.data.DatabaseName;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -17,7 +19,9 @@ import java.util.Set;
 public class DataStorageUsers implements DataStorageUsersInt {
     private Connection connection;
     private String insert = "INSERT INTO chat.users(login, psw, name_user, birthday)" +
-            "VALUES (?, ?, ?, ?)";
+                            "VALUES (?, ?, ?, ?)";
+private String delete = "DELETE FROM chat.users" +
+                        " WHERE login=?";
 
     public DataStorageUsers(Connection connection) {
         this.connection = connection;
@@ -88,6 +92,18 @@ public class DataStorageUsers implements DataStorageUsersInt {
             usersLogin.add(user.getLogin());
         }
         return usersLogin;
+    }
+    public int deleteUser(String login){
+        try(
+            PreparedStatement ps = connection.prepareStatement(delete)) {
+            ps.setString(1,login);
+            int result =ps.executeUpdate();
+            return result;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return -1;
+            }
+
     }
 
 }

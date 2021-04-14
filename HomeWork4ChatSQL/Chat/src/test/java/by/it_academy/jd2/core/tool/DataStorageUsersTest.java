@@ -1,6 +1,7 @@
 package by.it_academy.jd2.core.tool;
 
 
+import by.it_academy.jd2.core.storage.AllUsers;
 import by.it_academy.jd2.core.view.User;
 import by.it_academy.jd2.data.DaoFactory;
 import by.it_academy.jd2.data.DatabaseName;
@@ -21,15 +22,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class DataStorageUsersTest {
-    private Connection connection;
+
     private User userSender;
     private User userReceiver;
-    private DataStorageUsers dSUsers = new DataStorageUsers(connection);
+
 
     @BeforeAll
     private void createUsers() {
         try {
             connection = DaoFactory.getInstance(DatabaseName.POSTGRES).getConnectionBase();
+            dSUsers = new DataStorageUsers(connection);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -39,16 +41,19 @@ class DataStorageUsersTest {
         userSender.setName("Olga");
         userSender.setLogin("Dobrodey");
         userSender.setPassword("123");
-        userSender.setBirthday("25.03.2021");
+        userSender.setBirthday("2021-03-25");
         dSUsers.saveUsers(userSender);
 
         userReceiver = new User();
         userReceiver.setName("Sasha");
         userReceiver.setLogin("Hurkovskii");
         userReceiver.setPassword("456");
-        userReceiver.setBirthday("12.04.2011");
+        userReceiver.setBirthday("2021-03-25");
         dSUsers.saveUsers(userReceiver);
     }
+
+    private Connection connection;
+    private DataStorageUsers dSUsers;
 
     @Test
     void classDefinition() {
@@ -63,7 +68,6 @@ class DataStorageUsersTest {
         User expected = null;
         assertEquals(expected, actual);
     }
-
 
     @Test
     void searchUserLogin() {
@@ -85,7 +89,7 @@ class DataStorageUsersTest {
         newUser.setName("Test");
         newUser.setLogin("User");
         newUser.setPassword("456");
-        newUser.setBirthday("12.04.2011");
+        newUser.setBirthday("2021-03-25");
         dSUsers.saveUsers(newUser);
         assertEquals(
                 newUser.getName(),
@@ -96,13 +100,14 @@ class DataStorageUsersTest {
     @Test
     void searchUserLoginAndPsw() {
         User userActual = dSUsers.searchUserLoginAndPsw(userReceiver.getLogin(), userReceiver.getPassword());
-        boolean test =( (userActual.getLogin().equals(userReceiver.getLogin()))&&(userActual.getPassword().equals(userReceiver.getPassword())));
+        boolean test = ((userActual.getLogin().equals(userReceiver.getLogin())) && (userActual.getPassword().equals(userReceiver.getPassword())));
         assertEquals(true, test);
     }
+
     @Test
     void searchUserLoginAndPswPSW() {
         User userActual = dSUsers.searchUserLoginAndPsw(userReceiver.getLogin(), userReceiver.getPassword());
-        String actual=userActual.getPassword();
+        String actual = userActual.getPassword();
         String expected = userReceiver.getPassword();
         assertEquals(expected, actual);
     }
@@ -110,16 +115,31 @@ class DataStorageUsersTest {
 
     @Test
     void getUsersLogin() {
-        Set<String> set = new HashSet<>();
-        set.add(userSender.getLogin());
-        set.add(userReceiver.getLogin());
-        Set<String> actual = dSUsers.getUsersLogin();
-        Set<String> expected = set;
+        HashSet<String> usersLogin = new HashSet<>();
+        for (User user : AllUsers.getAllUsers(connection)) {
+            usersLogin.add(user.getLogin());
+        }
+        String actual = dSUsers.getUsersLogin().toString();
+       String expected = usersLogin.toString();
+        assertEquals(expected, actual);
 
 
     }
+
+    @Test
+    void deleteUser() {
+        final int ex = dSUsers.deleteUser("User");
+        int actual = 1;
+        assertEquals(ex, actual);
+
+
+    }
+
     @AfterAll
-    void connectionClose(){
+    void connectionClose() {
+        dSUsers.deleteUser("Dobrodey");
+        dSUsers.deleteUser("Hurkovskii");
+
         try {
             connection.close();
         } catch (SQLException throwables) {

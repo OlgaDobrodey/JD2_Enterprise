@@ -2,16 +2,21 @@ package by.it_academy.jd2.data;
 
 import java.sql.*;
 
+/**
+ * Сlass is responsible for connecting to the database
+ */
 public class DaoFactory {
 
     private static DaoFactory daoFactory;
+
 
     private DaoFactory() throws ClassNotFoundException {
         Class.forName("org.postgresql.Driver");
     }
 
+
     public static Connection getConnectionBase() throws SQLException, ClassNotFoundException {
-       // Class.forName("org.postgresql.Driver");
+
         try {
             Connection conn = DriverManager.getConnection(
                     "jdbc:postgresql://localhost:5432/chat",
