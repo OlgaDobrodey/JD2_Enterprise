@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="302.0" y="253.0">by.it_academy.jd2.core.dto.WarehouseAddress</node>
+    <node x="0.0" y="0.0">by.it_academy.jd2.core.dto.Product</node>
+    <node x="0.0" y="440.0">by.it_academy.jd2.core.dto.Manufacture</node>
+    <node x="189.0" y="440.0">by.it_academy.jd2.core.dto.Categore</node>
+    <node x="0.0" y="253.0">by.it_academy.jd2.core.dto.Warehouse</node>
+    <node x="231.0" y="0.0">by.it_academy.jd2.core.dto.Provider</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="1.0" x="315.0" y="300.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

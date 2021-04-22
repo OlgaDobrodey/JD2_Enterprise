@@ -1,6 +1,16 @@
 package by.it_academy.jd2.core.dto;
 
-public class Person {
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+@Table(name = "person_test", schema = "hibernate")
+public class Person implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String firstName;
     private String lastName;
     private int age;
