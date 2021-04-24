@@ -1,5 +1,7 @@
 package by.it_academy.jd2.core.dto.tool;
 
+import by.it_academy.jd2.core.dto.Constants;
+import by.it_academy.jd2.core.dto.tool.api.AllFlightsInt;
 import by.it_academy.jd2.core.dto.view.Flights;
 
 import java.sql.*;
@@ -7,45 +9,42 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllFlights {
+public class AllFlights implements AllFlightsInt {
 
-    private static String listAllFligthOrderByCity = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, departure_city, arrival_airport, arrival_city"
+    private String listAllFligthOrderByCity = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, departure_city, arrival_airport, arrival_city"
             + " from flights_v";
 
-    private static String SelectExperement = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, departure_city, arrival_airport, arrival_city from flights_v"
+    private String SelectExperement = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, departure_city, arrival_airport, arrival_city from flights_v"
             + " WHERE (scheduled_departure BETWEEN '2017-08-19' AND '2017-08-23')"
             + " and (scheduled_arrival BETWEEN '2017-08-21' AND '2017-08-23')"
             + " and ( departure_airport='DME') and ( arrival_airport='UUS')";
 
-    private static String ChoiceFlights = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, departure_city, arrival_airport, arrival_city"
+    private String ChoiceFlights = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, departure_city, arrival_airport, arrival_city"
             + " from flights_v "
             + " WHERE ( departure_airport='%s') and ( arrival_airport='%s')";
-    private static String SchDEPNonNuul = " and (scheduled_departure BETWEEN '%s' AND '%s')";
-    private static String SchArrNonNuul =" and (scheduled_arrival BETWEEN '%s' AND '%s')";
-    private static String OrderBy = " order by scheduled_departure";
-     private static String Page =" offset %d fetch next 25 rows only";
+    private String SchDEPNonNuul = " and (scheduled_departure BETWEEN '%s' AND '%s')";
+    private String SchArrNonNuul = " and (scheduled_arrival BETWEEN '%s' AND '%s')";
+    private String OrderBy = " order by scheduled_departure";
+    private String Page = " offset %d fetch next 25 rows only";
 
 
-    private static String ChoiceFlights1 = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, arrival_airport from flights WHERE (departure_airport='DME') and (arrival_airport='LED')";
+    private String ChoiceFlights1 = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, arrival_airport from flights WHERE (departure_airport='DME') and (arrival_airport='LED')";
 
-    public static List<Flights> getChoiceFlights(Connection connection, String depAirport, String arrAirport, String scheduledDep, String scheduledArr) {
+    public List<Flights> getChoiceFlights(Connection connection, String depAirport, String arrAirport, String scheduledDep, String scheduledArr) {
         //Determine the time intervals
-        String select="";
-        if((!scheduledDep.equals("1900-01-01"))&&(!scheduledArr.equals("1900-01-01"))){
+        String select = "";
+        if ((!scheduledDep.equals(Constants.DEFAULT_DATE)) && (!scheduledArr.equals(Constants.DEFAULT_DATE))) {
             String scheduledDepEnd = LocalDate.parse(scheduledDep).plusDays(1).toString();
             String scheduledArrEnd = LocalDate.parse(scheduledArr).plusDays(1).toString();
-            select = String.format(ChoiceFlights+SchDEPNonNuul+SchArrNonNuul+OrderBy ,depAirport, arrAirport, scheduledDep, scheduledDepEnd, scheduledArr, scheduledArrEnd );
-        }
-        else if((scheduledDep.equals("1900-01-01"))&&(scheduledArr.equals("1900-01-01"))){
-            select = String.format(ChoiceFlights+OrderBy,depAirport,arrAirport);
-        }
-        else if((!scheduledDep.equals("1900-01-01"))&&(scheduledArr.equals("1900-01-01"))){
+            select = String.format(ChoiceFlights + SchDEPNonNuul + SchArrNonNuul + OrderBy, depAirport, arrAirport, scheduledDep, scheduledDepEnd, scheduledArr, scheduledArrEnd);
+        } else if ((scheduledDep.equals(Constants.DEFAULT_DATE)) && (scheduledArr.equals(Constants.DEFAULT_DATE))) {
+            select = String.format(ChoiceFlights + OrderBy, depAirport, arrAirport);
+        } else if ((!scheduledDep.equals(Constants.DEFAULT_DATE)) && (scheduledArr.equals(Constants.DEFAULT_DATE))) {
             String scheduledDepEnd = LocalDate.parse(scheduledDep).plusDays(1).toString();
-            select = String.format(ChoiceFlights+SchDEPNonNuul+OrderBy,depAirport,arrAirport,scheduledDep,scheduledDepEnd);
-        }
-        else{
+            select = String.format(ChoiceFlights + SchDEPNonNuul + OrderBy, depAirport, arrAirport, scheduledDep, scheduledDepEnd);
+        } else {
             String scheduledArrEnd = LocalDate.parse(scheduledArr).plusDays(1).toString();
-            select = String.format(ChoiceFlights+SchArrNonNuul+OrderBy,depAirport,arrAirport,scheduledArr,scheduledArrEnd);
+            select = String.format(ChoiceFlights + SchArrNonNuul + OrderBy, depAirport, arrAirport, scheduledArr, scheduledArrEnd);
         }
 
         //Fill in the list with flights
@@ -53,12 +52,12 @@ public class AllFlights {
         return getFlightsList(connection, select);
     }
 
-    public static List<Flights> getChoiceFlightsNoDateWithPage
-            (Connection connection, String depAirport, String arrAirport,Integer page) {
+    public List<Flights> getChoiceFlightsNoDateWithPage
+            (Connection connection, String depAirport, String arrAirport, Integer page) {
 
         //Determine the time intervals
 
-        String select = String.format(ChoiceFlights+OrderBy+Page,depAirport,arrAirport,25*(page.intValue()-1));
+        String select = String.format(ChoiceFlights + OrderBy + Page, depAirport, arrAirport, 25 * (page.intValue() - 1));
 
 
         //Fill in the list with flights
@@ -67,15 +66,12 @@ public class AllFlights {
     }
 
 
-
-
-
-    public static List<Flights> getChoiceFlightsExperement(Connection connection) {
+    public List<Flights> getChoiceFlightsExperement(Connection connection) {
         String select = SelectExperement;
         return getFlightsList(connection, select);
     }
 
-    private static List<Flights> getFlightsList(Connection connection, String select) {
+    public List<Flights> getFlightsList(Connection connection, String select) {
         List<Flights> AllFlight = new ArrayList<>();
         try (PreparedStatement pStatement = connection.prepareStatement(select);
              ResultSet rs = pStatement.executeQuery()) {
@@ -99,7 +95,7 @@ public class AllFlights {
     }
 
 
-    public static Flights ListOfTitlesForFlightsWhithAllParam(Connection connection) {
+    public Flights ListOfTitlesForFlightsWhithAllParam(Connection connection) {
 
         Flights flights = new Flights();
         String select = listAllFligthOrderByCity;

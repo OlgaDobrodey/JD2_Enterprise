@@ -5,9 +5,9 @@ import java.sql.*;
 public class ConnectionBase {
 
     public Connection getConnection() throws ClassNotFoundException {
-        Class.forName("org.postgresql.Driver");
+        Class.forName(ParamConnectionBase.DRIVER);
         try {
-            Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/demo", "postgres", "123");
+            Connection conn = DriverManager.getConnection(ParamConnectionBase.URL, ParamConnectionBase.USER, ParamConnectionBase.PSW);
             return conn;
         } catch (SQLException throwables) {
             throwables.printStackTrace();

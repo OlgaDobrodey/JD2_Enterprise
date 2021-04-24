@@ -16,7 +16,7 @@
 
         <property name="show_sql">true</property>
 
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.hbm2ddl.auto">validate</property>
         <mapping class="by.it_academy.jd2.core.dto.store.Category"/>
 <!--        <mapping class="by.it_academy.jd2.core.dto.store.CategoreWithConstrains"/>-->
         <mapping class="by.it_academy.jd2.core.dto.store.Manufacture"/>

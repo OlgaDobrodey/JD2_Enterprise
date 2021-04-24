@@ -1,6 +1,7 @@
 package by.it_academy.jd2.core.dto.tool;
 
 
+import by.it_academy.jd2.core.dto.tool.api.AllAirportsInt;
 import by.it_academy.jd2.core.dto.view.Airports;
 
 import java.sql.*;
@@ -10,11 +11,11 @@ import java.util.List;
 /**
  * application memory containing messages
  */
-public class AllAirports {
-    private static List<Airports> AllAirport;
+public class AllAirports implements AllAirportsInt {
+    private List<Airports> AllAirport;
 
-    private static String listAllAirportsOrderByCity ="Select * from airports order by city";
-    private AllAirports()  {
+    private String listAllAirportsOrderByCity ="Select * from airports order by city";
+    public AllAirports()  {
     }
 
     /**
@@ -23,7 +24,7 @@ public class AllAirports {
      * <p>@return list of all airports </p>
      */
 
-    public static List<Airports> getAllAirports(Connection connection) {
+    public List<Airports> getAllAirports(Connection connection) {
         String AllAirports = listAllAirportsOrderByCity;
         List<Airports> AllAirport=new ArrayList<>();
         try (PreparedStatement pStatement = connection.prepareStatement(AllAirports);
@@ -52,7 +53,7 @@ public class AllAirports {
      * @return object airports
      */
 
-    public static Airports ListOfTitlesForAirports(Connection connection) {
+    public Airports ListOfTitlesForAirports(Connection connection) {
 
         Airports title = new Airports();
         String AllAirports = listAllAirportsOrderByCity;

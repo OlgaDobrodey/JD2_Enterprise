@@ -1,8 +1,9 @@
 package by.it_academy.jd2.core.dto.view;
 
+import java.io.Serializable;
 import java.sql.*;
 
-public class Airports {
+public class Airports implements Serializable {
 
     private String airport_code;
     private String airport_name;

@@ -6,13 +6,6 @@
   Time: 19:32
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="by.it_academy.jd2.core.dto.tool.AllFlights" %>
-<%@ page import="by.it_academy.jd2.core.dto.view.Flights" %>
-
-<%@ page import="java.sql.Connection" %>
-<%@ page import="jakarta.servlet.http.HttpSession" %>
-<%@ page import="java.time.LocalDate" %>
-<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>

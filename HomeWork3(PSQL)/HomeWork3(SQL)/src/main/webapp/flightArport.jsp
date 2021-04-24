@@ -4,9 +4,10 @@
 <%@ page import="by.it_academy.jd2.core.dto.view.Flights" %>
 
 <%@ page import="java.sql.Connection" %>
-<%@ page import="jakarta.servlet.http.HttpSession" %>
 <%@ page import="java.util.List" %>
 <%@ page import="by.it_academy.jd2.data.ConnectionBase" %>
+<%@ page import="by.it_academy.jd2.core.dto.Constants" %>
+<%@ page import="by.it_academy.jd2.core.dto.tool.api.AllFlightsInt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -43,37 +44,27 @@
 
 <form method="post" action="flight">
 
-<%--    <%--%>
-<%--        Connection conn = (Connection) request.getSession().getAttribute("conn");--%>
-<%--        String departureAirport = (String) request.getSession().getAttribute("departureAirport");--%>
-<%--        String arrivalAirport = (String) request.getSession().getAttribute("arrivalAirport");--%>
-<%--        Flights title = (Flights) request.getSession().getAttribute("title");--%>
-<%--        Integer pageNumber = (Integer) request.getSession().getAttribute("page");--%>
-
-
-<%--    %>--%>
     <%
-
-     Connection conn = new ConnectionBase().getConnection();
-     String departureAirport = (String) request.getSession().getAttribute("departureAirport");
-     String arrivalAirport = (String) request.getSession().getAttribute("arrivalAirport");
-     Flights title = (Flights) request.getSession().getAttribute("title");
-    Integer pageNumber = (Integer) request.getAttribute("page");
+        Connection conn = new ConnectionBase().getConnection();
+        String departureAirport = (String) request.getSession().getAttribute(Constants.DEP_AIRPORT);
+        String arrivalAirport = (String) request.getSession().getAttribute(Constants.ARR_AIRPORT);
+        Flights title = (Flights) request.getSession().getAttribute("title");
+        Integer pageNumber = (Integer) request.getAttribute("page");
     %>
 
-
-
-    <c:if test="${size.list!=0}">
-        <h4>Страница <%=pageNumber%> из <c:out value="${sizelist}"/>
-        </h4>
-    </c:if>
-    <c:if test="${size.list==0}">
+    <c:if test="${sizelist==0}">
         <h4>Страница 1
         </h4>
     </c:if>
+    <c:if test="${sizelist!=0}">
+        <h4>Страница <%=pageNumber%> из <c:out value="${sizelist}"/>
+        </h4>
+    </c:if>
+
 
     <%
-        List<Flights> list = AllFlights.getChoiceFlightsNoDateWithPage(conn, departureAirport, arrivalAirport, pageNumber);
+        AllFlightsInt allFlightsInt = new AllFlights();
+        List<Flights> list = allFlightsInt.getChoiceFlightsNoDateWithPage(conn, departureAirport, arrivalAirport, pageNumber);
         conn.close();
     %>
     <%

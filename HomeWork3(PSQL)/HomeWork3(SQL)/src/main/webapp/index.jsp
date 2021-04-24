@@ -10,7 +10,7 @@
    <meta charset="utf-8">
  </head>
  <body>
- <h1>Домашнее задание №4airports</h1>
+ <h1>Домашнее задание №4 airports</h1>
  <form action="airports" method="get">
      <p>Задание 1: вывести список всех аэропортов с параметрами</p>
          <button type="submit">Войти</button><br><br>

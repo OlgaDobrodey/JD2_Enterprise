@@ -1,13 +1,14 @@
 package by.it_academy.jd2.core.dto.view;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
-public class Flights {
+public class Flights implements Serializable {
     private String flight_no;
     private String status;
     private LocalDate scheduled_departure1;

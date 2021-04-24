@@ -1,5 +1,6 @@
 package by.it_academy.jd2.core.dto.tool;
 
+import by.it_academy.jd2.core.dto.tool.api.AllAirportsInt;
 import by.it_academy.jd2.core.dto.view.Airports;
 import by.it_academy.jd2.data.ConnectionBase;
 import org.junit.jupiter.api.AfterAll;
@@ -20,8 +21,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class AllAirportsTest {
     private Connection connection;
 
+
     @BeforeAll
     private void connectionBase() {
+
         try {
              connection = new ConnectionBase().getConnection();
         } catch (ClassNotFoundException e) {
@@ -46,8 +49,9 @@ class AllAirportsTest {
                 AllAirport.add(airports);
 
             }
+            AllAirportsInt airportsInt =new AllAirports();
             List<Airports> actual = AllAirport;
-            List<Airports> expected = AllAirports.getAllAirports(connection);
+            List<Airports> expected = airportsInt.getAllAirports(connection);
             assertEquals(expected.toString(),actual.toString());
 
         } catch (SQLException throwables) {
@@ -57,8 +61,9 @@ class AllAirportsTest {
 
     @Test
     void listOfTitlesForAirports() {
+        AllAirportsInt airportsInt =new AllAirports();
         String ex = "airport_code airport_name city coordinates timezone";
-        String ac = AllAirports.ListOfTitlesForAirports(connection).toString();
+        String ac = airportsInt.ListOfTitlesForAirports(connection).toString();
         assertEquals(ex,ac);
 
     }
