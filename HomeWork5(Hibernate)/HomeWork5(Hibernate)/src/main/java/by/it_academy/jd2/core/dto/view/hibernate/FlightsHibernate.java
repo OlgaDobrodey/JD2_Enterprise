@@ -1,22 +1,43 @@
-package by.it_academy.jd2.core.dto.view;
+package by.it_academy.jd2.core.dto.view.hibernate;
 
-import java.awt.*;
+import by.it_academy.jd2.core.dto.view.Flights;
+
+import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.LocalDate;
 
-public class Flights implements Serializable {
+@Entity(name = "flight")
+@Table(name = "flights_v", schema = "bookings")
+public class FlightsHibernate implements Serializable {
+
+    @Id
+    @Column(name = "flight_id")
+    private Integer flight_id;
+    @Column(name = "flight_no")
     private String flight_no;
+    @Column(name = "status")
     private String status;
+    @Column(name = "scheduled_departure")
     private String scheduled_departure;
+    @Column(name = "scheduled_arrival")
     private String scheduled_arrival;
+    @Column(name = "departure_airport")
     private String departure_airport;
+    @Column(name = "arrival_airport")
     private String arrival_airport;
+    @Column(name = "departure_city")
+    private String departure_city;
+    @Column(name = "arrival_city")
+    private String arrival_city;
 
-    public Flights() {
+    public FlightsHibernate() {
+    }
+
+    public Integer getFlight_id() {
+        return flight_id;
+    }
+
+    public void setFlight_id(Integer flight_id) {
+        this.flight_id = flight_id;
     }
 
     public String getFlight_no() {
@@ -67,15 +88,34 @@ public class Flights implements Serializable {
         this.arrival_airport = arrival_airport;
     }
 
+    public String getDeparture_city() {
+        return departure_city;
+    }
+
+    public void setDeparture_city(String departure_city) {
+        this.departure_city = departure_city;
+    }
+
+    public String getArrival_city() {
+        return arrival_city;
+    }
+
+    public void setArrival_city(String arrival_city) {
+        this.arrival_city = arrival_city;
+    }
+
     @Override
     public String toString() {
-        return "Flights{" +
-                "flight_no='" + flight_no + '\'' +
+        return "FlightsHibernate{" +
+                "flight_id=" + flight_id +
+                ", flight_no='" + flight_no + '\'' +
                 ", status='" + status + '\'' +
                 ", scheduled_departure='" + scheduled_departure + '\'' +
                 ", scheduled_arrival='" + scheduled_arrival + '\'' +
                 ", departure_airport='" + departure_airport + '\'' +
                 ", arrival_airport='" + arrival_airport + '\'' +
+                ", departure_city='" + departure_city + '\'' +
+                ", arrival_city='" + arrival_city + '\'' +
                 '}';
     }
 }

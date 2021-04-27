@@ -1,14 +1,19 @@
 package by.it_academy.jd2.core.dto.view;
 
-import java.sql.*;
+import jakarta.validation.constraints.NotNull;
 
-public class Airports {
+
+import java.io.Serializable;
+
+
+public class Airports implements Serializable {
 
     private String airport_code;
     private String airport_name;
     private String city;
     private String coordinates;
-    private String timesone;
+
+    private String timezone;
 
     public Airports() {
     }
@@ -46,15 +51,15 @@ public class Airports {
     }
 
     public String getTimesone() {
-        return timesone;
+        return timezone;
     }
 
     public void setTimesone(String timesone) {
-        this.timesone = timesone;
+        this.timezone = timesone;
     }
 
     @Override
     public String toString() {
-        return airport_code+" "+airport_name+" "+city+" "+coordinates+" "+timesone;
+        return airport_code+" "+airport_name+" "+city+" "+coordinates+" "+timezone;
     }
 }

@@ -1,7 +1,9 @@
 package by.it_academy.jd2.core.dto.tool;
 
 
+import by.it_academy.jd2.core.dto.tool.api.AllAirportsInt;
 import by.it_academy.jd2.core.dto.view.Airports;
+import by.it_academy.jd2.data.ConnectionBase;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,11 +12,12 @@ import java.util.List;
 /**
  * application memory containing messages
  */
-public class AllAirports {
-    private static List<Airports> AllAirport;
+public class AllAirports implements AllAirportsInt {
+    private List<Airports> AllAirport;
 
-    private static String listAllAirportsOrderByCity ="Select * from airports order by city";
-    private AllAirports()  {
+    private String listAllAirportsOrderByCity = "Select * from airports order by city";
+
+    public AllAirports() {
     }
 
     /**
@@ -23,10 +26,12 @@ public class AllAirports {
      * <p>@return list of all airports </p>
      */
 
-    public static List<Airports> getAllAirports(Connection connection) {
+    public List<Airports> getAllAirports() {
+
         String AllAirports = listAllAirportsOrderByCity;
-        List<Airports> AllAirport=new ArrayList<>();
-        try (PreparedStatement pStatement = connection.prepareStatement(AllAirports);
+        List<Airports> AllAirport = new ArrayList<>();
+        try (Connection connection = ConnectionBase.getInstance().getConnection();
+             PreparedStatement pStatement = connection.prepareStatement(AllAirports);
              ResultSet rs = pStatement.executeQuery()) {
 
             while (rs.next()) {
@@ -39,7 +44,6 @@ public class AllAirports {
                 AllAirport.add(airports);
 
             }
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -48,17 +52,19 @@ public class AllAirports {
 
     /**
      * The method returns list of titles for table airports
-     * @param connection
+     *
+     *
      * @return object airports
      */
 
-    public static Airports ListOfTitlesForAirports(Connection connection) {
+    public Airports ListOfTitlesForAirports() {
 
         Airports title = new Airports();
         String AllAirports = listAllAirportsOrderByCity;
-         try (PreparedStatement pStatement = connection.prepareStatement(AllAirports);
-                 ResultSet rs = pStatement.executeQuery()) {
-             ResultSetMetaData metaData = rs.getMetaData();
+        try (Connection connection = ConnectionBase.getInstance().getConnection();
+             PreparedStatement pStatement = connection.prepareStatement(AllAirports);
+             ResultSet rs = pStatement.executeQuery()) {
+            ResultSetMetaData metaData = rs.getMetaData();
 
             title.setAirport_code(metaData.getColumnName(1));
             title.setAirport_name(metaData.getColumnName(2));
@@ -70,7 +76,8 @@ public class AllAirports {
         } catch (SQLException e) {
             e.printStackTrace();
 
-        } return title;
+        }
+        return title;
     }
 }
 

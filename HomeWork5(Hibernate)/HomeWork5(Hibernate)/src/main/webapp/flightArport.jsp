@@ -7,6 +7,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="by.it_academy.jd2.data.ConnectionBase" %>
 <%@ page import="by.it_academy.jd2.core.dto.Constants" %>
+<%@ page import="by.it_academy.jd2.core.dto.tool.api.AllFlightsInt" %>
+<%@ page import="by.it_academy.jd2.core.dto.tool.hibernate.AllFlightsHibernet" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -44,7 +46,7 @@
 <form method="post" action="flight">
 
     <%
-        Connection conn = new ConnectionBase().getConnection();
+
         String departureAirport = (String) request.getSession().getAttribute(Constants.DEP_AIRPORT);
         String arrivalAirport = (String) request.getSession().getAttribute(Constants.ARR_AIRPORT);
         Flights title = (Flights) request.getSession().getAttribute("title");
@@ -62,8 +64,9 @@
 
 
     <%
-        List<Flights> list = AllFlights.getChoiceFlightsNoDateWithPage(conn, departureAirport, arrivalAirport, pageNumber);
-        conn.close();
+        AllFlightsInt allFlightsInt = new AllFlightsHibernet();
+        List<Flights> list = allFlightsInt.getChoiceFlightsNoDateWithPage(departureAirport, arrivalAirport, pageNumber);
+
     %>
     <%
         if (list.size() == 0) {

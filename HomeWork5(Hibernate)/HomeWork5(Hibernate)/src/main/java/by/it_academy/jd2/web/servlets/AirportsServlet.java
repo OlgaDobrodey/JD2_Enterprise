@@ -1,5 +1,7 @@
 package by.it_academy.jd2.web.servlets;
 
+import by.it_academy.jd2.core.dto.tool.api.AllAirportsInt;
+import by.it_academy.jd2.core.dto.tool.hibernate.AllAirportsHibernate;
 import by.it_academy.jd2.core.dto.view.Airports;
 import by.it_academy.jd2.core.dto.tool.AllAirports;
 import by.it_academy.jd2.data.ConnectionBase;
@@ -21,17 +23,14 @@ public class AirportsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try(Connection connection = new ConnectionBase().getConnection()) {
-            List<Airports> allAirports = AllAirports.getAllAirports(connection);
-            Airports airports = AllAirports.ListOfTitlesForAirports(connection);
+
+            AllAirportsInt airportsInt =new AllAirportsHibernate();
+            List<Airports> allAirports = airportsInt.getAllAirports();
+            Airports airports = airportsInt.ListOfTitlesForAirports();
             req.setAttribute("title",airports);
             req.setAttribute("listA",allAirports );
             req.getRequestDispatcher("/airports.jsp").forward(req, resp);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+
 
     }
 
