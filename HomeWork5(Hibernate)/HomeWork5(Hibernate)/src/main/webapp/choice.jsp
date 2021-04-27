@@ -34,7 +34,7 @@
     Аэропорт отправления:
     <select name="departureAirport" required>
         <c:forEach var="airports" items="${listB}">
-          <option value="${airports.getAirport_code()}">${airports.getCity()} (${airports.getAirport_code()}) </option>
+          <option value="${airports}">${airports} </option>
            </c:forEach>
     </select>
 
@@ -42,7 +42,7 @@
     Аэропорт прибытия:
     <select name="arrivalAirport" required>
         <c:forEach var="airports" items="${listB}">
-            <option value="${airports.getAirport_code()}">${airports.getCity()} (${airports.getAirport_code()})  </option>
+            <option value="${airports}">${airports} </option>
         </c:forEach>
     </select>
     <button onclick="myFunction()">Поиск</button>

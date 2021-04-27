@@ -8,6 +8,7 @@ import by.it_academy.jd2.data.ConnectionBase;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * application memory containing messages
@@ -78,6 +79,11 @@ public class AllAirports implements AllAirportsInt {
 
         }
         return title;
+    }
+
+    @Override
+    public List<String> getListNameCity() {
+        return null;
     }
 }
 

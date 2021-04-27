@@ -26,10 +26,10 @@
     <p>Параметры поиска:</p>
     <tr>
 
-        <td>Аэропорт отправления</td>
-        <td>${departureAirport}</td>
-        <td>Аэропорт прилета</td>
-        <td>${arrivalAirport}</td>
+        <th>Город отправления</th>
+        <th>${departureAirport}</th>
+        <th>Город прилета</th>
+        <th>${arrivalAirport}</th>
 
     </tr>
     </body>

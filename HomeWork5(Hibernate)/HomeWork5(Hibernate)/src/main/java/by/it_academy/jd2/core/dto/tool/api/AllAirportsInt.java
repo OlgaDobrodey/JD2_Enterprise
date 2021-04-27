@@ -4,6 +4,7 @@ import by.it_academy.jd2.core.dto.view.Airports;
 
 
 import java.util.List;
+import java.util.Set;
 
 public interface AllAirportsInt {
 
@@ -21,5 +22,6 @@ public interface AllAirportsInt {
      */
 
     Airports ListOfTitlesForAirports() ;
+    List<String> getListNameCity();
 
 }

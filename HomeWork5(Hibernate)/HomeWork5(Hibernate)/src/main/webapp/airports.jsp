@@ -13,35 +13,36 @@
 </head>
 <body>
 <h1>Список аэропортов с сортировкой по городу</h1>
-<form action="index.jsp" >
+<form action="index.jsp">
     <button type="submit">Назад</button>
 </form>
+<br>
 <table border="2">
-<body>
-
+    <thead>
     <tr>
 
-        <td width="10%">${title.getAirport_code()}</td>
-        <td width="20%">${title.getAirport_name()}</td>
-        <td width="20%">${title.getCity()}</td>
-        <td width="30%">${title.getCoordinates()}</td>
-        <td width="20%">${title.getTimesone()}</td>
+        <th width="10%">${title.getAirport_code()}</th>
+        <th width="20%">${title.getAirport_name()}</th>
+        <th width="20%">${title.getCity()}</th>
+        <th width="30%">${title.getCoordinates()}</th>
+        <th width="20%">${title.getTimesone()}</th>
 
     </tr>
-
+    </thead>
+    <tbody>
     <c:forEach items="${listA}" var="airport">
-        <tr>
+    <tr>
 
-            <td width="10%">${airport.getAirport_code()}</td>
-            <td width="20%">${airport.getAirport_name()}</td>
-            <td width="20%">${airport.getCity()}</td>
-            <td width="30%">${airport.getCoordinates()}</td>
-            <td width="20%">${airport.getTimesone()}</td>
+        <td width="10%">${airport.getAirport_code()}</td>
+        <td width="20%">${airport.getAirport_name()}</td>
+        <td width="20%">${airport.getCity()}</td>
+        <td width="30%">${airport.getCoordinates()}</td>
+        <td width="20%">${airport.getTimesone()}</td>
 
-        </tr>
+    </tr>
     </c:forEach>
 
-    </body>
-    </table>
-    </body>
-    </html>
+    </tbody>
+</table>
+</body>
+</html>

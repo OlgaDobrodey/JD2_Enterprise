@@ -51,15 +51,17 @@
     </c:if>
     <c:if test="${list.size()>0}">
         <table border="2">
-            <body>
+            <thead>
             <tr>
-                <td width="20%">${title.getFlight_no()}</td>
-                <td width="20%">${title.getStatus()}</td>
-                <td width="20%">${title.getScheduled_departure()}</td>
-                <td width="20%">${title.getScheduled_arrival()}</td>
-                <td width="20%">${title.getDeparture_airport()}</td>
-                <td width="20%">${title.getArrival_airport()}</td>
+                <th width="20%">${title.getFlight_no()}</th>
+                <th width="20%">${title.getStatus()}</th>
+                <th width="20%">${title.getScheduled_departure()}</th>
+                <th width="20%">${title.getScheduled_arrival()}</th>
+                <th width="20%">${title.getDeparture_airport()}</th>
+                <th width="20%">${title.getArrival_airport()}</th>
             </tr>
+            </thead>
+            <tbody>
             <c:forEach items="${list}"
                        var="fly">
 
@@ -73,7 +75,7 @@
                 </tr>
 
             </c:forEach>
-            </body>
+            </tbody>
         </table>
     </c:if>
 

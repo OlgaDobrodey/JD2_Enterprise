@@ -15,7 +15,7 @@ import java.util.List;
 
 public class AllFlightsHibernet implements AllFlightsInt {
     private final String SELECT = "FROM flight"
-            + " WHERE (departure_airport=:depAir) and (arrival_airport=:arrAir)";
+            + " WHERE (departure_city=:depAir) and (arrival_city=:arrAir)";
     private final String SCH_DEP_NON_NULL = " and (scheduled_departure BETWEEN '%s' AND '%s')";
     private final String SCH_ARR_NON_NULL = " and (scheduled_arrival BETWEEN '%s' AND '%s')";
     private final String ORDER_BY = " order by scheduled_departure";
@@ -45,9 +45,6 @@ public class AllFlightsHibernet implements AllFlightsInt {
         List<FlightsHibernate> flightsHibernates = (List<FlightsHibernate>) query.list();
         return getFlightsListForHibernare(flightsHibernates);
     }
-
-
-
 
     @Override
     public List<Flights> getChoiceFlightsNoDateWithPage(String depAirport, String arrAirport, Integer page) {
@@ -92,8 +89,10 @@ public class AllFlightsHibernet implements AllFlightsInt {
             flights.setStatus(hibernate.getStatus());
             flights.setDeparture_airport("(" + hibernate.getDeparture_airport() + ")" + hibernate.getDeparture_city());
             flights.setArrival_airport("(" + hibernate.getArrival_airport() + ")" + hibernate.getArrival_city());
-            flights.setScheduled_arrival(hibernate.getScheduled_arrival());
-            flights.setScheduled_departure(hibernate.getScheduled_departure());
+            String schArr =  hibernate.getScheduled_arrival();
+            String schDep = hibernate.getScheduled_departure();
+            flights.setScheduled_arrival(schArr.substring(0,schArr.length()-3));
+            flights.setScheduled_departure(schDep.substring(0,schDep.length()-3));
             AllFlight.add(flights);
         }
         return AllFlight;

@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Set;
 
 @WebServlet(name = "Choice", urlPatterns = "/choice")
 
@@ -31,7 +32,7 @@ public class ChoiceFlightServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
             AllAirportsInt airportsInt = new AllAirportsHibernate();
-            List<Airports> allAirports = airportsInt.getAllAirports();
+            List<String> allAirports = airportsInt.getListNameCity();
             req.setAttribute("listB", allAirports);
             req.getRequestDispatcher("/choice.jsp").forward(req, resp);
             }

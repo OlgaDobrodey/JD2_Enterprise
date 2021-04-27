@@ -8,8 +8,14 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class AllAirportsHibernate implements AllAirportsInt {
     public AllAirportsHibernate() {
@@ -52,5 +58,21 @@ public class AllAirportsHibernate implements AllAirportsInt {
             airport.setTimesone(columnNames[3]);
         }
         return airport;
+    }
+
+    @Override
+    public List<String> getListNameCity() {
+        Session session = ConnectionBaseHibernate.getConnectionHibernet().openSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<String> query = builder.createQuery(String.class);
+        Root<AirportsHibernate> root = query.from(AirportsHibernate.class);
+        query.select(root.get("city"));
+        query.orderBy(builder.asc(root.get("city")));
+        Query<String> q = session.createQuery(query);
+
+        List<String> listCity = q.getResultList();
+        final List<String> list = listCity.stream().distinct().collect(Collectors.toList());
+
+        return list;
     }
 }
