@@ -11,41 +11,52 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Choice</title>
-</head>
-<body>
+    <link rel="stylesheet" href="static/css/style.css">
 
-<h4><span style='color: red;'>Форма выбора рейса!</span></h4>
+</head>
+<body class="d-flex flex-column h-100">
+<%@include file="index.jsp"%>
+
+<main class="container">
+
 <p><img src="img/1068.jpg" alt="самолет" width="200"></p>
 <h4>Аэропорт отправления и прибытия выбрать обязательно.</h4>
 <p>Выбор любой из дат по желанию. </p>
 
-<h4> Чтобы получить результат нажмите кнопку "Поиск"</h4>
-
-<form method="post" action="choice">
 
 
-    Дата вылета: <input type="date" name="scheduledDeparture"/>
-    Аэропорт отправления:
-    <select name="departureAirport" required>
+<form method="get" action="flight">
+
+    <h4>Отправление</h4>
+    <label for="dateDep">Дата и время вылета:</label>
+    <input type="date" id="dateDep" name="scheduledDeparture"/>
+
+    <label for="countryDep">Аэропорт отправления:</label>
+    <select id="countryDep" name="departureAirport" required>
         <c:forEach var="airports" items="${listNameAirports}">
             <option value="${airports}">${airports}</option>
         </c:forEach>
     </select>
 
-    Время прилета: <input type="date"  name="scheduledArrival" />
+    <h4>Прибытие</h4>
+    <label for="dateArr">Дата и время вылета:</label>
+    <input type="date" id="dateArr" name="scheduledArrival"/>
 
-    Аэропорт прибытия:
-    <select name="arrivalAirport" required>
+    <label for="countryArr">Аэропорт отправления:</label>
+    <select id="countryArr" name="arrivalAirport"  required>
         <c:forEach var="airports" items="${listNameAirports}">
-            <option value="${airports}">${airports} </option>
+            <option value="${airports}">${airports}</option>
         </c:forEach>
     </select>
-    <button >Поиск</button>
+    <br>
+    <p> Чтобы получить результат нажмите кнопку "Поиск"</p>
+    <input type="submit" value="Поиск">
 
 </form>
 <br>
 <br>
 <br>
+</main>
 <footer>
     <hr>
     <p align="center">

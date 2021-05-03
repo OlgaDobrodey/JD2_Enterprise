@@ -3,8 +3,12 @@
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
           https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          metadata-complete="false">
-    <display-name>HomeWork3</display-name>
-<!--    <filter>-->
+
+    <display-name>AirpotrsInfo</display-name>
+
+
+
+    <!--    <filter>-->
 <!--        <filter-name>SecurityFilter</filter-name>-->
 <!--        <filter-class>by.it_academy.jd2.web.filters.SecurityFilter</filter-class>-->
 <!--        <init-param>-->
@@ -30,6 +34,9 @@
     <!--    <servlet-mapping>-->
     <!--        <servlet-name>HelloServlet</servlet-name>-->
     <!--        <url-pattern>/test</url-pattern>-->
+    <welcome-file-list>
+        <welcome-file>airports</welcome-file>
+    </welcome-file-list>
     <error-page>
         <error-code>404</error-code>
         <location>/error.jsp</location>

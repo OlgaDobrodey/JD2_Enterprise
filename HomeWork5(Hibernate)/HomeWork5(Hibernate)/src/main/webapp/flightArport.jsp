@@ -13,12 +13,38 @@
 <html>
 <head>
     <title>Flight</title>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
 
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+    </style>
 </head>
 <body>
+<%@include file="index.jsp" %>
 
+<main class="container">
 <h1>Список рейсов</h1>
-<table border="1">
+<table id="customers">
     <body>
 
     <p>Параметры поиска:</p>
@@ -33,12 +59,12 @@
     </body>
 </table>
 <br>
-<p><input type="button" onclick="location.href='${pageContext.request.contextPath}/choice';" value="Назад"; method="get" /></p>
+<p><input  type="button" onclick="location.href='${pageContext.request.contextPath}/choice';" value="Назад"; method="get" /></p>
 <br>
 <hr>
 
 
-<form method="post" action="flight">
+
 
     <%
 
@@ -48,10 +74,7 @@
         Integer pageNumber = (Integer) request.getAttribute("page");
     %>
 
-    <c:if test="${sizelist==0}">
-        <h4>Страница 1
-        </h4>
-    </c:if>
+
     <c:if test="${sizelist!=0}">
         <h4>Страница <%=pageNumber%> из <c:out value="${sizelist}"/>
         </h4>
@@ -67,7 +90,7 @@
         if (list.size() == 0) {
             out.write(" <p>Рейсов с заданными параметрами не найдено</p>");
         } else {
-            out.write("  <table border=\"2\">\n" +
+            out.write("  <table id=\"customers\"\">\n" +
                     "             <thead>\n" +
                     "            <tr>");
             out.write("<th width=\"20%\">" + title.getFlight_no() + "</th>");
@@ -91,12 +114,12 @@
         }
     %>
 
-</form>
+
 <br>
 
 <br>
 <c:if test="${sizelist!=0}">
-    <form action="flight" method="get">
+    <form action="flight" method="post">
 
         <select name="page" required>
             <c:forEach var="fly" begin="1" end="${sizelist}">
@@ -115,6 +138,7 @@
 <br>
 <br>
 <br>
+</main>
 <footer>
     <hr>
     <p align="center">

@@ -10,49 +10,76 @@
     <meta name="description" content="">
     <c:set var="contextPath" value="${pageContext.request.contextPath}/"/>
     <title>Airports</title>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
 </head>
-<body >
+<body class="d-flex flex-column h-100">
+<%@include file="index.jsp" %>
 
-<h1>Список аэропортов с сортировкой по городу</h1>
-<form action="index.jsp">
-    <button type="submit">Назад</button>
+<main class="container">
 
-</form>
-<p><input type="button" onclick="location.href='${pageContext.request.contextPath}/choice';" value="Задание 2: сделать выборку по рейсам "; method="get" /></p>
-<br>
-<table border="2">
-    <thead>
-    <tr>
+    <h1>Список аэропортов с сортировкой по городу</h1>
+    <%--<form action="index.jsp">--%>
+    <%--    <button type="submit">Назад</button>--%>
 
-        <th width="10%">${title.getAirport_code()}</th>
-        <th width="20%">${title.getAirport_name()}</th>
-        <th width="20%">${title.getCity()}</th>
-        <th width="30%">${title.getCoordinates()}</th>
-        <th width="20%">${title.getTimesone()}</th>
+    <%--</form>--%>
+    <br>
+    <table id="customers">
+        <thead>
+        <tr>
 
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach items="${listAirports}" var="airport">
-    <tr>
+            <th width="10%">${title.getAirport_code()}</th>
+            <th width="20%">${title.getAirport_name()}</th>
+            <th width="20%">${title.getCity()}</th>
+            <th width="30%">${title.getCoordinates()}</th>
+            <th width="20%">${title.getTimesone()}</th>
 
-        <td width="10%">${airport.getAirport_code()}</td>
-        <td width="20%">${airport.getAirport_name()}</td>
-        <td width="20%">${airport.getCity()}</td>
-        <td width="30%">${airport.getCoordinates()}</td>
-        <td width="20%">${airport.getTimesone()}</td>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${listAirports}" var="airport">
+            <tr>
 
-    </tr>
-    </c:forEach>
+                <td width="10%">${airport.getAirport_code()}</td>
+                <td width="20%">${airport.getAirport_name()}</td>
+                <td width="20%">${airport.getCity()}</td>
+                <td width="30%">${airport.getCoordinates()}</td>
+                <td width="20%">${airport.getTimesone()}</td>
 
-    </tbody>
-</table>
+            </tr>
+        </c:forEach>
 
+        </tbody>
+    </table>
+</main>
 <footer>
     <hr>
     <p align="center">
         <small>
-            <time>04-2021</time> © Dobrodey Volha
+            <time>04-2021</time>
+            © Dobrodey Volha
         </small>
 
     </p>

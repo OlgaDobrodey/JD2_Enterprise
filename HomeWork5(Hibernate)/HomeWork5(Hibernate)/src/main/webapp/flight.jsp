@@ -11,9 +11,47 @@
 <html>
 <head>
     <title>Flight</title>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
 
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
+<%@include file="index.jsp" %>
+
+<main class="container">
 
 <h1>Список рейсов</h1>
 <table border="2">
@@ -44,58 +82,58 @@
 <br><br>
 <hr>
 
-<form method="post" action="flight">
+<c:if test="${list.size()==0}">
+    <p>Рейсов с заданными параметрами не найдено</p>
+</c:if>
+<c:if test="${list.size()>0}">
+    <table id="customers">
+        <thead>
+        <tr>
+            <th width="20%">${title.getFlight_no()}</th>
+            <th width="20%">${title.getStatus()}</th>
+            <th width="20%">${title.getScheduled_departure()}</th>
+            <th width="20%">${title.getScheduled_arrival()}</th>
+            <th width="20%">${title.getDeparture_airport()}</th>
+            <th width="20%">${title.getArrival_airport()}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${list}"
+                   var="fly">
 
-    <c:if test="${list.size()==0}">
-        <p>Рейсов с заданными параметрами не найдено</p>
-    </c:if>
-    <c:if test="${list.size()>0}">
-        <table border="2">
-            <thead>
             <tr>
-                <th width="20%">${title.getFlight_no()}</th>
-                <th width="20%">${title.getStatus()}</th>
-                <th width="20%">${title.getScheduled_departure()}</th>
-                <th width="20%">${title.getScheduled_arrival()}</th>
-                <th width="20%">${title.getDeparture_airport()}</th>
-                <th width="20%">${title.getArrival_airport()}</th>
+                <td width="20%">${fly.getFlight_no()}</td>
+                <td width="20%">${fly.getStatus()}</td>
+                <td width="20%">${fly.getScheduled_departure()}</td>
+                <td width="20%">${fly.getScheduled_arrival()}</td>
+                <td width="20%">${fly.getDeparture_airport()}</td>
+                <td width="20%">${fly.getArrival_airport()}</td>
             </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${list}"
-                       var="fly">
 
-                <tr>
-                    <td width="20%">${fly.getFlight_no()}</td>
-                    <td width="20%">${fly.getStatus()}</td>
-                    <td width="20%">${fly.getScheduled_departure()}</td>
-                    <td width="20%">${fly.getScheduled_arrival()}</td>
-                    <td width="20%">${fly.getDeparture_airport()}</td>
-                    <td width="20%">${fly.getArrival_airport()}</td>
-                </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+</c:if>
 
-            </c:forEach>
-            </tbody>
-        </table>
-    </c:if>
-
-</form>
 
 <br>
 
 <form method="get" action="choice">
 
-    <button type="submit">Назад</button>
+    <button class="button" type="submit">Назад</button>
     <br><br>
 </form>
 <br>
 <br>
 <br>
+</main>
+
 <footer>
     <hr>
     <p align="center">
         <small>
-            <time>04-2021</time> © Dobrodey Volha
+            <time>04-2021</time>
+            © Dobrodey Volha
         </small>
 
     </p>
