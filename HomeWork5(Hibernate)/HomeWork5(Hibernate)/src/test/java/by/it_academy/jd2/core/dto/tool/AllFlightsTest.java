@@ -1,5 +1,6 @@
 package by.it_academy.jd2.core.dto.tool;
 
+import by.it_academy.jd2.core.utils.Constants;
 import by.it_academy.jd2.core.dto.tool.api.AllFlightsInt;
 import by.it_academy.jd2.core.dto.view.Flights;
 import by.it_academy.jd2.data.ConnectionBase;
@@ -19,11 +20,22 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class AllFlightsTest {
-    private static String OrderBy = " order by scheduled_departure";
-    private static String Page = " offset %d fetch next 25 rows only";
-    private static String ChoiceFlights = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, departure_city, arrival_airport, arrival_city"
+    private final String ORDER_BY = " order by scheduled_departure";
+    private final String PAGE = " offset %d fetch next 25 rows only";
+    private final String CHOICE_FLIGHTS = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, departure_city, arrival_airport, arrival_city"
             + " from flights_v "
-            + " WHERE ( departure_airport='%s') and ( arrival_airport='%s')";
+            + " WHERE ( departure_city='%s') and ( arrival_city='%s')";
+    private final String CHOICE_FLIGHTS_TEST = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, departure_city, arrival_airport, arrival_city"
+            + " from flights_v "
+            + " WHERE ( departure_city='Москва') and ( arrival_city='Воронеж')" ;
+    private final String SCH_DEP_NON_NULL = " and (scheduled_departure BETWEEN '2017-07-04' AND '2017-07-05')";
+    private final String SCH_ARR_NON_NULL = " and (scheduled_arrival BETWEEN '2017-07-04' AND '2017-07-05')";
+    private final String PAGE_TEST = " offset 25 fetch next 25 rows only";
+    private final String DEP_CITY ="Москва";
+    private final String ARR_CITY = "Воронеж";
+    private final String SCH_DEP = "2017-07-04";
+    private final String SCH_ARR = "2017-07-04";
+
 
     @Test
     void classDefinition() {
@@ -34,13 +46,8 @@ class AllFlightsTest {
     @Test
     void getChoiceFlights() {
         AllFlightsInt allFlightsInt = new AllFlights();
-        String actual = allFlightsInt.getChoiceFlights("DSE", "SER", "2017-07-04", "2017-07-04").toString();
-        String select = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, departure_city, arrival_airport, arrival_city" +
-                " from flights_v  " +
-                "WHERE ( departure_airport='DSE') and ( arrival_airport='SER') " +
-                "and (scheduled_departure BETWEEN '2017-07-04' AND '2017-07-05') " +
-                "and (scheduled_arrival BETWEEN '2017-07-04' AND '2017-07-05')" +
-                " order by scheduled_departure";
+        String actual = allFlightsInt.getChoiceFlights(DEP_CITY, ARR_CITY, SCH_DEP, SCH_ARR).toString();
+        String select = CHOICE_FLIGHTS_TEST+SCH_ARR_NON_NULL+SCH_DEP_NON_NULL+ORDER_BY;
         List<Flights> AllFlight = getFlightsList(select);
         String ex = AllFlight.toString();
         assertEquals(ex, actual);
@@ -51,12 +58,8 @@ class AllFlightsTest {
     @Test
     void getChoiceFlightsNoSchDep() {
         AllFlightsInt allFlightsInt = new AllFlights();
-        String actual = allFlightsInt.getChoiceFlights("DSE", "SER", "1900-01-01", "2017-07-04").toString();
-        String select = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, departure_city, arrival_airport, arrival_city" +
-                " from flights_v  " +
-                "WHERE ( departure_airport='DSE') and ( arrival_airport='SER') " +
-                "and (scheduled_arrival BETWEEN '2017-07-04' AND '2017-07-05')" +
-                " order by scheduled_departure";
+        String actual = allFlightsInt.getChoiceFlights(DEP_CITY, ARR_CITY, "", SCH_ARR).toString();
+        String select = CHOICE_FLIGHTS_TEST+SCH_ARR_NON_NULL+ORDER_BY;
         List<Flights> AllFlight = getFlightsList(select);
         String ex = AllFlight.toString();
         assertEquals(ex, actual);
@@ -66,12 +69,8 @@ class AllFlightsTest {
     @Test
     void getChoiceFlightsNoSchArr() {
         AllFlightsInt allFlightsInt = new AllFlights();
-        String actual = allFlightsInt.getChoiceFlights("DSE", "SER", "2017-07-04", "1900-01-01").toString();
-        String select = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, departure_city, arrival_airport, arrival_city" +
-                " from flights_v  " +
-                "WHERE ( departure_airport='DSE') and ( arrival_airport='SER') " +
-                "and (scheduled_departure BETWEEN '2017-07-04' AND '2017-07-05') " +
-                " order by scheduled_departure";
+        String actual = allFlightsInt.getChoiceFlights(DEP_CITY, ARR_CITY, SCH_DEP, "").toString();
+        String select = CHOICE_FLIGHTS_TEST+SCH_DEP_NON_NULL+ORDER_BY;
         List<Flights> AllFlight = getFlightsList(select);
         String ex = AllFlight.toString();
         assertEquals(ex, actual);
@@ -80,11 +79,8 @@ class AllFlightsTest {
     @Test
     void getChoiceFlightsNoTime() {
         AllFlightsInt allFlightsInt = new AllFlights();
-        String actual = allFlightsInt.getChoiceFlights("DSE", "SER", "1900-01-01", "1900-01-01").toString();
-        String select = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, departure_city, arrival_airport, arrival_city" +
-                " from flights_v  " +
-                "WHERE ( departure_airport='DSE') and ( arrival_airport='SER') " +
-                " order by scheduled_departure";
+        String actual = allFlightsInt.getChoiceFlights(DEP_CITY, ARR_CITY, "", "").toString();
+        String select = CHOICE_FLIGHTS_TEST+ORDER_BY;
         List<Flights> AllFlight = getFlightsList(select);
         String ex = AllFlight.toString();
         assertEquals(ex, actual);
@@ -93,8 +89,8 @@ class AllFlightsTest {
     @Test
     void getChoiceFlightsNoDateWithPage() {
         AllFlightsInt allFlightsInt = new AllFlights();
-        String ac = allFlightsInt.getChoiceFlightsNoDateWithPage("DSE", "SER", 2).toString();
-        String select = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, departure_city, arrival_airport, arrival_city from flights_v  WHERE ( departure_airport='DSE') and ( arrival_airport='SER') order by scheduled_departure offset 25 fetch next 25 rows only";
+        String ac = allFlightsInt.getChoiceFlightsNoDateWithPage(DEP_CITY, ARR_CITY, 2).toString();
+        String select =CHOICE_FLIGHTS_TEST+ORDER_BY+PAGE_TEST;
         List<Flights> AllFlight = getFlightsList(select);
         String ex = AllFlight.toString();
         assertEquals(ex, ac);
@@ -104,11 +100,11 @@ class AllFlightsTest {
 
     @Test
     void selectGetChoiceFlightsNoDateWithPage() {
-        String depAirport = "DSE";
-        String arrAirport = "SER";
+        String depAirport = DEP_CITY;
+        String arrAirport = ARR_CITY;
         Integer page = 2;
-        String ex = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, departure_city, arrival_airport, arrival_city from flights_v  WHERE ( departure_airport='DSE') and ( arrival_airport='SER') order by scheduled_departure offset 25 fetch next 25 rows only";
-        String ac = String.format(ChoiceFlights + OrderBy + Page, depAirport, arrAirport, 25 * (page.intValue() - 1));
+        String ex = CHOICE_FLIGHTS_TEST+ORDER_BY+PAGE_TEST;
+        String ac = String.format(CHOICE_FLIGHTS + ORDER_BY + PAGE, depAirport, arrAirport, 25 * (page.intValue() - 1));
         assertEquals(ex, ac);
     }
 
@@ -116,10 +112,7 @@ class AllFlightsTest {
     void getChoiceFlightsExperement() {
         AllFlightsInt allFlightsInt = new AllFlights();
         String ac = allFlightsInt.getChoiceFlightsExperement().toString();
-        String select = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, departure_city, arrival_airport, arrival_city from flights_v"
-                + " WHERE (scheduled_departure BETWEEN '2017-08-19' AND '2017-08-23')"
-                + " and (scheduled_arrival BETWEEN '2017-08-21' AND '2017-08-23')"
-                + " and ( departure_airport='DME') and ( arrival_airport='UUS')";
+        String select = CHOICE_FLIGHTS_TEST+SCH_DEP_NON_NULL+SCH_ARR_NON_NULL;
         List<Flights> AllFlight = getFlightsList(select);
         String ex = AllFlight.toString();
         assertEquals(ex, ac);

@@ -8,15 +8,15 @@ import by.it_academy.jd2.data.ConnectionBase;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * application memory containing messages
  */
 public class AllAirports implements AllAirportsInt {
-    private List<Airports> AllAirport;
 
-    private String listAllAirportsOrderByCity = "Select * from airports order by city";
+    private final String LIST_ALL_AIRPOTS = "Select * from airports order by city";
+    private final String LIST_CITY_NAME= "Select city from airports order by city";
 
     public AllAirports() {
     }
@@ -29,10 +29,10 @@ public class AllAirports implements AllAirportsInt {
 
     public List<Airports> getAllAirports() {
 
-        String AllAirports = listAllAirportsOrderByCity;
-        List<Airports> AllAirport = new ArrayList<>();
+        String allAirports = LIST_ALL_AIRPOTS;
+        List<Airports> allAirport = new ArrayList<>();
         try (Connection connection = ConnectionBase.getInstance().getConnection();
-             PreparedStatement pStatement = connection.prepareStatement(AllAirports);
+             PreparedStatement pStatement = connection.prepareStatement(allAirports);
              ResultSet rs = pStatement.executeQuery()) {
 
             while (rs.next()) {
@@ -42,18 +42,17 @@ public class AllAirports implements AllAirportsInt {
                 airports.setCity(rs.getString(3));
                 airports.setCoordinates(rs.getString(4));
                 airports.setTimesone(rs.getString(5));
-                AllAirport.add(airports);
+                allAirport.add(airports);
 
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return AllAirport;
+        return allAirport;
     }
 
     /**
      * The method returns list of titles for table airports
-     *
      *
      * @return object airports
      */
@@ -61,9 +60,9 @@ public class AllAirports implements AllAirportsInt {
     public Airports ListOfTitlesForAirports() {
 
         Airports title = new Airports();
-        String AllAirports = listAllAirportsOrderByCity;
+        String allAirports = LIST_ALL_AIRPOTS;
         try (Connection connection = ConnectionBase.getInstance().getConnection();
-             PreparedStatement pStatement = connection.prepareStatement(AllAirports);
+             PreparedStatement pStatement = connection.prepareStatement(allAirports);
              ResultSet rs = pStatement.executeQuery()) {
             ResultSetMetaData metaData = rs.getMetaData();
 
@@ -83,7 +82,20 @@ public class AllAirports implements AllAirportsInt {
 
     @Override
     public List<String> getListNameCity() {
-        return null;
+        String AllAirports = LIST_CITY_NAME;
+        List<String> allAirport = new ArrayList<>();
+        try (Connection connection = ConnectionBase.getInstance().getConnection();
+             PreparedStatement pStatement = connection.prepareStatement(AllAirports);
+             ResultSet rs = pStatement.executeQuery()) {
+            while (rs.next()) {
+                allAirport.add(rs.getString("city"));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        List<String> list = allAirport.stream().distinct().collect(Collectors.toList());
+        return list;
     }
 }
+
 

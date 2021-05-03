@@ -1,15 +1,13 @@
 package by.it_academy.jd2.web.servlets;
 
-import by.it_academy.jd2.core.dto.Constants;
-import by.it_academy.jd2.core.dto.tool.AllAirports;
-import by.it_academy.jd2.core.dto.tool.AllFlights;
+import by.it_academy.jd2.core.utils.CheckString;
+import by.it_academy.jd2.core.utils.Constants;
 import by.it_academy.jd2.core.dto.tool.api.AllAirportsInt;
 import by.it_academy.jd2.core.dto.tool.api.AllFlightsInt;
-import by.it_academy.jd2.core.dto.tool.hibernate.AllAirportsHibernate;
-import by.it_academy.jd2.core.dto.tool.hibernate.AllFlightsHibernet;
-import by.it_academy.jd2.core.dto.view.Airports;
+
 import by.it_academy.jd2.core.dto.view.Flights;
-import by.it_academy.jd2.data.ConnectionBase;
+import by.it_academy.jd2.data.DaoFactory;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,24 +16,26 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
-import java.util.Set;
+
+import static by.it_academy.jd2.data.DataConnectionName.HIBERNATE;
 
 @WebServlet(name = "Choice", urlPatterns = "/choice")
-
 public class ChoiceFlightServlet extends HttpServlet {
-
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-            AllAirportsInt airportsInt = new AllAirportsHibernate();
-            List<String> allAirports = airportsInt.getListNameCity();
-            req.setAttribute("listB", allAirports);
-            req.getRequestDispatcher("/choice.jsp").forward(req, resp);
-            }
+        AllAirportsInt airportsInt = null;
+        try {
+            airportsInt = DaoFactory.getInstanceAirport(HIBERNATE);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        List<String> allAirports = airportsInt.getListNameCity();
+        req.setAttribute("listNameAirports", allAirports);
+        req.getRequestDispatcher("/choice.jsp").forward(req, resp);
+    }
 
 
     @Override
@@ -46,7 +46,13 @@ public class ChoiceFlightServlet extends HttpServlet {
         String scheduledDeparture = req.getParameter(Constants.SCHEDULED_DEP);
         String scheduledArrival = req.getParameter(Constants.SCHEDULED_ARR);
 
-        AllFlightsInt allFlightsInt = new AllFlightsHibernet();
+
+        AllFlightsInt allFlightsInt = null;
+        try {
+            allFlightsInt = DaoFactory.getInstanceFlights(HIBERNATE);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         Flights flights = allFlightsInt.ListOfTitlesForFlightsWhithAllParam();
 
         req.setAttribute("title", flights);
@@ -57,7 +63,7 @@ public class ChoiceFlightServlet extends HttpServlet {
         req.setAttribute(Constants.SCHEDULED_ARR, scheduledArrival);
         List<Flights> choiceFlights = allFlightsInt.getChoiceFlights(departureAirport, arrivalAirport, scheduledDeparture, scheduledArrival);
 
-        if ((scheduledDeparture.equals(Constants.DEFAULT_DATE)) && (scheduledArrival.equals(Constants.DEFAULT_DATE))) {
+        if (CheckString.isNullOrEmptyOrBlank(scheduledDeparture) && CheckString.isNullOrEmptyOrBlank(scheduledArrival)) {
             final HttpSession session = req.getSession();
             req.setAttribute("page", 1);
             session.setAttribute("title", flights);

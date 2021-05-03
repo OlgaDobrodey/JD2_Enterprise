@@ -12,9 +12,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class AllAirportsHibernate implements AllAirportsInt {
@@ -26,7 +24,7 @@ public class AllAirportsHibernate implements AllAirportsInt {
 
     @Override
     public List<Airports> getAllAirports() {
-        List<Airports> AllAirport = new ArrayList<>();
+        List<Airports> allAirport = new ArrayList<>();
         try (Session session = ConnectionBaseHibernate.getConnectionHibernet().openSession()) {
             final Query query = session.createQuery(SELECT);
             List<AirportsHibernate> airportHibernet = (List<AirportsHibernate>) query.list();
@@ -39,24 +37,23 @@ public class AllAirportsHibernate implements AllAirportsInt {
                 airports.setCity(hibernate.getCity());
                 airports.setCoordinates(hibernate.getCoordinates());
                 airports.setTimesone(hibernate.getTimezone());
-                AllAirport.add(airports);
+                allAirport.add(airports);
             }
         }
-        return AllAirport;
+        return allAirport;
     }
 
     @Override
     public Airports ListOfTitlesForAirports() {
         Airports airport = new Airports();
-        try (Session session = ConnectionBaseHibernate.getConnectionHibernet().openSession()) {
-            Query query = session.createQuery(SELECT);
+
             airport.setAirport_code(ConnectionBaseHibernate.getConnectionHibernet().getClassMetadata(AirportsHibernate.class).getIdentifierPropertyName());
             String[] columnNames = ConnectionBaseHibernate.getConnectionHibernet().getClassMetadata(AirportsHibernate.class).getPropertyNames();
             airport.setAirport_name(columnNames[0]);
             airport.setCity(columnNames[1]);
             airport.setCoordinates(columnNames[2]);
             airport.setTimesone(columnNames[3]);
-        }
+
         return airport;
     }
 
@@ -71,7 +68,7 @@ public class AllAirportsHibernate implements AllAirportsInt {
         Query<String> q = session.createQuery(query);
 
         List<String> listCity = q.getResultList();
-        final List<String> list = listCity.stream().distinct().collect(Collectors.toList());
+        List<String> list = listCity.stream().distinct().collect(Collectors.toList());
 
         return list;
     }

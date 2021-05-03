@@ -30,6 +30,10 @@
     <!--    <servlet-mapping>-->
     <!--        <servlet-name>HelloServlet</servlet-name>-->
     <!--        <url-pattern>/test</url-pattern>-->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error.jsp</location>
+    </error-page>
 
 </web-app>
 

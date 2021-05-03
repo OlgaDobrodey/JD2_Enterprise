@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 
-<%@ page import="by.it_academy.jd2.core.dto.tool.AllFlights" %>
-<%@ page import="by.it_academy.jd2.core.dto.view.Flights" %>
 
-<%@ page import="java.sql.Connection" %>
+<%@ page import="by.it_academy.jd2.core.dto.view.Flights" %>
 <%@ page import="java.util.List" %>
-<%@ page import="by.it_academy.jd2.data.ConnectionBase" %>
-<%@ page import="by.it_academy.jd2.core.dto.Constants" %>
+<%@ page import="by.it_academy.jd2.core.utils.Constants" %>
 <%@ page import="by.it_academy.jd2.core.dto.tool.api.AllFlightsInt" %>
-<%@ page import="by.it_academy.jd2.core.dto.tool.hibernate.AllFlightsHibernet" %>
+<%@ page import="by.it_academy.jd2.data.DaoFactory" %>
+<%@ page import="static by.it_academy.jd2.data.DataConnectionName.HIBERNATE" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
-    <title>Title</title>
+    <title>Flight</title>
 
 </head>
 <body>
@@ -26,19 +24,16 @@
     <p>Параметры поиска:</p>
     <tr>
 
-        <th>Город отправления</th>
+        <th>Город отправления </th>
         <th>${departureAirport}</th>
-        <th>Город прилета</th>
+        <th>Город прилета   </th>
         <th>${arrivalAirport}</th>
 
     </tr>
     </body>
 </table>
-<form method="get" action="choice">
-
-    <button type="submit">Назад</button>
-    <br>
-</form>
+<br>
+<p><input type="button" onclick="location.href='${pageContext.request.contextPath}/choice';" value="Назад"; method="get" /></p>
 <br>
 <hr>
 
@@ -64,7 +59,7 @@
 
 
     <%
-        AllFlightsInt allFlightsInt = new AllFlightsHibernet();
+        AllFlightsInt allFlightsInt = DaoFactory.getInstanceFlights(HIBERNATE);
         List<Flights> list = allFlightsInt.getChoiceFlightsNoDateWithPage(departureAirport, arrivalAirport, pageNumber);
 
     %>
@@ -73,26 +68,26 @@
             out.write(" <p>Рейсов с заданными параметрами не найдено</p>");
         } else {
             out.write("  <table border=\"2\">\n" +
-                    "            <body>\n" +
+                    "             <thead>\n" +
                     "            <tr>");
-            out.write("<td width=\"20%\">" + title.getFlight_no() + "</td>");
-            out.write("<td width=\"20%\">" + title.getStatus() + "</td>");
-            out.write("<td width=\"20%\">" + title.getScheduled_departure() + "</td>");
-            out.write("<td width=\"20%\">" + title.getScheduled_arrival() + "</td>");
-            out.write("<td width=\"20%\">" + title.getDeparture_airport() + "</td>");
-            out.write("<td width=\"20%\">" + title.getArrival_airport() + "</td></tr>");
+            out.write("<th width=\"20%\">" + title.getFlight_no() + "</th>");
+            out.write("<th width=\"20%\">" + title.getStatus() + "</th>");
+            out.write("<th width=\"20%\">" + title.getScheduled_departure() + "</th>");
+            out.write("<th width=\"20%\">" + title.getScheduled_arrival() + "</th>");
+            out.write("<th width=\"20%\">" + title.getDeparture_airport() + "</th>");
+            out.write("<th width=\"20%\">" + title.getArrival_airport() + "</th></tr> </thead>");
 
             for (Flights fly : list) {
-                out.write("  <tr>\n" +
+                out.write("  <tbody><tr>\n" +
                         "<td width=\"20%\">" + fly.getFlight_no() + "</td>");
                 out.write("<td width=\"20%\">" + fly.getStatus() + "</td>");
                 out.write("<td width=\"20%\">" + fly.getScheduled_departure() + "</td>");
                 out.write("<td width=\"20%\">" + fly.getScheduled_arrival() + "</td>");
                 out.write("<td width=\"20%\">" + fly.getDeparture_airport() + "</td>");
-                out.write("<td width=\"20%\">" + fly.getArrival_airport() + "</td></tr>");
+                out.write("<td width=\"20%\">" + fly.getArrival_airport() + "</td></tr><tbody>");
 
             }
-            out.write("</body></table>");
+            out.write("</table>");
         }
     %>
 
@@ -116,9 +111,19 @@
     </form>
 
 </c:if>
-
 <br>
-<hr>
+<br>
+<br>
+<br>
+<footer>
+    <hr>
+    <p align="center">
+        <small>
+            <time>04-2021</time> © Dobrodey Volha
+        </small>
 
+    </p>
+
+</footer>
 </body>
 </html>

@@ -1,9 +1,9 @@
 package by.it_academy.jd2.core.dto.tool.hibernate;
 
-import by.it_academy.jd2.core.dto.Constants;
+import by.it_academy.jd2.core.utils.CheckString;
+import by.it_academy.jd2.core.utils.Constants;
 import by.it_academy.jd2.core.dto.tool.api.AllFlightsInt;
 import by.it_academy.jd2.core.dto.view.Flights;
-import by.it_academy.jd2.core.dto.view.hibernate.AirportsHibernate;
 import by.it_academy.jd2.core.dto.view.hibernate.FlightsHibernate;
 import by.it_academy.jd2.data.ConnectionBaseHibernate;
 import org.hibernate.Session;
@@ -22,16 +22,16 @@ public class AllFlightsHibernet implements AllFlightsInt {
 
 
     @Override
-    public List<Flights> getChoiceFlights(String depAirport, String arrAirport, String scheduledDep, String scheduledArr) {
+    public List<Flights> getChoiceFlights(String depCity, String arrCity, String scheduledDep, String scheduledArr) {
         String select = "";
-        if ((!scheduledDep.equals(Constants.DEFAULT_DATE)) && (!scheduledArr.equals(Constants.DEFAULT_DATE))) {
+        if ((!CheckString.isNullOrEmptyOrBlank(scheduledDep)) && (!CheckString.isNullOrEmptyOrBlank(scheduledArr))) {
             String scheduledDepEnd = LocalDate.parse(scheduledDep).plusDays(1).toString();
             String scheduledArrEnd = LocalDate.parse(scheduledArr).plusDays(1).toString();
 
             select = String.format(SELECT + SCH_ARR_NON_NULL + SCH_DEP_NON_NULL + ORDER_BY, scheduledArr, scheduledArrEnd, scheduledDep, scheduledDepEnd);
-        }else if ((scheduledDep.equals(Constants.DEFAULT_DATE)) && (scheduledArr.equals(Constants.DEFAULT_DATE))) {
+        }else if ((CheckString.isNullOrEmptyOrBlank(scheduledDep)) && (CheckString.isNullOrEmptyOrBlank(scheduledArr))) {
             select = String.format(SELECT + ORDER_BY);
-        } else if ((!scheduledDep.equals(Constants.DEFAULT_DATE)) && (scheduledArr.equals(Constants.DEFAULT_DATE))) {
+        } else if ((!CheckString.isNullOrEmptyOrBlank(scheduledDep)) && (CheckString.isNullOrEmptyOrBlank(scheduledArr))) {
             String scheduledDepEnd = LocalDate.parse(scheduledDep).plusDays(1).toString();
             select = String.format(SELECT + SCH_DEP_NON_NULL + ORDER_BY, scheduledDep, scheduledDepEnd);
         } else {
@@ -40,19 +40,19 @@ public class AllFlightsHibernet implements AllFlightsInt {
         }
         Session session = ConnectionBaseHibernate.getConnectionHibernet().openSession();
         Query query = session.createQuery(select);
-        query.setParameter("depAir", depAirport);
-        query.setParameter("arrAir", arrAirport);
+        query.setParameter("depAir", depCity);
+        query.setParameter("arrAir", arrCity);
         List<FlightsHibernate> flightsHibernates = (List<FlightsHibernate>) query.list();
         return getFlightsListForHibernare(flightsHibernates);
     }
 
     @Override
-    public List<Flights> getChoiceFlightsNoDateWithPage(String depAirport, String arrAirport, Integer page) {
+    public List<Flights> getChoiceFlightsNoDateWithPage(String depCity, String arrCity, Integer page) {
         String select = SELECT + ORDER_BY;
         Session session = ConnectionBaseHibernate.getConnectionHibernet().openSession();
         Query query = session.createQuery(select);
-        query.setParameter("depAir", depAirport);
-        query.setParameter("arrAir", arrAirport);
+        query.setParameter("depAir", depCity);
+        query.setParameter("arrAir", arrCity);
         int pageSelect = (page - 1) * 25;
         query.setFirstResult(pageSelect);
         query.setMaxResults(25);

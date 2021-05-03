@@ -10,7 +10,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Flight</title>
 
 </head>
 <body>
@@ -82,11 +82,23 @@
 </form>
 
 <br>
-<hr>
+
 <form method="get" action="choice">
 
     <button type="submit">Назад</button>
     <br><br>
 </form>
+<br>
+<br>
+<br>
+<footer>
+    <hr>
+    <p align="center">
+        <small>
+            <time>04-2021</time> © Dobrodey Volha
+        </small>
+
+    </p>
+</footer>
 </body>
 </html>

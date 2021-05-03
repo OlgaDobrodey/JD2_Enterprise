@@ -1,6 +1,7 @@
 package by.it_academy.jd2.core.dto.tool;
 
-import by.it_academy.jd2.core.dto.Constants;
+import by.it_academy.jd2.core.utils.CheckString;
+import by.it_academy.jd2.core.utils.Constants;
 import by.it_academy.jd2.core.dto.tool.api.AllFlightsInt;
 import by.it_academy.jd2.core.dto.view.Flights;
 import by.it_academy.jd2.data.ConnectionBase;
@@ -12,41 +13,41 @@ import java.util.List;
 
 public class AllFlights implements AllFlightsInt {
 
-    private String listAllFligthOrderByCity = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, departure_city, arrival_airport, arrival_city"
+    private final String ALL_FLIGTH = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, departure_city, arrival_airport, arrival_city"
             + " from flights_v";
 
-    private String SelectExperement = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, departure_city, arrival_airport, arrival_city from flights_v"
-            + " WHERE (scheduled_departure BETWEEN '2017-08-19' AND '2017-08-23')"
-            + " and (scheduled_arrival BETWEEN '2017-08-21' AND '2017-08-23')"
-            + " and ( departure_airport='DME') and ( arrival_airport='UUS')";
+    private final String SELECT_EXPEREMENT = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, departure_city, arrival_airport, arrival_city from flights_v"
+            + " WHERE (scheduled_departure BETWEEN '2017-07-04' AND '2017-07-05')"
+            + " and (scheduled_arrival BETWEEN '2017-07-04' AND '2017-07-05')"
+            + " and ( departure_city='Москва') and ( arrival_city='Воронеж')";
 
-    private String ChoiceFlights = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, departure_city, arrival_airport, arrival_city"
+    private final String FLIGHTS = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, departure_city, arrival_airport, arrival_city"
             + " from flights_v "
-            + " WHERE ( departure_airport='%s') and ( arrival_airport='%s')";
-    private String SchDEPNonNuul = " and (scheduled_departure BETWEEN '%s' AND '%s')";
-    private String SchArrNonNuul = " and (scheduled_arrival BETWEEN '%s' AND '%s')";
-    private String OrderBy = " order by scheduled_departure";
-    private String Page = " offset %d fetch next 25 rows only";
+            + " WHERE ( departure_city='%s') and ( arrival_city='%s')";
+    private final String SCH_DEP_NON_NULL = " and (scheduled_departure BETWEEN '%s' AND '%s')";
+    private final String SCH_ARR_NON_NULL = " and (scheduled_arrival BETWEEN '%s' AND '%s')";
+    private final String ORDER_BY = " order by scheduled_departure";
+    private final String PAGE = " offset %d fetch next 25 rows only";
 
 
-    private String ChoiceFlights1 = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, arrival_airport from flights WHERE (departure_airport='DME') and (arrival_airport='LED')";
+    private final String CHOISE_FLIGHTS_EXPEREMENT = "SELECT flight_no, status, scheduled_departure, scheduled_arrival, departure_airport, arrival_airport from flights WHERE (departure_airport='DME') and (arrival_airport='LED')";
 
     @Override
-    public List<Flights> getChoiceFlights(String depAirport, String arrAirport, String scheduledDep, String scheduledArr) {
+    public List<Flights> getChoiceFlights(String depCity, String arrCity, String scheduledDep, String scheduledArr) {
         //Determine the time intervals
         String select = "";
-        if ((!scheduledDep.equals(Constants.DEFAULT_DATE)) && (!scheduledArr.equals(Constants.DEFAULT_DATE))) {
+        if ((!CheckString.isNullOrEmptyOrBlank(scheduledDep)) && (!CheckString.isNullOrEmptyOrBlank(scheduledArr))) {
             String scheduledDepEnd = LocalDate.parse(scheduledDep).plusDays(1).toString();
             String scheduledArrEnd = LocalDate.parse(scheduledArr).plusDays(1).toString();
-            select = String.format(ChoiceFlights + SchDEPNonNuul + SchArrNonNuul + OrderBy, depAirport, arrAirport, scheduledDep, scheduledDepEnd, scheduledArr, scheduledArrEnd);
-        } else if ((scheduledDep.equals(Constants.DEFAULT_DATE)) && (scheduledArr.equals(Constants.DEFAULT_DATE))) {
-            select = String.format(ChoiceFlights + OrderBy, depAirport, arrAirport);
-        } else if ((!scheduledDep.equals(Constants.DEFAULT_DATE)) && (scheduledArr.equals(Constants.DEFAULT_DATE))) {
+            select = String.format(FLIGHTS + SCH_DEP_NON_NULL + SCH_ARR_NON_NULL + ORDER_BY, depCity, arrCity, scheduledDep, scheduledDepEnd, scheduledArr, scheduledArrEnd);
+        } else if ((CheckString.isNullOrEmptyOrBlank(scheduledDep)) && (CheckString.isNullOrEmptyOrBlank(scheduledArr))) {
+            select = String.format(FLIGHTS + ORDER_BY, depCity, arrCity);
+        } else if ((!CheckString.isNullOrEmptyOrBlank(scheduledDep)) && (CheckString.isNullOrEmptyOrBlank(scheduledArr))) {
             String scheduledDepEnd = LocalDate.parse(scheduledDep).plusDays(1).toString();
-            select = String.format(ChoiceFlights + SchDEPNonNuul + OrderBy, depAirport, arrAirport, scheduledDep, scheduledDepEnd);
+            select = String.format(FLIGHTS + SCH_DEP_NON_NULL + ORDER_BY, depCity, arrCity, scheduledDep, scheduledDepEnd);
         } else {
             String scheduledArrEnd = LocalDate.parse(scheduledArr).plusDays(1).toString();
-            select = String.format(ChoiceFlights + SchArrNonNuul + OrderBy, depAirport, arrAirport, scheduledArr, scheduledArrEnd);
+            select = String.format(FLIGHTS + SCH_ARR_NON_NULL + ORDER_BY, depCity, arrCity, scheduledArr, scheduledArrEnd);
         }
 
         //Fill in the list with flights
@@ -56,11 +57,11 @@ public class AllFlights implements AllFlightsInt {
 
     @Override
     public List<Flights> getChoiceFlightsNoDateWithPage
-            (String depAirport, String arrAirport, Integer page) {
+            (String depCity, String arrCity, Integer page) {
 
         //Determine the time intervals
 
-        String select = String.format(ChoiceFlights + OrderBy + Page, depAirport, arrAirport, 25 * (page.intValue() - 1));
+        String select = String.format(FLIGHTS + ORDER_BY + PAGE, depCity, arrCity, 25 * (page.intValue() - 1));
 
 
         //Fill in the list with flights
@@ -70,13 +71,13 @@ public class AllFlights implements AllFlightsInt {
 
     @Override
     public List<Flights> getChoiceFlightsExperement() {
-        String select = SelectExperement;
+        String select = SELECT_EXPEREMENT;
         return getFlightsList(select);
     }
 
     @Override
     public List<Flights> getFlightsList(String select) {
-        List<Flights> AllFlight = new ArrayList<>();
+        List<Flights> allFlight = new ArrayList<>();
 
         try (Connection connection = ConnectionBase.getInstance().getConnection();
              PreparedStatement pStatement = connection.prepareStatement(select);
@@ -90,23 +91,23 @@ public class AllFlights implements AllFlightsInt {
                 flights.setScheduled_arrival(rs.getString(4));
                 flights.setDeparture_airport("(" + rs.getString(5) + ")" + rs.getString(6));
                 flights.setArrival_airport("(" + rs.getString(7) + ")" + rs.getString(8));
-                AllFlight.add(flights);
+                allFlight.add(flights);
             }
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
 
         }
-        return AllFlight;
+        return allFlight;
     }
 
     @Override
     public Flights ListOfTitlesForFlightsWhithAllParam() {
 
         Flights flights = new Flights();
-        String select = listAllFligthOrderByCity;
+        String select = ALL_FLIGTH;
         try (Connection connection = ConnectionBase.getInstance().getConnection();
-             PreparedStatement pStatement = connection.prepareStatement(listAllFligthOrderByCity);
+             PreparedStatement pStatement = connection.prepareStatement(select);
              ResultSet rs = pStatement.executeQuery()) {
             ResultSetMetaData metaData = rs.getMetaData();
 
