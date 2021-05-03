@@ -16,7 +16,8 @@
 <%request.setAttribute("invalidUserLogin", false);%>
 
 
-<form action="signIn" method="post">
+<form action="signIn" method="post" required >
+
     <h1>Авторизация</h1>
     <hr>
     Логин<br>
@@ -25,6 +26,7 @@
     <input type="password" placeholder="Введите пароль" name="psw" required><br><br>
     <hr>
     <button type="submit">Войти</button><br><br>
+
 </form>
 <form action="signUp" method="get">
     <hr>
