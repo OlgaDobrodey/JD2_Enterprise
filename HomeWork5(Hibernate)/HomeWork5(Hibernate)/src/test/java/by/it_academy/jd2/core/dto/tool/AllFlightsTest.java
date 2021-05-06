@@ -48,8 +48,8 @@ class AllFlightsTest {
         AllFlightsInt allFlightsInt = new AllFlights();
         String actual = allFlightsInt.getChoiceFlights(DEP_CITY, ARR_CITY, SCH_DEP, SCH_ARR).toString();
         String select = CHOICE_FLIGHTS_TEST+SCH_ARR_NON_NULL+SCH_DEP_NON_NULL+ORDER_BY;
-        List<Flights> AllFlight = getFlightsList(select);
-        String ex = AllFlight.toString();
+        List<Flights> allFlight = getFlightsList(select);
+        String ex = allFlight.toString();
         assertEquals(ex, actual);
 
 
@@ -140,6 +140,8 @@ class AllFlightsTest {
                 Flights flights = new Flights();
                 flights.setFlight_no(rs.getString(1));
                 flights.setStatus(rs.getString(2));
+
+
                 flights.setScheduled_departure(rs.getString(3));
                 flights.setScheduled_arrival(rs.getString(4));
                 flights.setDeparture_airport("(" + rs.getString(5) + ")" + rs.getString(6));

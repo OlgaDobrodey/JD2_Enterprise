@@ -7,12 +7,14 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,9 +25,9 @@ class AllAirportsTest {
     @Test
     void getAllAirports() {
         String select = "Select * from airports order by city";
-        List<Airports> AllAirport=new ArrayList<>();
+        List<Airports> AllAirport = new ArrayList<>();
         try (Connection connection = ConnectionBase.getInstance().getConnection();
-                PreparedStatement pStatement = connection.prepareStatement(select);
+             PreparedStatement pStatement = connection.prepareStatement(select);
              ResultSet rs = pStatement.executeQuery()) {
 
             while (rs.next()) {
@@ -38,10 +40,10 @@ class AllAirportsTest {
                 AllAirport.add(airports);
 
             }
-            AllAirports airportsInt =new AllAirports();
+            AllAirports airportsInt = new AllAirports();
             List<Airports> actual = AllAirport;
             List<Airports> expected = airportsInt.getAllAirports();
-            assertEquals(expected.toString(),actual.toString());
+            assertEquals(expected.toString(), actual.toString());
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -50,19 +52,31 @@ class AllAirportsTest {
 
     @Test
     void listOfTitlesForAirports() {
-        AllAirports airportsInt =new AllAirports();
+        AllAirports airportsInt = new AllAirports();
         String ex = "airport_code airport_name city coordinates timezone";
-        String ac = airportsInt.ListOfTitlesForAirports().toString();
-        assertEquals(ex,ac);
+        String ac = airportsInt.listOfTitlesForAirports().toString();
+
+        assertEquals(ex, ac);
 
     }
 
-//    @AfterAll
-//    private void closeConnected(){
-//        try {
-//            connection.close();
-//        } catch (SQLException throwables) {
-//            throwables.printStackTrace();
-//        }
-//    }
+    @Test
+    void getListNameCity() {
+        String select = "Select city from airports order by city";
+        List<String> allAirport = new ArrayList<>();
+        try (Connection connection = ConnectionBase.getInstance().getConnection();
+             PreparedStatement pStatement = connection.prepareStatement(select);
+             ResultSet rs = pStatement.executeQuery()) {
+            while (rs.next()) {
+                allAirport.add(rs.getString("city"));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        List<String> actual = allAirport.stream().distinct().collect(Collectors.toList());
+        AllAirports airportsInt = new AllAirports();
+        List<String> expected = airportsInt.getListNameCity();
+        assertEquals(expected.toString(), actual.toString());
+
+    }
 }

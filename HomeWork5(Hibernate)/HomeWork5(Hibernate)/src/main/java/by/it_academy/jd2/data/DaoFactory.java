@@ -11,6 +11,8 @@ public class DaoFactory {
 
     private static AllAirportsInt anInt;
     private static AllFlightsInt flightsInt;
+    private static AllAirportsInt anIntHiber;
+    private static AllFlightsInt flightsIntHiber;
 
     private DaoFactory() {
     }
@@ -24,10 +26,10 @@ public class DaoFactory {
                 return anInt;
             }
             case HIBERNATE: {
-                if (anInt == null) {
-                    anInt = new AllAirportsHibernate();
+                if (anIntHiber == null) {
+                    anIntHiber = new AllAirportsHibernate();
                 }
-                return anInt;
+                return anIntHiber;
             }
         }
         throw new IllegalArgumentException("Database connection is unknown");
@@ -41,10 +43,10 @@ public class DaoFactory {
                 return flightsInt;
             }
             case HIBERNATE: {
-                if (flightsInt == null) {
-                    flightsInt = new AllFlightsHibernet();
+                if (flightsIntHiber == null) {
+                    flightsIntHiber = new AllFlightsHibernet();
                 }
-                return flightsInt;
+                return flightsIntHiber;
             }
         }
         throw new IllegalArgumentException("Database connection is unknown");

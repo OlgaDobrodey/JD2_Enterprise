@@ -5,13 +5,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AirportsTest {
-//    User user = new User();
-//        user.setName("Olga");
-//    String actual = user.getName();
-//    String expected = "Olga";
-//    assertEquals(expected, actual);
-//}
-
 
     @Test
     void getAirport_code() {

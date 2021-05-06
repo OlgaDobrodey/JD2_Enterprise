@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 @Entity(name = "airports")
 @Table(name = "airports", schema = "bookings")
+
 public class AirportsHibernate extends Airports {
 
     @Id

@@ -22,7 +22,12 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page"
-                           href="/HomeWork5-0.0.0-SHAPSHOT//flight?scheduledDeparture=2017-02-03&departureAirport=Воронеж&scheduledArrival=2017-02-03&arrivalAirport=Москва">Moskov to Voronezh
+                           href="${pageContext.request.contextPath}/flight?scheduledDeparture=2017-02-03&departureAirport=Воронеж&scheduledArrival=2017-02-03&arrivalAirport=Москва">Moskov to Voronezh
+                            on 03.02.2017</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                           href="${pageContext.request.contextPath}/flight?scheduledDeparture=2017-02-03&departureAirport=Воронеж&scheduledArrival=&arrivalAirport=Москва">Moskov to Voronezh one date
                             on 03.02.2017</a>
                     </li>
                 </ul>

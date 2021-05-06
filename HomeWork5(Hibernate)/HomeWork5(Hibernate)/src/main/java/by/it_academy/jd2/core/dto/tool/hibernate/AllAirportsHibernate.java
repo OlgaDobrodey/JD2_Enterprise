@@ -44,7 +44,7 @@ public class AllAirportsHibernate implements AllAirportsInt {
     }
 
     @Override
-    public Airports ListOfTitlesForAirports() {
+    public Airports listOfTitlesForAirports() {
         Airports airport = new Airports();
 
             airport.setAirport_code(ConnectionBaseHibernate.getConnectionHibernet().getClassMetadata(AirportsHibernate.class).getIdentifierPropertyName());

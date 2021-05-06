@@ -25,9 +25,13 @@
             padding: 8px;
         }
 
-        #customers tr:nth-child(even){background-color: #f2f2f2;}
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
 
-        #customers tr:hover {background-color: #ddd;}
+        #customers tr:hover {
+            background-color: #ddd;
+        }
 
         #customers th {
             padding-top: 12px;
@@ -37,34 +41,38 @@
             color: white;
         }
 
+        input[type=submit] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
     </style>
 </head>
 <body>
 <%@include file="index.jsp" %>
 
 <main class="container">
-<h1>Список рейсов</h1>
-<table id="customers">
-    <body>
+    <h1>Список рейсов</h1>
+    <table id="customers">
+        <body>
 
-    <p>Параметры поиска:</p>
-    <tr>
+        <p>Параметры поиска:</p>
+        <tr>
 
-        <th>Город отправления </th>
-        <th>${departureAirport}</th>
-        <th>Город прилета   </th>
-        <th>${arrivalAirport}</th>
+            <th>Город отправления</th>
+            <td>${departureAirport}</td>
+            <th>Город прилета</th>
+            <td>${arrivalAirport}</td>
 
-    </tr>
-    </body>
-</table>
-<br>
-<p><input  type="button" onclick="location.href='${pageContext.request.contextPath}/choice';" value="Назад"; method="get" /></p>
-<br>
-<hr>
-
-
-
+        </tr>
+        </body>
+    </table>
 
     <%
 
@@ -74,11 +82,12 @@
         Integer pageNumber = (Integer) request.getAttribute("page");
     %>
 
-
+    <br>
     <c:if test="${sizelist!=0}">
         <h4>Страница <%=pageNumber%> из <c:out value="${sizelist}"/>
         </h4>
     </c:if>
+    <br>
 
 
     <%
@@ -90,60 +99,82 @@
         if (list.size() == 0) {
             out.write(" <p>Рейсов с заданными параметрами не найдено</p>");
         } else {
-            out.write("  <table id=\"customers\"\">\n" +
-                    "             <thead>\n" +
-                    "            <tr>");
-            out.write("<th width=\"20%\">" + title.getFlight_no() + "</th>");
-            out.write("<th width=\"20%\">" + title.getStatus() + "</th>");
-            out.write("<th width=\"20%\">" + title.getScheduled_departure() + "</th>");
-            out.write("<th width=\"20%\">" + title.getScheduled_arrival() + "</th>");
-            out.write("<th width=\"20%\">" + title.getDeparture_airport() + "</th>");
-            out.write("<th width=\"20%\">" + title.getArrival_airport() + "</th></tr> </thead>");
-
-            for (Flights fly : list) {
-                out.write("  <tbody><tr>\n" +
-                        "<td width=\"20%\">" + fly.getFlight_no() + "</td>");
-                out.write("<td width=\"20%\">" + fly.getStatus() + "</td>");
-                out.write("<td width=\"20%\">" + fly.getScheduled_departure() + "</td>");
-                out.write("<td width=\"20%\">" + fly.getScheduled_arrival() + "</td>");
-                out.write("<td width=\"20%\">" + fly.getDeparture_airport() + "</td>");
-                out.write("<td width=\"20%\">" + fly.getArrival_airport() + "</td></tr><tbody>");
-
-            }
-            out.write("</table>");
-        }
     %>
+    <table id="customers">
+        <thead>
+        <tr>
+            <th><%=title.getFlight_no()%>
+            </th>
+            <th><%=title.getStatus()%>
+            </th>
+            <th><%=title.getScheduled_departure()%>
+            </th>
+            <th><%=title.getScheduled_arrival()%>
+            </th>
+            <th><%=title.getDeparture_airport()%>
+            </th>
+            <th><%=title.getArrival_airport() %>
+            </th>
+
+        </tr>
+        </thead>
+        <%}%>
 
 
-<br>
+        <tbody>
+            <%
+                for (Flights fly : list) {%>
+        <tr>
 
-<br>
-<c:if test="${sizelist!=0}">
-    <form action="flight" method="post">
+            <td><%=fly.getFlight_no()%>
+            </td>
+            <td><%=fly.getStatus()%>
+            </td>
+            <td><%=fly.getScheduled_departure()%>
+            </td>
+            <td><%=fly.getScheduled_arrival()%>
+            </td>
+            <td><%=fly.getDeparture_airport()%>
+            </td>
+            <td><%=fly.getArrival_airport() %>
+            </td>
 
-        <select name="page" required>
-            <c:forEach var="fly" begin="1" end="${sizelist}">
-                <option value="${fly}">${fly} </option>
-            </c:forEach>
-        </select>
-        <button type="submit">
-            cтраницa
-        </button>
+        </tr>
+            <% }%>
+        <tbody>
+    </table>
 
 
-    </form>
+    <br>
 
-</c:if>
-<br>
-<br>
-<br>
-<br>
+    <br>
+    <c:if test="${sizelist!=0}">
+
+        <form action="flight" method="post">
+
+            <select name="page" required>
+                <c:forEach var="fly" begin="1" end="${sizelist}">
+                    <option value="${fly}">${fly} </option>
+                </c:forEach>
+            </select>
+            <button type="submit">
+                cтраницa
+            </button>
+        </form>
+
+    </c:if>
+
+      <br>
+    <br>
+    <br>
+    <br>
 </main>
 <footer>
     <hr>
     <p align="center">
         <small>
-            <time>04-2021</time> © Dobrodey Volha
+            <time>04-2021</time>
+            © Dobrodey Volha
         </small>
 
     </p>

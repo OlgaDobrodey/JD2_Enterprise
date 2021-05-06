@@ -30,12 +30,17 @@ public class AirportsServlet extends HttpServlet {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        List<Airports> allAirports = airportsInt.getAllAirports();
-            Airports airports = airportsInt.ListOfTitlesForAirports();
-            req.setAttribute("title",airports);
-            req.setAttribute("listAirports",allAirports );
-            req.getRequestDispatcher("/airports.jsp").forward(req, resp);
+        List<Airports> allAirports = null;
+        try {
+            allAirports = airportsInt.getAllAirports();
+            Airports airports = airportsInt.listOfTitlesForAirports();
 
+            req.setAttribute("title", airports);
+            req.setAttribute("listAirports", allAirports);
+            req.getRequestDispatcher("/airports.jsp").forward(req, resp);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
 
     }
 

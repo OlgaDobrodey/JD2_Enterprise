@@ -38,26 +38,22 @@ public class FlightServlet extends HttpServlet {
             e.printStackTrace();
         }
         Flights flights = allFlightsInt.ListOfTitlesForFlightsWhithAllParam();
-
-        req.setAttribute("title", flights);
-
-        req.setAttribute(Constants.DEP_AIRPORT, departureAirport);
-        req.setAttribute(Constants.ARR_AIRPORT, arrivalAirport);
+        final HttpSession session = req.getSession();
+        //req.setAttribute("title", flights);
+        session.setAttribute("title", flights);
+        session.setAttribute(Constants.DEP_AIRPORT, departureAirport);
+        session.setAttribute(Constants.ARR_AIRPORT, arrivalAirport);
         req.setAttribute(Constants.SCHEDULED_DEP, scheduledDeparture);
         req.setAttribute(Constants.SCHEDULED_ARR, scheduledArrival);
         List<Flights> choiceFlights = allFlightsInt.getChoiceFlights(departureAirport, arrivalAirport, scheduledDeparture, scheduledArrival);
 
         if (CheckString.isNullOrEmptyOrBlank(scheduledDeparture) && CheckString.isNullOrEmptyOrBlank(scheduledArrival)) {
-            final HttpSession session = req.getSession();
+
             req.setAttribute("page", 1);
-            session.setAttribute("title", flights);
-
-            session.setAttribute(Constants.DEP_AIRPORT, departureAirport);
-            session.setAttribute(Constants.ARR_AIRPORT, arrivalAirport);
             int ceil = (int) Math.ceil(choiceFlights.size() / 25.0);
-
             session.setAttribute("sizelist", ceil);
             req.getRequestDispatcher("/flightArport.jsp").forward(req, resp);
+
         } else {
 
             req.setAttribute("list", choiceFlights);
@@ -67,10 +63,9 @@ public class FlightServlet extends HttpServlet {
     }
 
 
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("page",  Integer.parseInt(req.getParameter("page")));
+        req.setAttribute("page", Integer.parseInt(req.getParameter("page")));
         req.getRequestDispatcher("/flightArport.jsp").forward(req, resp);
     }
 }

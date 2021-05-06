@@ -22,9 +22,13 @@
             padding: 8px;
         }
 
-        #customers tr:nth-child(even){background-color: #f2f2f2;}
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
 
-        #customers tr:hover {background-color: #ddd;}
+        #customers tr:hover {
+            background-color: #ddd;
+        }
 
         #customers th {
             padding-top: 12px;
@@ -50,11 +54,11 @@
         <thead>
         <tr>
 
-            <th width="10%">${title.getAirport_code()}</th>
-            <th width="20%">${title.getAirport_name()}</th>
-            <th width="20%">${title.getCity()}</th>
-            <th width="30%">${title.getCoordinates()}</th>
-            <th width="20%">${title.getTimesone()}</th>
+            <th width="10%">Код/${title.getAirport_code()}</th>
+            <th width="20%">Название/${title.getAirport_name()}</th>
+            <th width="20%">Город/${title.getCity()}</th>
+            <th width="30%">Координаты/${title.getCoordinates()}</th>
+            <th width="20%">Часовой пояс/${title.getTimesone()}</th>
 
         </tr>
         </thead>

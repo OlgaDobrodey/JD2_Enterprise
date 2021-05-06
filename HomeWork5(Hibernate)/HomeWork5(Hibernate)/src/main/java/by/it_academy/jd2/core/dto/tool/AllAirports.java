@@ -27,7 +27,7 @@ public class AllAirports implements AllAirportsInt {
      * <p>@return list of all airports </p>
      */
 
-    public List<Airports> getAllAirports() {
+    public List<Airports> getAllAirports(){
 
         String allAirports = LIST_ALL_AIRPOTS;
         List<Airports> allAirport = new ArrayList<>();
@@ -47,6 +47,7 @@ public class AllAirports implements AllAirportsInt {
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+
         }
         return allAirport;
     }
@@ -57,7 +58,7 @@ public class AllAirports implements AllAirportsInt {
      * @return object airports
      */
 
-    public Airports ListOfTitlesForAirports() {
+    public Airports listOfTitlesForAirports() {
 
         Airports title = new Airports();
         String allAirports = LIST_ALL_AIRPOTS;

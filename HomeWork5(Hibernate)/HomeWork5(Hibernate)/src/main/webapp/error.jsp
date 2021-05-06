@@ -1,35 +1,48 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Olga
-  Date: 30.04.2021
-  Time: 10:58
-  To change this template use File | Settings | File Templates.
---%>
-
-<!DOCTYPE html>
+<%@ page import="java.util.Arrays" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Error</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+    <title>Error</title>
+    <style>
+        input[type=submit] {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
 
+    </style>
 </head>
-
 <body>
-<%--<%@include file="header.jsp"%>--%>
 
-<main class="container">
+<h1>Alas, something went wrong! But we have to deal with this! Without tears!</h1>
 
-    <div class="starter-template text-center py-5 px-3">
-        <p style="font-size: 20px">Ошибка 404 - Запрашиваемая страница не найдена</p>
-        <p class="login-callout mt-3"> Перейти <a href="${pageContext.request.contextPath}">на главную страницу</a> </p>
-    </div>
 
-</main>
+<p>don't be alarmed, here are the tips</p>
+<% String message = pageContext.getException().getMessage();
+    String exception = pageContext.getException().getClass().toString();%>
+<p>Type: <%= exception%>
+</p>
+<p>Message: <%= message %>
+</p>
+<%-- <%   StackTraceElement[] stackTrace = pageContext.getException().getStackTrace();--%>
+<%--    out.write("<p>");--%>
+<%--    for (StackTraceElement element : stackTrace) {--%>
+<%--        out.write(element.getFileName().toUpperCase()+"     "+element.getFileName()+"    "+element.getLineNumber()+"<br>");--%>
+<%--    }--%>
+<%--    out.write("<p>");--%>
 
+<%--%>--%>
+<p><input type="submit" onclick="location.href='${pageContext.request.contextPath}/airports';" value="Назад" ;
+          method="get"/></p>
 </body>
 </html>
-

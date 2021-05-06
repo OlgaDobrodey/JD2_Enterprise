@@ -87,6 +87,12 @@
             <artifactId>hibernate-validator</artifactId>
             <version>7.0.1.Final</version>
         </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.0</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
 
@@ -167,7 +173,8 @@
                 <configuration>
                     <excludes>
                         <exclude>by/it_academy/jd2/web/**/*</exclude>
-<!--                        <exclude>by/it_academy/jd2/core/Constants.*</exclude>-->
+                        <exclude>by/it_academy/jd2/core/utils/Constants.*</exclude>
+                        <exclude>by/it_academy/jd2/data/ParamConnectionBase.*</exclude>
 <!--                        <exclude>by/it_academy/jd2/core/storage/*.*</exclude>-->
                     </excludes>
                 </configuration>

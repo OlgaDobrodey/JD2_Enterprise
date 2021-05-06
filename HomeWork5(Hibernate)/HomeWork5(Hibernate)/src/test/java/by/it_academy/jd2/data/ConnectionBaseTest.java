@@ -1,5 +1,8 @@
 package by.it_academy.jd2.data;
 
+import by.it_academy.jd2.core.dto.tool.api.AllFlightsInt;
+import by.it_academy.jd2.core.dto.tool.hibernate.AllFlightsHibernet;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
@@ -21,12 +24,18 @@ class ConnectionBaseTest {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException throwables) {
-           // throwables.printStackTrace();
+            // throwables.printStackTrace();
             expected = null;
             System.out.println(throwables.getSQLState());
         }
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
 
     }
+
+    @Test
+    void getInstance() {
+        Assert.assertTrue(ConnectionBase.getInstance() instanceof ConnectionBase);
+    }
+
 }

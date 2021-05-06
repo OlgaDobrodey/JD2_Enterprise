@@ -19,6 +19,9 @@ public class ConnectionBase {
         return new ConnectionBase();
     }
 
+    private ConnectionBase() {
+    }
+
     public Connection getConnection() {
         if (conn == null) {
             try {

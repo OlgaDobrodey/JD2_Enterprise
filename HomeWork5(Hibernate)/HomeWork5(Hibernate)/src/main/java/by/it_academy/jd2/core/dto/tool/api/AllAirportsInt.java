@@ -14,14 +14,14 @@ public interface AllAirportsInt {
      * <p>@return list of all airports </p>
      */
 
-    List<Airports> getAllAirports();
+    List<Airports> getAllAirports() throws IllegalAccessException;
 
     /**
      * The method returns list of titles for table airports
      * @return object airports
      */
 
-    Airports ListOfTitlesForAirports() ;
-    List<String> getListNameCity();
+    Airports listOfTitlesForAirports() throws IllegalAccessException;
+    List<String> getListNameCity() throws IllegalAccessException;
 
 }

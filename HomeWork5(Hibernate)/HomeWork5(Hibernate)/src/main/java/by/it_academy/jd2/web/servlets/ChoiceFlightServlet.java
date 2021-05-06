@@ -32,9 +32,16 @@ public class ChoiceFlightServlet extends HttpServlet {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        List<String> allAirports = airportsInt.getListNameCity();
-        req.setAttribute("listNameAirports", allAirports);
-        req.getRequestDispatcher("/choice.jsp").forward(req, resp);
+
+        try {
+            List<String> allAirports = airportsInt.getListNameCity();
+            req.setAttribute("listNameAirports", allAirports);
+            req.getRequestDispatcher("/choice.jsp").forward(req, resp);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
 

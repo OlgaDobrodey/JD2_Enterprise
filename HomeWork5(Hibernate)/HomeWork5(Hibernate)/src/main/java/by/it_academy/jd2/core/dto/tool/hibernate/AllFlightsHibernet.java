@@ -67,8 +67,8 @@ public class AllFlightsHibernet implements AllFlightsInt {
         String select = SELECT;
         Session session = ConnectionBaseHibernate.getConnectionHibernet().openSession();
         Query query = session.createQuery(select);
-        query.setParameter("depAir", "DME");
-        query.setParameter("arrAir", "LED");
+        query.setParameter("depAir", "Москва");
+        query.setParameter("arrAir", "Санкт-Петербург");
         List<FlightsHibernate> flightsHibernates = (List<FlightsHibernate>) query.list();
         return getFlightsListForHibernare(flightsHibernates);
     }
