@@ -21,11 +21,11 @@ public class AllAirports implements AllAirportsInt {
     public AllAirports() {
     }
 
-    /**
-     * <p>The method returns a list of all airports in the database</p>
-     * <p>@param connection</p>
-     * <p>@return list of all airports </p>
-     */
+//    /**
+//     * <p>The method returns a list of all airports in the database</p>
+//     * <p>@param connection</p>
+//     * <p>@return list of all airports </p>
+//     */
 
     public List<Airports> getAllAirports(){
 
@@ -52,11 +52,11 @@ public class AllAirports implements AllAirportsInt {
         return allAirport;
     }
 
-    /**
-     * The method returns list of titles for table airports
-     *
-     * @return object airports
-     */
+//    /**
+//     * The method returns list of titles for table airports
+//     *
+//     * @return object airports
+//     */
 
     public Airports listOfTitlesForAirports() {
 

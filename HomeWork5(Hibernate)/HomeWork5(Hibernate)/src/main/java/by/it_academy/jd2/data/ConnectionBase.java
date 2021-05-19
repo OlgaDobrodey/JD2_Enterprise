@@ -11,10 +11,11 @@ import java.sql.*;
 public class ConnectionBase {
 
     private Connection conn;
-
-    /**
-     * реализация паттерна синглтон получение объекта
-     */
+//
+//    /**
+//     * реализация паттерна синглтон получение объекта
+//     * @return nee connection whith base
+//     */
     public static ConnectionBase getInstance() {
         return new ConnectionBase();
     }

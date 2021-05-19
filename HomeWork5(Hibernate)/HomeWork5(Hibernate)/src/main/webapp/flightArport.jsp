@@ -52,6 +52,20 @@
             cursor: pointer;
         }
 
+        .pagination {
+            display: inline-block;
+        }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+
+        }
+
     </style>
 </head>
 <body>
@@ -162,9 +176,20 @@
             </button>
         </form>
 
+
+        <div class="pagination">
+            <c:if test="${(page>1)}">
+            <a href="${pageContext.request.contextPath}/flight?scheduledDeparture=&departureAirport=<%=departureAirport%>&scheduledArrival=&arrivalAirport=<%=arrivalAirport%>&page=<%=(pageNumber-1)%>">❮</a>
+            </c:if>
+            <c:if test="${(page<sizelist)}">
+            <a href="${pageContext.request.contextPath}/flight?scheduledDeparture=&departureAirport=<%=departureAirport%>&scheduledArrival=&arrivalAirport=<%=arrivalAirport%>&page=<%=(pageNumber+1)%>">❯</a>
+            </c:if>
+        </div>
+
+
     </c:if>
 
-      <br>
+    <br>
     <br>
     <br>
     <br>

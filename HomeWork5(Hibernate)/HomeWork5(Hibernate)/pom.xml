@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -9,6 +11,7 @@
     <packaging>war</packaging>
 
     <name>HomeWork5</name>
+    <url>http://www.example.com</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -76,12 +79,12 @@
             <artifactId>hibernate-core</artifactId>
             <version>5.4.30.Final</version>
         </dependency>
-        <dependency>
-            <groupId>org.jetbrains</groupId>
-            <artifactId>annotations</artifactId>
-            <version>RELEASE</version>
-            <scope>compile</scope>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.jetbrains</groupId>-->
+        <!--            <artifactId>annotations</artifactId>-->
+        <!--            <version>RELEASE</version>-->
+        <!--            <scope>compile</scope>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
@@ -140,13 +143,11 @@
                         <version>5.7.1</version>
                     </dependency>
                 </dependencies>
-                <configuration>
-                    <argLine>@{argLine}</argLine>
-                </configuration>
+
             </plugin>
             <plugin>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>3.7.1</version>
+                <version>3.9.1</version>
                 <configuration>
                     <inputEncoding>UTF-8</inputEncoding>
                     <outputEncoding>UTF-8</outputEncoding>
@@ -154,17 +155,13 @@
                 </configuration>
             </plugin>
             <plugin>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>3.1.1</version>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.2.0</version>
-                <configuration>
-                    <show>public</show>
-                    <nohelp>true</nohelp>
-                </configuration>
+                <!--                <configuration>-->
+                <!--                    <show>public</show>-->
+                <!--                    <nohelp>true</nohelp>-->
+                <!--                </configuration>-->
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
@@ -175,7 +172,6 @@
                         <exclude>by/it_academy/jd2/web/**/*</exclude>
                         <exclude>by/it_academy/jd2/core/utils/Constants.*</exclude>
                         <exclude>by/it_academy/jd2/data/ParamConnectionBase.*</exclude>
-<!--                        <exclude>by/it_academy/jd2/core/storage/*.*</exclude>-->
                     </excludes>
                 </configuration>
                 <executions>
@@ -183,23 +179,23 @@
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
-                        <configuration>
-                            <propertyName>argLine</propertyName>
-                        </configuration>
+                        <!--                        <configuration>-->
+                        <!--                            <propertyName>argLine</propertyName>-->
+                        <!--                        </configuration>-->
                     </execution>
                     <execution>
                         <id>report</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>post-unit-test</id>
                         <phase>test</phase>
                         <goals>
                             <goal>report</goal>
                         </goals>
+                        <!--                    </execution>-->
+                        <!--                    <execution>-->
+                        <!--                        <id>post-unit-test</id>-->
+                        <!--                        <phase>test</phase>-->
+                        <!--                        <goals>-->
+                        <!--                            <goal>report</goal>-->
+                        <!--                        </goals>-->
                         <configuration>
                             <dataFile>target/jacoco.exec</dataFile>
                             <outputDirectory>target/jacoco</outputDirectory>
@@ -215,7 +211,17 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.2.0</version>
+                <reportSets>
+                    <reportSet>
+                        <id>default</id>
+                        <reports>
+                            <report>javadoc</report>
+                         <!--   <report>test-javadoc</report>-->
+                        </reports>
+                    </reportSet>
+                </reportSets>
             </plugin>
         </plugins>
     </reporting>
+
 </project>

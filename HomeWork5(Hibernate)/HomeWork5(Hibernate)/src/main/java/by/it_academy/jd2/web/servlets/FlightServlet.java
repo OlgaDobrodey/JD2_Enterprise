@@ -48,8 +48,17 @@ public class FlightServlet extends HttpServlet {
         List<Flights> choiceFlights = allFlightsInt.getChoiceFlights(departureAirport, arrivalAirport, scheduledDeparture, scheduledArrival);
 
         if (CheckString.isNullOrEmptyOrBlank(scheduledDeparture) && CheckString.isNullOrEmptyOrBlank(scheduledArrival)) {
+            String pageNumber = req.getParameter("page");
+            try {
+                if (pageNumber != null) {
+                    int i = Integer.parseInt(pageNumber);
+                    req.setAttribute("page", i);
+                }
+                else{ req.setAttribute("page", 1);}
+            } catch (NumberFormatException e) {
+                throw new RuntimeException("'a' is not a Integer: " + e.getMessage());
+            }
 
-            req.setAttribute("page", 1);
             int ceil = (int) Math.ceil(choiceFlights.size() / 25.0);
             session.setAttribute("sizelist", ceil);
             req.getRequestDispatcher("/flightArport.jsp").forward(req, resp);

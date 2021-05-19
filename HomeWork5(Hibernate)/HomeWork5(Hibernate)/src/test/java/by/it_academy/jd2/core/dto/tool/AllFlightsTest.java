@@ -1,6 +1,6 @@
 package by.it_academy.jd2.core.dto.tool;
 
-import by.it_academy.jd2.core.utils.Constants;
+
 import by.it_academy.jd2.core.dto.tool.api.AllFlightsInt;
 import by.it_academy.jd2.core.dto.view.Flights;
 import by.it_academy.jd2.data.ConnectionBase;

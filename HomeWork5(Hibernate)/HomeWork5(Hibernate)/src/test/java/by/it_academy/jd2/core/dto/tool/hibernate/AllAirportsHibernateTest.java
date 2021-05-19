@@ -1,10 +1,9 @@
-package by.it_academy.jd2.core.dto.tool;
+package by.it_academy.jd2.core.dto.tool.hibernate;
 
-
+import by.it_academy.jd2.core.dto.tool.api.AllAirportsInt;
 import by.it_academy.jd2.core.dto.view.Airports;
 import by.it_academy.jd2.data.ConnectionBase;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,9 +15,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class AllAirportsTest {
+class AllAirportsHibernateTest {
 
     @Test
     void getAllAirports() {
@@ -38,25 +35,29 @@ class AllAirportsTest {
                 AllAirport.add(airports);
 
             }
-            AllAirports airportsInt = new AllAirports();
+            AllAirportsInt airportsInt = new AllAirportsHibernate();
             List<Airports> actual = AllAirport;
             List<Airports> expected = airportsInt.getAllAirports();
             assertEquals(expected.toString(), actual.toString());
 
-        } catch (SQLException throwables) {
+        } catch (SQLException | IllegalAccessException throwables) {
             throwables.printStackTrace();
         }
     }
 
+
     @Test
     void listOfTitlesForAirports() {
-        AllAirports airportsInt = new AllAirports();
-        String ex = "airport_code airport_name city coordinates timezone";
-        String ac = airportsInt.listOfTitlesForAirports().toString();
-
-        assertEquals(ex, ac);
-
+        try {
+            AllAirportsInt airportsInt = new AllAirportsHibernate();
+            String ex = "airport_code airport_name city coordinates timezone";
+            String ac = airportsInt.listOfTitlesForAirports().toString();
+            assertEquals(ex, ac);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
+
 
     @Test
     void getListNameCity() {
@@ -71,10 +72,17 @@ class AllAirportsTest {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        List<String> actual = allAirport.stream().distinct().collect(Collectors.toList());
-        AllAirports airportsInt = new AllAirports();
-        List<String> expected = airportsInt.getListNameCity();
-        assertEquals(expected.toString(), actual.toString());
+
+        try {
+            List<String> actual = allAirport.stream().distinct().collect(Collectors.toList());
+            AllAirportsInt airportsInt = new AllAirportsHibernate();
+            List<String> expected = airportsInt.getListNameCity();
+            assertEquals(expected.toString(), actual.toString());
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+
 
     }
 }
