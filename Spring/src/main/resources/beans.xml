@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- services -->
+
+    <bean id="hello" class="by.it.academy.jd2.test.A">
+<!--        <constructor-arg index="0" ref="hello1"/>-->
+        <property name="obj" ref="hello1"></property>
+    </bean>
+    <bean id="hello1" class="by.it.academy.jd2.test.B">
+        <property name="obj" ref="hello"/>
+<!--    <constructor-arg index="0" ref="hello"/>-->
+</bean>
+        <!-- additional collaborators and configuration for this bean go here -->
+
+
+    <!-- more bean definitions for services go here -->
+
+</beans>
