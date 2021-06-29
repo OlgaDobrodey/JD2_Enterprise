@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 
 <%@ page import="by.it_academy.jd2.core.model.User" %>
-<%@ page import="by.it_academy.jd2.core.tool.DataMessage" %>
-<%@ page import="by.it_academy.jd2.core.utils.Constants" %>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="by.it_academy.jd2.data.DaoFactory" %>
-<%@ page import="by.it_academy.jd2.data.DatabaseName" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -13,18 +8,18 @@
 <head>
     <title>Chat</title>
     <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 </head>
 <body>
 
 <% User userSender = (User) request.getSession().getAttribute("userSender");%>
 <p><span style='color: red;'> Получатель <%=userSender.getName()%> </span></p>
 
-<%
-    String print = (String) request.getAttribute("printMSG");
-    out.write(print);
-%>
-
-<br><br>
+<hr>
+<c:forEach var="a" items="${printMSG}">
+<p>${a}<p>
+    </c:forEach>
+    <br>
 <hr>
 <form action="message" method="get">
     <button type="submit">Отправить сообщение</button>

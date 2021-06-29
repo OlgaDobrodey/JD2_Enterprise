@@ -1,11 +1,8 @@
 package by.it_academy.jd2.web;
 
 
-import by.it_academy.jd2.core.tool.DataMessage;
 import by.it_academy.jd2.core.model.User;
-import by.it_academy.jd2.core.tool.api.IUserView;
-import by.it_academy.jd2.data.DaoFactory;
-import by.it_academy.jd2.data.DatabaseName;
+import by.it_academy.jd2.core.tool.api.IMessageView;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.util.List;
 
 /**
  * seng RequestDispatcher on print messages
@@ -25,23 +21,20 @@ import java.sql.SQLException;
 @Controller
 @RequestMapping(value = "/chats")
 public class Chats extends HttpServlet {
+    private final IMessageView messageView;
+
+    public Chats(IMessageView messageView) {
+        this.messageView = messageView;
+    }
 
     @GetMapping
     public String chat(Model model, HttpServletRequest req) throws ServletException, IOException {
-        try (Connection connection = DaoFactory.getInstance(DatabaseName.POSTGRES).getConnectionBase()) {
-            HttpSession session = req.getSession();
-            DataMessage dataMessage = new DataMessage(connection);
-            User userSender = (User) session.getAttribute("userSender");
-            final String s = dataMessage.printMessasgeUserLogin(userSender);
-            model.addAttribute("printMSG", s);
-            return "/indexChats.jsp";
+        HttpSession session = req.getSession();
+        User userSender = (User) session.getAttribute("userSender");
+        final List<String> s = messageView.printMessasgeUserLogin(userSender);
+        model.addAttribute("printMSG", s);
+        return "/indexChats.jsp";
 
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return "/";
     }
 
 }

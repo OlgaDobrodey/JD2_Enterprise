@@ -17,7 +17,8 @@ import java.io.IOException;
  * send Redirect contexPath+"/signIn"
  */
 @WebFilter(urlPatterns = {"/chats","/message","/menu"})
-public class SecurityFilter implements Filter {
+public class SecurityFilter
+        implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -26,10 +27,13 @@ public class SecurityFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+
+
         HttpServletRequest req =(HttpServletRequest)request;
         HttpServletResponse res = (HttpServletResponse) response;
         String contexPath = req.getContextPath();
         HttpSession session = req.getSession();
+
         if((session!=null)&&(session.getAttribute(Constants.USER_SENDER)!=null)){
             chain.doFilter(request, response);
         }

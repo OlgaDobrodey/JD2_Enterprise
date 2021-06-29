@@ -1,4 +1,4 @@
-<%@ page import="by.it_academy.jd2.core.utils.Constants" %>
+<%@ page import="by.it_academy.jd2.core.model.Message" %>
 <!DOCTYPE html>
 
 <%@ page contentType="text/html;charset=UTF-8" %>
@@ -8,6 +8,7 @@
 <head>
     <title>Message</title>
     <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 </head>
 <body>
 <%
@@ -21,7 +22,7 @@
 <p>Отправить сообщение</p>
 <hr>
 
-<form method="POST" action="message" >
+<form method="POST" action="message">
 
     Кому:<select name="userReceiver">
     <c:forEach var="a" items="${setUsers}">

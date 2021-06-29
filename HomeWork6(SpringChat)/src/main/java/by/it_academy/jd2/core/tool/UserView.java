@@ -15,6 +15,12 @@ public class UserView implements IUserView {
         this.repository = repository;
     }
 
+    @Override
+    public List<User> getAllUsers() {
+        final List<User> userList = this.repository.findAll();
+        return null;
+    }
+
     public void saveUsers(User user) {
         User userSave = this.repository.save(new User(user.getLogin(), user.getPassword(), user.getName(), Date.valueOf(user.getBirthday())));
 

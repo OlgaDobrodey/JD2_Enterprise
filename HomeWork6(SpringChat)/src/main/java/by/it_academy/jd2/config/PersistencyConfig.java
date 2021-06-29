@@ -44,12 +44,13 @@ public class PersistencyConfig {
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
         factory.setPackagesToScan("by.it_academy.jd2.core.model");
-        factory.setDataSource(dataSource );
+        factory.setDataSource(dataSource);
         Properties properties = new Properties();
-        properties.setProperty( "hibernate.dialect","org.hibernate.spatial.dialect.postgis.PostgisPG10Dialect");
-        properties.setProperty( "hibernate.hbm2ddl","none");
-        properties.setProperty( "show_sql","true");
-        properties.setProperty( "hibernate.default_schema","chat");
+        properties.setProperty("hibernate.dialect", "org.hibernate.spatial.dialect.postgis.PostgisPG10Dialect");
+        properties.setProperty("hibernate.hbm2ddl", "none");
+        properties.setProperty("show_sql", "true");
+        properties.setProperty("hibernate.default_schema", "chat");
+
         factory.setJpaProperties(properties);
 
         return factory;

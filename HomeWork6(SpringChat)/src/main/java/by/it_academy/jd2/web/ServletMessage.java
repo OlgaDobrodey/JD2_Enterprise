@@ -1,13 +1,10 @@
 package by.it_academy.jd2.web;
 
+import by.it_academy.jd2.core.tool.api.IMessageView;
 import by.it_academy.jd2.core.tool.api.IUserView;
 import by.it_academy.jd2.core.utils.Constants;
-import by.it_academy.jd2.core.tool.DataMessage;
-import by.it_academy.jd2.core.tool.DataStorageUsers;
 import by.it_academy.jd2.core.model.Message;
 import by.it_academy.jd2.core.model.User;
-import by.it_academy.jd2.data.DaoFactory;
-import by.it_academy.jd2.data.DatabaseName;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 import java.security.Principal;
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Set;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,17 +28,19 @@ import javax.servlet.http.HttpSession;
 @RequestMapping(value = "/message")
 public class ServletMessage extends HttpServlet {
     private final IUserView userView;
+    private final IMessageView messageView;
 
-    public ServletMessage(IUserView userView) {
+    public ServletMessage(IUserView userView, IMessageView messageView) {
         this.userView = userView;
+        this.messageView = messageView;
     }
 
     @GetMapping
-    public String setMessage(Model model){
+    public String setMessage(Model model) {
         Set<String> set = userView.getUsersLogin();
-            model.addAttribute("setUsers", set);             //список логинов всех пользователей
-            return "/indexMessage.jsp";
-           }
+        model.addAttribute("setUsers", set);             //список логинов всех пользователей
+        return "/indexMessage.jsp";
+    }
 
     @PostMapping
     protected String doMessage(Model model, Principal principal,
@@ -49,29 +48,26 @@ public class ServletMessage extends HttpServlet {
                                @RequestParam(name = Constants.USER_RECEIVER) String userReceiverLogin,
                                @RequestParam(name = Constants.MESSAGE) String text,
                                HttpServletRequest req) {
-        try (Connection connection = DaoFactory.getInstance(DatabaseName.POSTGRES).getConnectionBase()) {
 
-            HttpSession session = req.getSession();
-            User userSender = (User) session.getAttribute(Constants.USER_SENDER);
+        HttpSession session = req.getSession();
+        User userSender = (User) session.getAttribute(Constants.USER_SENDER);
 
-            User userReceiver = userView.searchUserLogin(userReceiverLogin);
+        User userReceiver = userView.searchUserLogin(userReceiverLogin);
 
-            Message message = new Message(userSender, userReceiver, text);
-            DataMessage dm = new DataMessage(connection);
-            dm.saveMessage(message);
+        Message message = new Message();
 
-            Set<String> set = userView.getUsersLogin();   //список логинов всех пользователей
-            model.addAttribute("setUsers", set);
-            session.setAttribute("send", true);      //aгумент отвечающий за дополнительный коментарий "Cобщение отправлено"
-            return "/indexMessage.jsp";
+        message.setSender(userSender);
+        message.setReceiver(userReceiver);
+        message.setMessage(text);
+        message.setDateTime(Timestamp.valueOf(LocalDateTime.now()));
 
+        messageView.saveMessage(message);
 
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return "/";
+        Set<String> set = userView.getUsersLogin();   //список логинов всех пользователей
+        model.addAttribute("setUsers", set);
+
+        session.setAttribute("send", true);      //aгумент отвечающий за дополнительный коментарий "Cобщение отправлено"
+        return "/indexMessage.jsp";
     }
 
 

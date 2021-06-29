@@ -5,23 +5,11 @@ import by.it_academy.jd2.core.model.User;
 
 import java.util.List;
 
-public interface DataMessageInt {
+public interface IMessageView {
+    List<Message> getAllMessage();
     void saveMessage(Message message);
-
     List<Message> searchMessageUserLogin(String login);
-
-    String printMessasgeUserLogin(User userSender);
-
-    String printMessasgeUserLoginC(User userSender);
-
+    List<String> printMessasgeUserLogin(User userSender);
     int deleteMessageSender(String login);
-
     int deleteMessageReceiver(String login);
-
-
-
-
-
-
-
 }
