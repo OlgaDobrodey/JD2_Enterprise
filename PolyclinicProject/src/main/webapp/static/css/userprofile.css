@@ -1,0 +1,41 @@
+.up-form {
+    width: 340px;
+    margin: 0 auto;
+}
+
+.up-form-header{
+	border-bottom: #eaecef 1px solid;
+}
+
+.up-form-header h3{
+	font-size: 24px;
+    font-weight: 400;
+    flex: 1 1 auto;
+}
+
+.up-form-body{
+	background-color: var(--bs-white);
+    border-top: 1px solid;
+    border-radius: 6px;
+	padding: 20px;
+    font-size: 14px;
+	border: #eaecef 1px solid;
+	margin: 10px;
+}
+
+.form-label{
+	margin-top: 7px;
+    margin-bottom: 7px;
+	font-size: 14px;
+	font-weight: 600;
+    line-height: 1.5;
+    color: #24292e
+}
+
+.form-control{
+	max-width: 100%;
+    margin-right: 5px;
+	color: #24292e;
+	font-size: 14px;
+}
+

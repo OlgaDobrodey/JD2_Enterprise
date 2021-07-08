@@ -1,0 +1,84 @@
+#msgWindow {
+    margin-top: 20px;
+}
+
+p.msg-p{
+    margin: 0px;
+}
+
+span.msg-time{
+    font-weight: normal;
+    font-style: italic;
+}
+
+span.msg-user{
+    font-weight: bold;
+    font-style: italic;
+}
+
+span.msg-message{
+    font-weight: normal;
+}
+
+#msgs {
+    margin: 0px 25px;
+    min-height: 200px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.msg-windows{
+    height: 440px;
+    overflow-y: scroll;
+}
+
+.msg {
+    margin: 5px 0;
+    border: 1px solid silver;
+    padding: 3px 7px;
+    display: inline-block;
+    position: relative;
+    border-radius: 10px;
+}
+.msg::before, .msg::after {
+    content: "";
+    display: inline-block;
+    bottom: 0;
+    position: absolute;
+    border: 1px solid silver;
+}
+.msg::before {
+    right: -20px;
+    width: 15px;
+    height: 15px;
+    border-radius: 10px;
+}
+.msg::after {
+    right: -35px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+}
+.msg.from {
+    align-self: flex-end;
+}
+.msg.to {
+    align-self: flex-start;
+}
+.msg.to::before {
+    right: inherit;
+    left: -20px;
+}
+.msg.to::after {
+    right: inherit;
+    left: -35px;
+}
+.msg.typing {
+    color: silver;
+}
+
+#msgForm input:focus, #msgForm button:focus {
+    box-shadow: none;
+}
