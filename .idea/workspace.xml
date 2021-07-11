@@ -2,22 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c80432d7-f83d-4a04-b1fe-419393503748" name="Default Changelist" comment="Added Home Work 3 stepp 1,2">
-      <change afterPath="$PROJECT_DIR$/ClassWork/JD2-78-21-4/src/main/java/by/it_academy/jd2/dao/HibernateCreator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClassWork/JD2-78-21-4/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HomeWork1(CookiesAndSession)/demo/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/HomeWork3(PSQL)/HomeWork3(SQL)/1.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HomeWork4ChatSQL/Chat/src/main/java/by/it_academy/jd2/core/EX.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HomeWork5(Hibernate)/HomeWork5(Hibernate)/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Spring/src/main/java/by/it/academy/jd2/test/A.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/airports/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/airports/src/main/java/by/it_academy/jd2/hw/example/airports/model/Airport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/airports/src/main/java/by/it_academy/jd2/hw/example/airports/model/Flying.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/airports/src/main/java/by/it_academy/jd2/hw/example/airports/view/AirportsView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/airports/src/main/java/by/it_academy/jd2/hw/example/airports/view/FlyingsView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/airports/src/main/java/by/it_academy/jd2/hw/example/airports/view/api/IAirportsView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/airports/src/main/java/by/it_academy/jd2/hw/example/airports/view/api/IFlyingsView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/airports/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/airports/src/main/webapp/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/airports/src/main/webapp/views/airports.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/airports/src/main/webapp/views/filters.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassWork/JD2-78-21-4/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ClassWork/JD2-78-21-4/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassWork/JD2-78-21-4/src/main/java/by/it_academy/jd2/core/dto/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/ClassWork/JD2-78-21-4/src/main/java/by/it_academy/jd2/core/dto/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassWork/JD2-78-21-4/src/main/java/by/it_academy/jd2/ex.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork3(PSQL)/HomeWork3(SQL)/src/main/java/by/it_academy/jd2/core/dto/tool/AllFlights.java" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork3(PSQL)/HomeWork3(SQL)/src/main/java/by/it_academy/jd2/core/dto/tool/AllFlights.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork3(PSQL)/HomeWork3(SQL)/src/main/java/by/it_academy/jd2/data/ConnectionBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork3(PSQL)/HomeWork3(SQL)/src/main/java/by/it_academy/jd2/data/ConnectionBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork3(PSQL)/HomeWork3(SQL)/src/main/java/by/it_academy/jd2/web/servlets/ChoiceFlightServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork3(PSQL)/HomeWork3(SQL)/src/main/java/by/it_academy/jd2/web/servlets/ChoiceFlightServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork3(PSQL)/HomeWork3(SQL)/src/main/webapp/airports.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork3(PSQL)/HomeWork3(SQL)/src/main/webapp/airports.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork3(PSQL)/HomeWork3(SQL)/src/main/webapp/flight.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork3(PSQL)/HomeWork3(SQL)/src/main/webapp/flight.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork3(PSQL)/HomeWork3(SQL)/src/main/webapp/flightArport.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork3(PSQL)/HomeWork3(SQL)/src/main/webapp/flightArport.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork3(PSQL)/HomeWork3(SQL)/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork3(PSQL)/HomeWork3(SQL)/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassWork/JD2-78-21-4/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ClassWork/JD2-78-21-4/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork6(SpringChat)/src/main/java/by/it_academy/jd2/core/model/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork6(SpringChat)/src/main/java/by/it_academy/jd2/core/model/Message.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,21 +42,31 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="adopt-openj9-14" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/HomeWork5(Hibernate)/HomeWork5(Hibernate)" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/PolyclinicProject" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\JD2_Enterprise\PolyclinicProject" />
+      <recent name="D:\JD2_Enterprise\HomeWork6(SpringChat)" />
       <recent name="D:\JD2_Enterprise\HomeWork5(Hibernate)" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -79,6 +90,16 @@
       <workItem from="1617876215463" duration="150000" />
       <workItem from="1619112340843" duration="208000" />
       <workItem from="1619113056737" duration="88000" />
+      <workItem from="1619252943030" duration="370000" />
+      <workItem from="1619253535415" duration="702000" />
+      <workItem from="1619254399231" duration="1486000" />
+      <workItem from="1619508424604" duration="325000" />
+      <workItem from="1619508808079" duration="617000" />
+      <workItem from="1623166626085" duration="86000" />
+      <workItem from="1623166734112" duration="63000" />
+      <workItem from="1623942257851" duration="267000" />
+      <workItem from="1624769918258" duration="600000" />
+      <workItem from="1625466589164" duration="171000" />
     </task>
     <task id="LOCAL-00001" summary="Added project -first commit">
       <created>1615964465174</created>
@@ -150,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617876341919</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Commit 17.06 Class work and Class Work Spring is started">
+      <created>1623942492961</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1623942492961</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,6 +207,7 @@
     <MESSAGE value="Added Home Work 3 (steep 1,2)" />
     <MESSAGE value="Added Home Work 1" />
     <MESSAGE value="Added Home Work 3 stepp 1,2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Home Work 3 stepp 1,2" />
+    <MESSAGE value="Commit 17.06 Class work and Class Work Spring is started" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit 17.06 Class work and Class Work Spring is started" />
   </component>
 </project>

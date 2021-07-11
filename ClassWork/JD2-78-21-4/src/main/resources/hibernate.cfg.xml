@@ -8,7 +8,7 @@
 
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
 
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/store</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/polyclinic</property>
 
         <property name="hibernate.connection.username">postgres</property>
 
@@ -17,16 +17,16 @@
         <property name="show_sql">true</property>
 
         <property name="hibernate.hbm2ddl.auto">validate</property>
-        <mapping class="by.it_academy.jd2.core.dto.store.Category"/>
-<!--        <mapping class="by.it_academy.jd2.core.dto.store.CategoreWithConstrains"/>-->
-        <mapping class="by.it_academy.jd2.core.dto.store.Manufacture"/>
-        <mapping class="by.it_academy.jd2.core.dto.store.Product"/>
-        <mapping class="by.it_academy.jd2.core.dto.store.Provider"/>
-        <mapping class="by.it_academy.jd2.core.dto.store.Warehouse"/>
-        <mapping class="by.it_academy.jd2.core.dto.store.WarehouseAddress"/>
+<!--        <mapping class="by.it_academy.jd2.core.dto.store.Category"/>-->
+<!--&lt;!&ndash;        <mapping class="by.it_academy.jd2.core.dto.store.CategoreWithConstrains"/>&ndash;&gt;-->
+<!--        <mapping class="by.it_academy.jd2.core.dto.store.Manufacture"/>-->
+<!--        <mapping class="by.it_academy.jd2.core.dto.store.Product"/>-->
+<!--        <mapping class="by.it_academy.jd2.core.dto.store.Provider"/>-->
+<!--        <mapping class="by.it_academy.jd2.core.dto.store.Warehouse"/>-->
+<!--        <mapping class="by.it_academy.jd2.core.dto.store.WarehouseAddress"/>-->
 <!--        <mapping class="by.it_academy.jd2.core.dto.store.ProductWithConstrains"/>-->
-
-
+        <mapping class="by.it_academy.jd2.core.dto.store.User"/>
+        <mapping class="by.it_academy.jd2.core.dto.store.Passport"/>
     </session-factory>
 </hibernate-configuration>
 

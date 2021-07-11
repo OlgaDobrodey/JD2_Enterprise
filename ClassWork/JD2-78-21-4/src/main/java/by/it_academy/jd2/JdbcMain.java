@@ -9,7 +9,7 @@ import java.util.Map;
 public class JdbcMain {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         Class.forName("org.postgresql.Driver");
-        try (Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/edu", "postgres", "123")) {
+        try (Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/polyclinic", "postgres", "123")) {
             DatabaseMetaData metaData = conn.getMetaData();
             List<String> tables = getTablesMetadata(metaData);
             Map<String, List<String>> columnsMetadata = getColumnsMetadata(metaData, tables);
