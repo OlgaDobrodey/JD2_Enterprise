@@ -35,7 +35,8 @@ public class RootConfig {
     }
 
     @Bean
-    public IMedicalCardView medicalCardView(IMedicalCardRepository repository){return new MedicalCardView(repository);}
+    public IMedicalCardView medicalCardView(IMedicalCardRepository repository, IDiagnosisRepository diagnosisRepository)
+    {return new MedicalCardView(repository,diagnosisRepository);}
 
     @Bean
     public IDiagnosisView diagnosisView(IDiagnosisRepository repository){return new DiagnosisView(repository);}

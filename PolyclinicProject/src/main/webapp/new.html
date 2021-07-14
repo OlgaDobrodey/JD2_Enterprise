@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>New note</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+          crossorigin="anonymous">
+</head>
+<body>
+<main class="container">
+<br><h4 class="text-info text-center">CREATE A NEW NOTE</h4>
+<form action="signIn" method="post" required>
+
+    <h3>Please sign in</h3>
+    <br>
+    <label for="login">Login</label><br>
+    <input type="text" name="login" class="form-control input-block" placeholder="Input login" id="login"
+           required>
+
+    <label for="psw">Password</label><br>
+    <input type="password" name="psw" class="form-control input-block" placeholder="
+medical card number" id="psw"
+           required>
+    <br>
+    <input type="submit" class="btn btn-secondary" value="Sign In">
+    <br>
+</form>
+
+я доктор <p>${sessionScope.user.surname}</p>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+</main>
+</body>
+</html>
+
+
+
+<select class="form-select" aria-label="Default select example">
+    <option selected>Open this select menu</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+</select>

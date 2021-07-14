@@ -9,4 +9,5 @@ import java.util.List;
 public interface IDiagnosisView {
     List<Diagnosis> getAllByCard(MedicalCard card);
     Diagnosis getStatusDiagnosis(MedicalCard card, Status status);
+    Diagnosis savaDiagnosis(Diagnosis diagnosis);
 }

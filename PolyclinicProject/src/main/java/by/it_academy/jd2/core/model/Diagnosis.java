@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "diagnosis", schema = "polyclinic")
-public class Diagnosis {
+public class Diagnosis implements Comparable<Diagnosis>{
     /**
      * CREATE TABLE polyclinic.diagnosis
      * (
@@ -103,4 +103,15 @@ public class Diagnosis {
     public int hashCode() {
         return Objects.hash(id, card,  prescription, date, status);
     }
+
+    @Override
+    public int compareTo(Diagnosis o) {
+        if (this.getDate().isAfter(o.getDate())) {
+            return 1;
+        } else if (this.getDate().isBefore(o.getDate())) {
+            return -1;
+        }
+        return 0;
+    }
+
 }

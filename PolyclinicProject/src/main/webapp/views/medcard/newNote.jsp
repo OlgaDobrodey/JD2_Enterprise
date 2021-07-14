@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<%@ page import=" by.it_academy.jd2.core.model.Status" %>
 <!doctype html>
 <html lang="ru">
 <head>
@@ -14,11 +14,78 @@
 </head>
 <body>
 <%@include file="../header.jsp" %>
-я хочу создать новую карту
-я доктор <p>${sessionScope.user.surname}</p>
+<main class="container">
+    <h2 class="text-info text-center "></h2>
+    <form action="newNote" method="post" required>
+        <br><h4 class="text-info text-center">CREATE A NEW NOTE</h4>
+        <div class="mb-3">
+            <label for="doctor" class="form-label">Doctor</label>
+            <select class="form-select" name="doctor" id="doctor" aria-label="Default select example">
+                <c:forEach var="doc" items="${doctors}">
+                    <option value="${doc.login}"> ${doc.surname} ${doc.given_name}<br></option>
+                </c:forEach>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="patient" class="form-label">Patient</label>
+            <select class="form-select" name="patient" id="patient" aria-label="Default select example">
+                <c:forEach var="pat" items="${patients}">
+                    <option value="${pat.login}"> ${pat.surname} ${pat.given_name}<br></option>
+                </c:forEach>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="diagnosis" class="form-label">Diagnosis</label>
+            <input type="text" name="diagnosis" class="form-control" id="diagnosis">
+        </div>
+        <div class="mb-3">
+            <label for="prescription" class="form-label">Prescription</label>
+            <input type="text" name="prescription" class="form-control" id="prescription">
+        </div>
+        <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
+            <select class="form-select" name="status" id="status" aria-label="Default select example">
+                <option value="${Status.POSITIV}">${Status.POSITIV}</option>
+                <option value="${Status.NEGATIV}">${Status.NEGATIV}</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-info">SAVE</button>
+    </form>
+    <c:if test="${cardSave!=null}">
+        <table class="table table-striped table-info">
+            <tbody>
+            <tr>
+                <th>ID</th>
+                <td>${cardSave.id}</td>
+                <th>Doctor</th>
+                <td>${cardSave.doctor.surname} ${cardSave.doctor.given_name}</td>
+                <th>Patient</th>
+                <td>${cardSave.patient.surname} ${cardSave.patient.given_name}</td>
+                <th>Diagnosis</th>
+                <td>${cardSave.diagnosis}</td>
+            </tr>
+            <br>
+            </tbody>
+        </table>
+    </c:if>
+    <c:if test="${diagnosisSave!=null}">
+        <table class="table table-striped table-info">
+            <tbody>
+            <tr>
+                <th>Date</th>
+                <th>Prescription</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>${diagnosisSave.date}</td>
+                <td>${diagnosisSave.prescription}</td>
+                <td>${diagnosisSave.status}</td>
+            </tr>
 
-
-
+            </tbody>
+        </table>
+    </c:if>
+</main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
         crossorigin="anonymous"></script>

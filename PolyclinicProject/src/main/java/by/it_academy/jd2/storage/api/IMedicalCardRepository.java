@@ -11,4 +11,5 @@ public interface IMedicalCardRepository extends JpaRepository<MedicalCard,Intege
     List<MedicalCard> findAllByPatient(User user);
     List<MedicalCard> findAllByDoctor(User user);
     MedicalCard findMedicalCardById(Integer id);
+    List<MedicalCard> findMedicalCardByDoctorAndPatientAndDiagnosis(User doctor, User patient, String diagnosis);
 }

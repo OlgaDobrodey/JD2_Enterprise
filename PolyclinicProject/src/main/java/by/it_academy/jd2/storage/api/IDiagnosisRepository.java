@@ -10,4 +10,5 @@ import java.util.List;
 public interface IDiagnosisRepository extends JpaRepository<Diagnosis,Integer> {
     List<Diagnosis> findAllByCard(MedicalCard card);
     Diagnosis findFirstByStatusAndCard(Status status,MedicalCard card);
+
 }

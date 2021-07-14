@@ -24,4 +24,9 @@ public class DiagnosisView implements IDiagnosisView {
     public Diagnosis getStatusDiagnosis(MedicalCard card, Status status) {
         return this.repository.findFirstByStatusAndCard(status,card);
     }
+
+    @Override
+    public Diagnosis savaDiagnosis(Diagnosis diagnosis) {
+        return this.repository.save(diagnosis);
+    }
 }
