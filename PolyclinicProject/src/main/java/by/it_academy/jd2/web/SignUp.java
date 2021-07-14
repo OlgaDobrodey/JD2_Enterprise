@@ -29,8 +29,8 @@ public class SignUp{
     @GetMapping(value ="/signUp" )
     public String checkRegistration(HttpServletRequest req) {
         HttpSession session = req.getSession();
-        if (!session.isNew()) {
-            session.removeAttribute(Constants.USER);
+        if (session.isNew()) {
+            return "/views/indexSignIn.jsp";
         }
         return "/views/indexSignUp.jsp";
 
@@ -60,7 +60,7 @@ public class SignUp{
         //userView.saveUsers(user);
 
         req.getSession().setAttribute(Constants.USER, user);
-        return "/indexMenu.jsp";
+        return "/indexSignUp.jsp";
     }
 }
 

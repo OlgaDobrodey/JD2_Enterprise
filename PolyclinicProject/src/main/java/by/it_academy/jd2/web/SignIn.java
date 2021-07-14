@@ -1,6 +1,7 @@
 package by.it_academy.jd2.web;
 
 import by.it_academy.jd2.core.model.Role;
+import by.it_academy.jd2.core.service.api.IPassportView;
 import by.it_academy.jd2.core.service.api.IUserView;
 import by.it_academy.jd2.core.utils.Constants;
 import by.it_academy.jd2.core.model.User;
@@ -21,9 +22,11 @@ import javax.servlet.http.HttpSession;
 public class SignIn {
 
     private final IUserView userView;
+    private final IPassportView passportView;
 
-    public SignIn(IUserView userView) {
+    public SignIn(IUserView userView,IPassportView passportView) {
         this.userView = userView;
+        this.passportView = passportView;
     }
 
     @GetMapping(value = "/signIn")
@@ -44,9 +47,11 @@ public class SignIn {
         User user = userView.searchUserLoginAndPsw(login, psw);
 
         if (user != null) {
+            req.getSession().setAttribute(Constants.PASSPORT,passportView.findPassport(user));
             req.getSession().setAttribute(Constants.USER, user);
             return Role.pathRoleUser(user);
         } else {
+
             model.addAttribute("invalidUserLogin", true);      // Дополнительного комментарий "Не верный логин или пароль"                                      // Авторизация не выполнена, попробуйте снова!
             return "/views/indexSignIn.jsp";
 

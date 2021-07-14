@@ -1,13 +1,13 @@
 package by.it_academy.jd2.core.model;
 
 
-import by.it_academy.jd2.core.utils.Constants;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 
 
 /**
@@ -15,114 +15,79 @@ import java.text.SimpleDateFormat;
  * chat message
  */
 @Entity
-@Table(name = "messages", schema = "chat")
+@Table(name = "messages", schema = "polyclinic")
 public class Message implements Serializable {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_message", nullable = false)
-    private Integer id;
+    private Integer id_message;
 
-    @Column(name = "sender_login", nullable = false)
-    private String senderLogin;
+    @OneToOne
+    @JoinColumn(name = "sender")
+    private User sender;
 
-    @Column(name = "receiver_login",nullable = false)
-    private String receiverLogin;
 
-    @Column(name = "message",nullable = false)
+    @OneToOne
+    @JoinColumn(name = "receiver")
+    private User receiver;
+
     private String message;
 
     @CreationTimestamp
-    @Column(name = "date_msg",nullable = false)
-    private Timestamp dateTime;
-
-
-//    /**
-//     * @param sender   User
-//     * @param receiver User
-//     * @param message  String
-//     */
+    private Date date_msg;
 
     public Message() {
     }
 
-    public Message(Integer id, String senderLogin, String receiverLogin, String message, Timestamp dateTime) {
-        this.id = id;
-        this.senderLogin = senderLogin;
-        this.receiverLogin = receiverLogin;
+
+    public Message(Integer id_message, User sender, User receiver, String message, Date date_msg) {
+        this.id_message = id_message;
+        this.sender = sender;
+        this.receiver = receiver;
         this.message = message;
-        this.dateTime = dateTime;
+        this.date_msg = date_msg;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getId_message() {
+        return id_message;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId_message(Integer id_message) {
+        this.id_message = id_message;
     }
-    private static final SimpleDateFormat DATE_TIME_FORMAT = new SimpleDateFormat(Constants.FORMAT_DATE);
 
-    public String getSender() {
-        return senderLogin;
+    public User getSender() {
+        return sender;
     }
 
     public void setSender(User sender) {
-        this.senderLogin = sender.getLogin();
+        this.sender = sender;
     }
 
-    public String getReceiver() {
-        return receiverLogin;
+    public User getReceiver() {
+        return receiver;
     }
 
     public void setReceiver(User receiver) {
-        this.receiverLogin = receiver.getLogin();
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
+        this.receiver = receiver;
     }
 
     public String getMessage() {
         return message;
     }
 
-    /**
-     * This method get date write message
-     *
-     * @return date write message String
-     */
-    public String getDate() {
-        return dateTime.toString();
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    //
-    public Timestamp getDateTime() {
-        return dateTime;
+    public Date getDate_msg() {
+           return date_msg;
     }
 
-    public void setDateTime(Timestamp dateTime) {
-        this.dateTime = dateTime;
+    public void setDate_msg(Date date_msg) {
+        this.date_msg = date_msg;
     }
 
-    @Override
-    public String toString() {
-        return String.format("От: %s  %s   Cообщениe: %s  ", senderLogin, getDate().substring(0, 19), message);
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-    //
-//    /**
-//     * This method get text message
-//     *
-//     * @return text message String
-//     */
-
-//
-//
 
 }

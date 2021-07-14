@@ -36,7 +36,6 @@ public class UserView implements IUserView {
         try {
             user = this.repository.findByLoginAndAndPassword(login, psw);
             return user;
-
         } catch (NoSuchElementException e) {
             return null;
 
@@ -56,7 +55,6 @@ public class UserView implements IUserView {
 
     @Override
     public List<User> searchAllDoctors(){
-
         return this.repository.findAllByRole(Role.DOCTOR);
     }
 

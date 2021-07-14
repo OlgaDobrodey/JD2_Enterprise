@@ -47,7 +47,8 @@ public class PersistencyConfig {
         factory.setDataSource(dataSource);
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.spatial.dialect.postgis.PostgisPG10Dialect");
-        properties.setProperty("hibernate.hbm2ddl", "none");
+        //properties.setProperty("hibernate.hbm2ddl","none");
+        properties.setProperty("hibernate.hbm2ddl.auto", "update");
         properties.setProperty("show_sql", "true");
         properties.setProperty("hibernate.default_schema", "polyclinic");
 

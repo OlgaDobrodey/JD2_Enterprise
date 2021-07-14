@@ -1,41 +1,65 @@
 <!DOCTYPE html>
-
-<%@ page import="by.it_academy.jd2.core.model.User" %>
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 
 <html>
 <head>
     <title>Chat</title>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+          crossorigin="anonymous">
 </head>
-<body class="text-center">
+<body>
 
-<% User userSender = (User) request.getSession().getAttribute("userSender");%>
-<p><span style='color: red;'> Получатель <%=userSender.getName()%> </span></p>
+<%@include file="header.jsp" %>
 
-<hr>
-<c:forEach var="a" items="${printMSG}">
-<p>${a}<p>
-    </c:forEach>
+
+<form method="post" action="message">
+
+    Кому:<select name="userReceiver">
+    <optgroup label="Доктора">
+        <c:forEach var="doctor" items="${doctors}">
+            <option value="${doctor.login}"> ${doctor.surname}<br></option>
+        </c:forEach>
+    </optgroup>
+    <c:if test="${patients!=null}">
+        <optgroup label="Пациенты">
+            <c:forEach var="patient" items="${patients}">
+                <option value="${patient.login}"> ${patient.surname}<br></option>
+            </c:forEach></optgroup>
+    </c:if>
+
+</select>
+
+    <br><br>
+
+    Сообщение:<br>
+    <input type="text" name="message"/>
+    <br><br>
+
+    <button type="submit">Отправить</button>
+    <button type="reset">Очистить</button>
+</form>
+
+<c:forEach var="message" items="${listMessages}">
+    <td>${message.id_message}</td>
+    <td>${message.sender.surname}</td>
+    <td>${message.receiver.surname}</td>
+    <td>${message.message}</td>
+    <td>${message.date_msg.toString().substring(0, 19)}</td>
     <br>
-<hr>
-<form action="message" method="get">
-    <button type="submit">Отправить сообщение</button>
-    <br><br>
-</form>
-<form action="menu" method="get">
-    <br>
-    <button type="submit">Выход в меню</button>
-    <br><br>
-</form>
-<form action="signIn">
+</c:forEach>
 
-    <button type="submit">Выйти из приложения</button>
-    <br><br>
-</form>
-<hr>
+<%@include file="footer.jsp" %>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>

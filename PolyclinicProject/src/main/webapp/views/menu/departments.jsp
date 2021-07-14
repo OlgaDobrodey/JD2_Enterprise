@@ -6,12 +6,12 @@
     <meta charset="utf-8">
     <title>Departments</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+          crossorigin="anonymous">
 </head>
 <body>
-<%@include file="../../index.jsp" %>
+<%@include file="../header.jsp" %>
 <div class="container">
     <div class="main-body">
         <div class = "text-center">
@@ -20,7 +20,7 @@
         <div class="text-center"><h4>Information about ...</h4></div><br>
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3  gutters-sm">
-            <c:forEach items="${requestScope.doctors}" var="user">
+            <c:forEach items="${requestScope.doctors}" var="psp">
                 <div class="col mb-3">
                     <div class="card">
                         <img src="https://via.placeholder.com/340x120/87CEFA/000000" alt="Cover" class="card-img-top">
@@ -29,9 +29,9 @@
                                  style="width:100px;margin-top:-65px" alt="User"
                                  class="img-fluid img-thumbnail rounded-circle border-0 mb-3">
                             <h5 class="card-title"><a
-                                    href="${pageContext.request.contextPath}/doctor/${user.login}">${user.surname} ${user.given_name}</a></h5>
-                            <p class="text-secondary mb-1">${user.position}</p>
-                            <p class="text-muted font-size-sm">${user.email}</p>
+                                    href="${pageContext.request.contextPath}/doctor/${psp.login}">${psp.surname} ${psp.given_name}</a></h5>
+                            <p class="text-secondary mb-1">${psp.position}</p>
+                            <p class="text-muted font-size-sm">${psp.email}</p>
                         </div>
                             <%--                        <div class="card-footer">--%>
                             <%--                            <button class="btn btn-light btn-sm bg-white has-icon btn-block" type="button"><i class="material-icons">add</i>Follow</button>--%>
@@ -97,9 +97,10 @@
 
 </style>
 
-<script type="text/javascript">
-    <%@include file="../footer.jsp" %>
-</script>
+
 <%@include file="../footer.jsp" %>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
 </body>
 </html>

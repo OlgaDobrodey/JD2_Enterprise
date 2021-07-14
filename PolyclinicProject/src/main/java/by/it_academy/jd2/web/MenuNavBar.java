@@ -1,11 +1,12 @@
 package by.it_academy.jd2.web;
 
 
+import by.it_academy.jd2.core.service.api.IAddressView;
+import by.it_academy.jd2.core.service.api.IPassportView;
 import by.it_academy.jd2.core.service.api.IUserView;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServlet;
 
@@ -15,9 +16,13 @@ import javax.servlet.http.HttpServlet;
 @Controller
 public class MenuNavBar extends HttpServlet {
     private final IUserView userView;
+private final IPassportView passportView;
+    private final IAddressView addressView;
 
-    public MenuNavBar(IUserView userView) {
+    public MenuNavBar(IUserView userView, IPassportView passportView, IAddressView addressView) {
         this.userView = userView;
+        this.passportView = passportView;
+        this.addressView = addressView;
     }
 
     @GetMapping(value = "/AboutUs")
@@ -51,9 +56,18 @@ public class MenuNavBar extends HttpServlet {
         return "/views/menu/departments.jsp";
     }
 
+    @GetMapping(value = "/allPassports")
+    public String getAllPassports(Model model) {
+        model.addAttribute("passports", passportView.findAllPassport());
+        return "/views/menu/allPassports.jsp";
+    }
 
-//    @GetMapping
-//    protected String goMenu() {
-//        return "/indexMenu.jsp";
-//    }
+    @GetMapping(value = "/allAddress")
+    public String getAllAddress(Model model) {
+        model.addAttribute("address", addressView.findAllAddress());
+        return "/views/menu/allAddress.jsp";
+    }
+
+
+
 }

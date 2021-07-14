@@ -34,9 +34,13 @@ public class User {
     private String position;
 
     @OneToOne
-    @JoinColumn(name = "id_passport")
-    @Column(name = "passport")
-    private Passport passport;
+    @JoinColumn(name = "address")
+    private Address addresses;
+
+//    @OneToOne
+//    @JoinColumn(name = "id_passport")
+//   // @Column(name = "passport")
+//    private Passport passports;
 
     public User() {
     }
@@ -121,13 +125,19 @@ public class User {
         this.position = position;
     }
 
-    public Passport getPassport() {
-        return passport;
+    public Address getAddresses() {
+        return addresses;
     }
-
-    public void setPassport(Passport passport) {
-        this.passport = passport;
+    public void setAddresses(Address addresses) {
+        this.addresses = addresses;
     }
+    //    public Passport getPassport() {
+//        return passports;
+//    }
+//
+//    public void setPassport(Passport passport) {
+//        this.passports = passport;
+//    }
 
     @Override
     public String toString() {
@@ -142,7 +152,7 @@ public class User {
                 ", info='" + info + '\'' +
                 ", madical_card=" + madical_card +
                 ", position='" + position + '\'' +
-                ", passport='" + passport + '\'' +
+//                ", passport='" + passports + '\'' +
                 '}';
     }
 }
