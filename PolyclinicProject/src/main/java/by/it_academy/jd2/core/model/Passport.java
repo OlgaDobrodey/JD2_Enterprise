@@ -17,7 +17,8 @@ public class Passport {
     private String code_state;
     private String nationality;
     private LocalDate date_birthday;
-    private String sex;
+    @Enumerated(EnumType.STRING)
+    private Sex sex;
     private LocalDate data_issue;
     private LocalDate data_expiry;
     private String place_birth;
@@ -26,6 +27,21 @@ public class Passport {
     @JoinColumn(name = "login_user")
     private User users;
 
+    public Passport() {
+    }
+
+    public Passport(String id_passport, String identification, String code_state, String nationality, LocalDate date_birthday, Sex sex, LocalDate data_issue, LocalDate data_expiry, String place_birth, User users) {
+        this.id_passport = id_passport;
+        this.identification = identification;
+        this.code_state = code_state;
+        this.nationality = nationality;
+        this.date_birthday = date_birthday;
+        this.sex = sex;
+        this.data_issue = data_issue;
+        this.data_expiry = data_expiry;
+        this.place_birth = place_birth;
+        this.users = users;
+    }
 
     public String getId_passport() {
         return id_passport;
@@ -67,11 +83,11 @@ public class Passport {
         this.date_birthday = date_birthday;
     }
 
-    public String getSex() {
+    public Sex getSex() {
         return sex;
     }
 
-    public void setSex(String sex) {
+    public void setSex(Sex sex) {
         this.sex = sex;
     }
 

@@ -15,7 +15,7 @@
 <body>
 <%@include file="../header.jsp" %>
 <main class="container">
-    <h2 class="text-info text-center "></h2>
+
     <form action="newNote" method="post" required>
         <br><h4 class="text-info text-center">CREATE A NEW NOTE</h4>
         <div class="mb-3">

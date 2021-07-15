@@ -1,5 +1,6 @@
 package by.it_academy.jd2.core.service;
 
+import by.it_academy.jd2.core.model.Address;
 import by.it_academy.jd2.core.model.Role;
 import by.it_academy.jd2.core.model.User;
 import by.it_academy.jd2.core.service.api.IUserView;
@@ -15,6 +16,13 @@ public class UserView implements IUserView {
     public UserView(IUserRepository repository) {
         this.repository = repository;
 
+    }
+
+    @Override
+    public User saveUser(String login, String password, Role role, String surname, String given_name,
+                         String email, String phone, String info, String position, Address addresses) {
+        final User user = new User(login,password,role,surname,given_name,email,phone,info,position,addresses);
+        return this.repository.save(user);
     }
 
     //

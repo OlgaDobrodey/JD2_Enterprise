@@ -38,6 +38,9 @@ public class Chats extends HttpServlet {
             return "/views/indexSignIn.jsp";
         }
         User sender = (User) session.getAttribute(Constants.USER);
+        if (sender == null) {
+            return "/views/indexSignIn.jsp";
+        }
         model.addAttribute("doctors", userView.searchAllDoctors());
         if (sender.getRole() == Role.DOCTOR) {
             model.addAttribute("patients", userView.searchAllPatients());
@@ -74,7 +77,7 @@ public class Chats extends HttpServlet {
             model.addAttribute("patients", userView.searchAllPatients());
         }
         model.addAttribute("doctor", receiver);
-        model.addAttribute("listMessages", this.messageView.findAllMessageWithSenderAndReceiver(sender,receiver));
+        model.addAttribute("listMessages", this.messageView.findAllMessageWithSenderAndReceiver(sender, receiver));
 
 
 //        Set<String> set = userView.getUsersLogin();   //список логинов всех пользователей

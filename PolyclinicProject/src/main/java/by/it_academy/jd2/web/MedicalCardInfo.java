@@ -51,11 +51,6 @@ public class MedicalCardInfo {
                               @RequestParam(name = "status") String status,
                               Model model) {
 
-//        MedicalCard card = new MedicalCard();
-//        card.setDoctor(this.userView.searchUserLogin(doctor));
-//        card.setPatient(this.userView.searchUserLogin(patient));
-//        card.setDiagnosis(diagnosis);
-
         final MedicalCard cardSave = medicalCardView.saveMedicalCard(this.userView.searchUserLogin(doctor),
                 this.userView.searchUserLogin(patient), diagnosis  );
         model.addAttribute("cardSave", cardSave);

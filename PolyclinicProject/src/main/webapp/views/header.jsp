@@ -43,16 +43,22 @@
                         <a class="nav-link active" aria-current="page"
                            href="${pageContext.request.contextPath}/allAddress">Address</a>
                     </li>
+
                 </ul>
                 <ul class="nav justify-content-end" style="margin-right: 50px;">
                     <c:choose>
                         <c:when test="${sessionScope.user == null}">
+
                             <li class="nav-item">
                                 <a class="nav-link active"  aria-current="page"
                                    href="${pageContext.request.contextPath}/signIn">Sign In</a>
                             </li>
                         </c:when>
                         <c:otherwise>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page"
+                                   href="${pageContext.request.contextPath}/chat">CHAT</a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="logUser" role="button"
                                    data-bs-toggle="dropdown" aria-expanded="false">

@@ -7,4 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IPassportRepository extends JpaRepository<Passport,String> {
     Passport findPassportByUsers(User user);
+    Passport findPassportByIdentification(String identification);
+
 }

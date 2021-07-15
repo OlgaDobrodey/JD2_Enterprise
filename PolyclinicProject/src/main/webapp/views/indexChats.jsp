@@ -18,43 +18,52 @@
 <body>
 
 <%@include file="header.jsp" %>
+<div class="container">
+    <div class="main-body">
+
+            <form method="post" action="message">
+                <div class="row">
+                <div class="col">
+
+                    Кому:<select name="userReceiver">
+                    <optgroup label="Доктора">
+                        <c:forEach var="doctor" items="${doctors}">
+                            <option value="${doctor.login}"> ${doctor.surname}<br></option>
+                        </c:forEach>
+                    </optgroup>
+                    <c:if test="${patients!=null}">
+                        <optgroup label="Пациенты">
+                            <c:forEach var="patient" items="${patients}">
+                                <option value="${patient.login}"> ${patient.surname}<br></option>
+                            </c:forEach></optgroup>
+                    </c:if>
+
+                </select>
+                </div>
+                <div class="col">
 
 
-<form method="post" action="message">
+                    <c:forEach var="message" items="${listMessages}">
+                        <td>${message.id_message}</td>
+                        <td>${message.sender.surname}</td>
+                        <td>${message.receiver.surname}</td>
+                        <td>${message.message}</td>
+                        <td>${message.date_msg.toString().substring(0, 19)}</td>
+                        <br>
+                    </c:forEach>
+                    Сообщение:<br>
+                    <input type="text" name="message"/>
+                    <br><br>
+                    <button type="submit">Отправить</button>
+                    <button type="reset">Очистить</button>
 
-    Кому:<select name="userReceiver">
-    <optgroup label="Доктора">
-        <c:forEach var="doctor" items="${doctors}">
-            <option value="${doctor.login}"> ${doctor.surname}<br></option>
-        </c:forEach>
-    </optgroup>
-    <c:if test="${patients!=null}">
-        <optgroup label="Пациенты">
-            <c:forEach var="patient" items="${patients}">
-                <option value="${patient.login}"> ${patient.surname}<br></option>
-            </c:forEach></optgroup>
-    </c:if>
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
-</select>
 
-    <br><br>
-
-    Сообщение:<br>
-    <input type="text" name="message"/>
-    <br><br>
-
-    <button type="submit">Отправить</button>
-    <button type="reset">Очистить</button>
-</form>
-
-<c:forEach var="message" items="${listMessages}">
-    <td>${message.id_message}</td>
-    <td>${message.sender.surname}</td>
-    <td>${message.receiver.surname}</td>
-    <td>${message.message}</td>
-    <td>${message.date_msg.toString().substring(0, 19)}</td>
-    <br>
-</c:forEach>
 
 <%@include file="footer.jsp" %>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"

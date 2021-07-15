@@ -17,6 +17,9 @@ public class Address {
     private String house;
     private String flat;
 
+    public Address() {
+    }
+
     public Integer getId() {
         return id;
     }

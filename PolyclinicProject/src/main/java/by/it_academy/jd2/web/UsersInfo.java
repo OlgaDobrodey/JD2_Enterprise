@@ -41,20 +41,6 @@ public class UsersInfo {
         return Role.pathRoleUser((User) session.getAttribute(Constants.USER));
     }
 
-
-    @GetMapping(value = "/{user}/passport")
-    public String getUserPassport(HttpServletRequest req, Model model) {
-        HttpSession session = req.getSession();
-        if (session.isNew()) {
-            return "/views/indexSignIn.jsp";
-        }
-        User user = (User) session.getAttribute(Constants.USER);
-        Passport passport = passportView.findPassport(user);
-        // String passport = "PASSPORT";
-        model.addAttribute("passport", passport);
-        return Role.pathRoleUser(user);
-    }
-
     @GetMapping(value = "/doctor/{login}")
     public String getCardDoctor(Model model, @PathVariable String login) {
         model.addAttribute("doctor", this.userView.searchUserLogin(login));
@@ -78,6 +64,7 @@ public class UsersInfo {
 
         return "/views/users/cardUser.jsp";
     }
+
 
 
 

@@ -28,6 +28,7 @@ public class User {
     private String phone;
     @Column(name = "info")
     private String info;
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "medical_card")
     private int madical_card;
     @Column(name = "position")
@@ -43,6 +44,19 @@ public class User {
 //    private Passport passports;
 
     public User() {
+    }
+
+    public User(String login, String password, Role role, String surname, String given_name, String email, String phone, String info, String position, Address addresses) {
+        this.login = login;
+        this.password = password;
+        this.role = role;
+        this.surname = surname;
+        this.given_name = given_name;
+        this.email = email;
+        this.phone = phone;
+        this.info = info;
+        this.position = position;
+        this.addresses = addresses;
     }
 
     public String getLogin() {
@@ -128,6 +142,7 @@ public class User {
     public Address getAddresses() {
         return addresses;
     }
+
     public void setAddresses(Address addresses) {
         this.addresses = addresses;
     }
