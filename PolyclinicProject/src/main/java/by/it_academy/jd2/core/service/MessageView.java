@@ -1,13 +1,12 @@
 package by.it_academy.jd2.core.service;
 
-import by.it_academy.jd2.core.model.Message;
-import by.it_academy.jd2.core.model.User;
+import by.it_academy.jd2.core.model.chat.Message;
+import by.it_academy.jd2.core.model.people.User;
 
 import by.it_academy.jd2.core.service.api.IMessageView;
 import by.it_academy.jd2.storage.api.IMessageRepository;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 

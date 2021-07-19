@@ -1,4 +1,4 @@
-package by.it_academy.jd2.core.model;
+package by.it_academy.jd2.core.model.medical;
 
 public enum Status {
     POSITIV,

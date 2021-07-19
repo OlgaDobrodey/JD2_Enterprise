@@ -1,9 +1,9 @@
-package by.it_academy.jd2.web;
+package by.it_academy.jd2.web.jsp;
 
 
-import by.it_academy.jd2.core.model.Message;
-import by.it_academy.jd2.core.model.Role;
-import by.it_academy.jd2.core.model.User;
+import by.it_academy.jd2.core.model.chat.Message;
+import by.it_academy.jd2.core.model.people.Role;
+import by.it_academy.jd2.core.model.people.User;
 import by.it_academy.jd2.core.service.api.IMessageView;
 import by.it_academy.jd2.core.service.api.IUserView;
 import by.it_academy.jd2.core.utils.Constants;
@@ -15,8 +15,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 
 /**
  * seng RequestDispatcher on print messages
@@ -33,7 +31,7 @@ public class Chats extends HttpServlet {
 
     @GetMapping(value = "/chat")
     public String chat(HttpServletRequest req, Model model) {
-        HttpSession session = req.getSession();
+        HttpSession session = req.getSession(false);
         if (session.isNew()) {
             return "/views/indexSignIn.jsp";
         }

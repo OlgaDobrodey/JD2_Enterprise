@@ -1,13 +1,14 @@
-package by.it_academy.jd2.core.model;
+package by.it_academy.jd2.core.model.chat;
 
 
+
+import by.it_academy.jd2.core.model.people.User;
+import jakarta.validation.constraints.NotNull;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 
 
 /**
@@ -24,16 +25,16 @@ public class Message implements Serializable {
     private Integer id_message;
 
     @OneToOne
-    @JoinColumn(name = "sender")
+    @JoinColumn(name = "sender", nullable = false)
     private User sender;
 
 
     @OneToOne
-    @JoinColumn(name = "receiver")
+    @JoinColumn(name = "receiver", nullable = false)
     private User receiver;
-
+    @NotNull
     private String message;
-
+    @NotNull
     @CreationTimestamp
     private Date date_msg;
 
@@ -82,7 +83,7 @@ public class Message implements Serializable {
     }
 
     public Date getDate_msg() {
-           return date_msg;
+        return date_msg;
     }
 
     public void setDate_msg(Date date_msg) {

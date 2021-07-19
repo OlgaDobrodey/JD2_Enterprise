@@ -1,26 +1,23 @@
-package by.it_academy.jd2.web;
+package by.it_academy.jd2.web.jsp;
 
 
-import by.it_academy.jd2.core.model.*;
+import by.it_academy.jd2.core.model.people.*;
 import by.it_academy.jd2.core.service.api.*;
-import by.it_academy.jd2.core.utils.Constants;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
-import java.util.List;
 
 /**
  * Class Sign Up chat
  */
 @Controller
-public class SignUp {
+public class NewSave {
 
     private final IUserView userView;
     private final IPassportView passportView;
@@ -28,7 +25,7 @@ public class SignUp {
     private final IDiagnosisView diagnosisView;
     private final IAddressView addressView;
 
-    public SignUp(IUserView userView, IPassportView passportView, IMedicalCardView medicalCardView, IDiagnosisView diagnosisView, IAddressView addressView) {
+    public NewSave(IUserView userView, IPassportView passportView, IMedicalCardView medicalCardView, IDiagnosisView diagnosisView, IAddressView addressView) {
         this.userView = userView;
         this.passportView = passportView;
         this.medicalCardView = medicalCardView;
@@ -38,7 +35,16 @@ public class SignUp {
 
     @GetMapping(value = "/signUp")
     public String checkRegistration(HttpServletRequest req) {
-        HttpSession session = req.getSession();
+        HttpSession session = req.getSession(false);
+        if (session.isNew()) {
+            return "/views/indexSignIn.jsp";
+        }
+        return "/views/indexSignUp.jsp";
+
+    }
+    @GetMapping(value = "/departament")
+    public String setNewDepartamenr(HttpServletRequest req) {
+        HttpSession session = req.getSession(false);
         if (session.isNew()) {
             return "/views/indexSignIn.jsp";
         }

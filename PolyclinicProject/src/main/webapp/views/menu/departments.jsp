@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page import="by.it_academy.jd2.core.model.people.Role" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,54 +13,85 @@
 </head>
 <body>
 <%@include file="../header.jsp" %>
-<div class="container">
-    <div class="main-body">
-        <div class = "text-center">
-            <h1>OUR DEPARTMENTS</h1><br>
-        </div>
-        <div class="text-center"><h4>Information about ...</h4></div><br>
 
+<div class="container">
+
+        <div class="text-center"><h4 class="text-info">Information about department</h4></div>
+        <br>
+<c:if test="${departmentSearch!=null}">
+    <div class="text-center"><h5 class="text-info">${departmentSearch.nameArticle}</h5></div>
+    <div class="row">
+        <div class="col-lg-4">
+            <img src="${departmentSearch.linkImage}" alt="${departmentSearch.nameArticle}"  width="350px" >
+        </div>
+        <div class="col-lg-8">
+            <h5 class="text-info">${departmentSearch.titlePage}</h5>
+            <p>${departmentSearch.longText}</p><br>
+        </div>
+    </div>
+</c:if>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3  gutters-sm">
-            <c:forEach items="${requestScope.doctors}" var="psp">
+            <c:forEach items="${requestScope.department}" var="dpt">
                 <div class="col mb-3">
+
                     <div class="card">
-                        <img src="https://via.placeholder.com/340x120/87CEFA/000000" alt="Cover" class="card-img-top">
-                        <div class="card-body text-center">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png"
-                                 style="width:100px;margin-top:-65px" alt="User"
-                                 class="img-fluid img-thumbnail rounded-circle border-0 mb-3">
-                            <h5 class="card-title"><a
-                                    href="${pageContext.request.contextPath}/doctor/${psp.login}">${psp.surname} ${psp.given_name}</a></h5>
-                            <p class="text-secondary mb-1">${psp.position}</p>
-                            <p class="text-muted font-size-sm">${psp.email}</p>
+
+                        <img src="${dpt.linkImage}" alt="${dpt.nameArticle}" class="card-img-top">
+                        <div class="card-body text-center text-info">
+                            <h5 class="card-title text-info ">
+                                <a href="${pageContext.request.contextPath}/Departments/${dpt.idDepartments}">${dpt.nameArticle}</a>
+                            </h5>
+                            <p class="text-secondary mb-1">${dpt.shotText}</p>
+
                         </div>
-                            <%--                        <div class="card-footer">--%>
-                            <%--                            <button class="btn btn-light btn-sm bg-white has-icon btn-block" type="button"><i class="material-icons">add</i>Follow</button>--%>
-                            <%--                            <button class="btn btn-light btn-sm bg-white has-icon ml-2" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg></button>--%>
-                            <%--                        </div>--%>
                     </div>
+
                 </div>
             </c:forEach>
 
         </div>
+        <c:if test="${sessionScope.user.role==Role.ADMIN}">
+            <h4>Create new department</h4>
+            <form name="Departments" method="post">
+                <div class="row">
+
+                    <div class="col-lg-4">
+
+                        <div class="mb-3"><br>
+                            <label for="nameArticle" class="form-label">Name Departement</label>
+                            <input type="text" name="nameArticle" class="form-control" id="nameArticle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="shotText" class="form-label">Shot Text</label>
+                            <input type="text" name="shotText" class="form-control" id="shotText" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="titlePage" class="form-label">Title Page</label>
+                            <input type="text" name="titlePage" class="form-control" id="titlePage" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="longText" class="form-label">Long Text</label>
+                            <input type="text" name="longText" class="form-control" id="longText" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="linkImage" class="form-label">Link Image</label>
+                            <input type="text" name="linkImage" class="form-control" id="linkImage">
+                        </div>
+
+
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-info">SAVE</button>
+            </form>
+
+
+        </c:if>
     </div>
-</div>
 
+<%@include file="../footer.jsp" %>
 <style type="text/css">
-    body {
-        margin-top: 20px;
-        color: #1a202c;
-        text-align: left;
-        background-color: #e2e8f0;
-    }
 
-    .main-body {
-        padding: 15px;
-    }
-
-    .card {
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-    }
 
     .card {
         position: relative;
@@ -69,36 +101,13 @@
         word-wrap: break-word;
         background-color: #fff;
         background-clip: border-box;
-        border: 0 solid rgba(0, 0, 0, .125);
+        border: 0 solid transparent;
         border-radius: .25rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 2px 6px 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%);
     }
-
-    .card-body {
-        flex: 1 1 auto;
-        min-height: 1px;
-        padding: 1rem;
-    }
-
-    /*.card-footer:last-child {*/
-    /*    border-radius: 0 0 .25rem .25rem;*/
-    /*}*/
-
-    /*.card-footer, .card-header {*/
-    /*    display: flex;*/
-    /*    align-items: center;*/
-    /*}*/
-
-    /*.card-footer {*/
-    /*    padding: .5rem 1rem;*/
-    /*    background-color: #fff;*/
-    /*    border-top: 0 solid rgba(0, 0, 0, .125);*/
-    /*}*/
-
-
 </style>
 
-
-<%@include file="../footer.jsp" %>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
         crossorigin="anonymous"></script>

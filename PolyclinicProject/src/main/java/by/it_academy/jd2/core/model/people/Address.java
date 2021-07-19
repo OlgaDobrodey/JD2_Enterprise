@@ -1,7 +1,4 @@
-package by.it_academy.jd2.core.model;
-
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.GenerationTime;
+package by.it_academy.jd2.core.model.people;
 
 import javax.persistence.*;
 

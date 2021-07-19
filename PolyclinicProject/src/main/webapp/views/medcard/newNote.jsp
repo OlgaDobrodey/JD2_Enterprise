@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page import=" by.it_academy.jd2.core.model.Status" %>
+<%@ page import=" by.it_academy.jd2.core.model.medical.Status" %>
 <!doctype html>
 <html lang="ru">
 <head>
@@ -17,7 +17,10 @@
 <main class="container">
 
     <form action="newNote" method="post" required>
-        <br><h4 class="text-info text-center">CREATE A NEW NOTE</h4>
+        <br><h4 class="text-info text-center">CREATE A NEW DIAGNOSIS</h4>
+        <p><input type="button" class="btn btn-info"
+                  onclick="location.href='${pageContext.request.contextPath}/${sessionScope.user.login}/medicalCart';"
+                  value="Back Medical Card"/></p>
         <div class="mb-3">
             <label for="doctor" class="form-label">Doctor</label>
             <select class="form-select" name="doctor" id="doctor" aria-label="Default select example">

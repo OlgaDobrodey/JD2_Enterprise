@@ -1,5 +1,5 @@
-<%@ page import="by.it_academy.jd2.core.model.User" %>
-<%@ page import=" by.it_academy.jd2.core.model.Status" %>
+<%@ page import="by.it_academy.jd2.core.model.people.User" %>
+<%@ page import=" by.it_academy.jd2.core.model.medical.Status" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>

@@ -1,8 +1,8 @@
 package by.it_academy.jd2.core.service.api;
 
-import by.it_academy.jd2.core.model.Passport;
-import by.it_academy.jd2.core.model.Sex;
-import by.it_academy.jd2.core.model.User;
+import by.it_academy.jd2.core.model.people.Passport;
+import by.it_academy.jd2.core.model.people.Sex;
+import by.it_academy.jd2.core.model.people.User;
 
 import java.time.LocalDate;
 import java.util.List;

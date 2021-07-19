@@ -1,8 +1,8 @@
 package by.it_academy.jd2.storage.api;
 
 
-import by.it_academy.jd2.core.model.MedicalCard;
-import by.it_academy.jd2.core.model.User;
+import by.it_academy.jd2.core.model.medical.MedicalCard;
+import by.it_academy.jd2.core.model.people.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

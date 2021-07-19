@@ -1,6 +1,8 @@
-package by.it_academy.jd2.web;
+package by.it_academy.jd2.web.jsp;
 
-import by.it_academy.jd2.core.model.*;
+import by.it_academy.jd2.core.model.medical.Diagnosis;
+import by.it_academy.jd2.core.model.medical.MedicalCard;
+import by.it_academy.jd2.core.model.people.User;
 import by.it_academy.jd2.core.service.api.IDiagnosisView;
 import by.it_academy.jd2.core.service.api.IMedicalCardView;
 import by.it_academy.jd2.core.service.api.IPassportView;
@@ -33,17 +35,19 @@ public class UsersInfo {
 
     @GetMapping(value = "/{user}")
     public String acountClinet(HttpServletRequest req, Model model) {
-        HttpSession session = req.getSession();
+        HttpSession session = req.getSession(false);
         if (session.isNew()) {
             return "/views/indexSignIn.jsp";
         }
         User user = (User) session.getAttribute(Constants.USER);
-        return Role.pathRoleUser((User) session.getAttribute(Constants.USER));
+        return user.getRole().getPathToProfile();
+                //Role.pathRoleUser((User) session.getAttribute(Constants.USER));
     }
 
     @GetMapping(value = "/doctor/{login}")
     public String getCardDoctor(Model model, @PathVariable String login) {
-        model.addAttribute("doctor", this.userView.searchUserLogin(login));
+        model.addAttribute("userCard", this.userView.searchUserLogin(login));
+        model.addAttribute("doctor", true);
         return "/views/users/cardUser.jsp";
     }
 
@@ -51,7 +55,7 @@ public class UsersInfo {
     public String getCardPatient(Model model, @PathVariable String login) {
         User user = this.userView.searchUserLogin(login);
         List<MedicalCard> card =this.medicalCardView.findAllDoctorsForPatient(user);
-        Map<MedicalCard, List< Diagnosis>> historyMap = new HashMap<>();
+        Map<MedicalCard, List<Diagnosis>> historyMap = new HashMap<>();
         for (MedicalCard medicalCard : card) {
            List< Diagnosis> diagnosis = diagnosisView.getAllByCard(medicalCard);
            historyMap.put(medicalCard,diagnosis);

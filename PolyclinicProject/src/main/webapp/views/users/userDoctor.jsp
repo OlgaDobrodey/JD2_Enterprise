@@ -72,7 +72,7 @@
                                     </div>
                                     <p><input type="button" class="btn btn-info"
                                               onclick="location.href='${pageContext.request.contextPath}/${sessionScope.user.login}/newNote';"
-                                              value="New note"/></p>
+                                              value="New Diagnosis"/></p>
                                     <c:if test="${history.size()==0}">
                                         <div class="row">
                                             <div class="col"><br><h4 class="text-center">The medical card is empty</h4>

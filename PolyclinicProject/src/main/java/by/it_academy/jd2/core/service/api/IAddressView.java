@@ -1,7 +1,6 @@
 package by.it_academy.jd2.core.service.api;
 
-import by.it_academy.jd2.core.model.Address;
-import com.sun.source.doctree.SeeTree;
+import by.it_academy.jd2.core.model.people.Address;
 
 import java.util.List;
 

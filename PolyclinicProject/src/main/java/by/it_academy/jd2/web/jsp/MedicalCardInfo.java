@@ -1,11 +1,14 @@
-package by.it_academy.jd2.web;
+package by.it_academy.jd2.web.jsp;
 
-import by.it_academy.jd2.core.model.*;
+import by.it_academy.jd2.core.model.medical.Diagnosis;
+import by.it_academy.jd2.core.model.medical.MedicalCard;
+import by.it_academy.jd2.core.model.people.Role;
+import by.it_academy.jd2.core.model.medical.Status;
+import by.it_academy.jd2.core.model.people.User;
 import by.it_academy.jd2.core.service.api.IDiagnosisView;
 import by.it_academy.jd2.core.service.api.IMedicalCardView;
 import by.it_academy.jd2.core.service.api.IPassportView;
 import by.it_academy.jd2.core.service.api.IUserView;
-import by.it_academy.jd2.core.utils.Constants;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -103,7 +106,8 @@ public class MedicalCardInfo {
             } else historyMap.put(card, Status.POSITIV);
         }
         model.addAttribute("history", historyMap);
-        return Role.pathRoleUser(user);
+        return user.getRole().getPathToProfile();
+               // Role.pathRoleUser(user);
     }
 
 

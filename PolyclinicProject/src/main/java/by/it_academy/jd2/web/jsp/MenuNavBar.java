@@ -1,12 +1,15 @@
-package by.it_academy.jd2.web;
+package by.it_academy.jd2.web.jsp;
 
 
+import by.it_academy.jd2.core.model.menu.Department;
 import by.it_academy.jd2.core.service.api.IAddressView;
+import by.it_academy.jd2.core.service.api.IDepartementView;
 import by.it_academy.jd2.core.service.api.IPassportView;
 import by.it_academy.jd2.core.service.api.IUserView;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpServlet;
 
@@ -18,11 +21,13 @@ public class MenuNavBar extends HttpServlet {
     private final IUserView userView;
 private final IPassportView passportView;
     private final IAddressView addressView;
+    private final IDepartementView departementView;
 
-    public MenuNavBar(IUserView userView, IPassportView passportView, IAddressView addressView) {
+    public MenuNavBar(IUserView userView, IPassportView passportView, IAddressView addressView, IDepartementView departementView) {
         this.userView = userView;
         this.passportView = passportView;
         this.addressView = addressView;
+        this.departementView = departementView;
     }
 
     @GetMapping(value = "/AboutUs")
@@ -37,12 +42,10 @@ private final IPassportView passportView;
     }
     @GetMapping(value = "/Home")
     public String home(Model model) {
-       // model.addAttribute("doctors", userView.searchAllDoctors());
         return "/views/menu/home.jsp";
     }
     @GetMapping(value = "/Contact")
     public String contact(Model model) {
-        // model.addAttribute("doctors", userView.searchAllDoctors());
         return "/views/menu/contact.jsp";
     }
     @GetMapping(value = "/Disease")
@@ -52,7 +55,7 @@ private final IPassportView passportView;
     }
     @GetMapping(value = "/Departments")
     public String departments(Model model) {
-        // model.addAttribute("doctors", userView.searchAllDoctors());
+        model.addAttribute("department", this.departementView.findAll());
         return "/views/menu/departments.jsp";
     }
 
@@ -67,6 +70,14 @@ private final IPassportView passportView;
         model.addAttribute("address", addressView.findAllAddress());
         return "/views/menu/allAddress.jsp";
     }
+
+    @GetMapping(value = "/Departments/{idDepartments}")
+    public String departments(Model model, @PathVariable String idDepartments) {
+        model.addAttribute("department", this.departementView.findAll());
+        model.addAttribute("departmentSearch", this.departementView.findDepartamentById(idDepartments));
+        return "/views/menu/departments.jsp";
+    }
+
 
 
 

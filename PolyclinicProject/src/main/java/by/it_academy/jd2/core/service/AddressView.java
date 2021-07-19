@@ -1,6 +1,6 @@
 package by.it_academy.jd2.core.service;
 
-import by.it_academy.jd2.core.model.Address;
+import by.it_academy.jd2.core.model.people.Address;
 import by.it_academy.jd2.core.service.api.IAddressView;
 import by.it_academy.jd2.storage.api.IAddressRepository;
 

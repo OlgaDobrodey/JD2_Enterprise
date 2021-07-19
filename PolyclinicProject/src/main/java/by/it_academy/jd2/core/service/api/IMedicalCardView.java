@@ -1,9 +1,7 @@
 package by.it_academy.jd2.core.service.api;
 
-import by.it_academy.jd2.core.model.Diagnosis;
-import by.it_academy.jd2.core.model.MedicalCard;
-import by.it_academy.jd2.core.model.Status;
-import by.it_academy.jd2.core.model.User;
+import by.it_academy.jd2.core.model.medical.MedicalCard;
+import by.it_academy.jd2.core.model.people.User;
 
 import java.util.List;
 

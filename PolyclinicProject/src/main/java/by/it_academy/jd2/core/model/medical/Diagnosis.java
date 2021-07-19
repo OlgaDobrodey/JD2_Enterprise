@@ -1,8 +1,7 @@
-package by.it_academy.jd2.core.model;
+package by.it_academy.jd2.core.model.medical;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Objects;
 
 @Entity

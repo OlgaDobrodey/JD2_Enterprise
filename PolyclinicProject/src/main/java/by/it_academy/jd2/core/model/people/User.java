@@ -1,4 +1,4 @@
-package by.it_academy.jd2.core.model;
+package by.it_academy.jd2.core.model.people;
 
 
 import org.hibernate.annotations.Generated;
@@ -33,6 +33,8 @@ public class User {
     private int madical_card;
     @Column(name = "position")
     private String position;
+    @Column(name = "link")
+    private String link;
 
     @OneToOne
     @JoinColumn(name = "address")
@@ -146,13 +148,14 @@ public class User {
     public void setAddresses(Address addresses) {
         this.addresses = addresses;
     }
-    //    public Passport getPassport() {
-//        return passports;
-//    }
-//
-//    public void setPassport(Passport passport) {
-//        this.passports = passport;
-//    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
 
     @Override
     public String toString() {
@@ -167,7 +170,8 @@ public class User {
                 ", info='" + info + '\'' +
                 ", madical_card=" + madical_card +
                 ", position='" + position + '\'' +
-//                ", passport='" + passports + '\'' +
+                ", link='" + link + '\'' +
+                ", addresses=" + addresses +
                 '}';
     }
 }

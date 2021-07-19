@@ -1,8 +1,9 @@
-package by.it_academy.jd2.core.model;
+package by.it_academy.jd2.core.model.medical;
+
+import by.it_academy.jd2.core.model.people.User;
 
 import javax.persistence.*;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "medical_card", schema = "polyclinic")

@@ -7,6 +7,7 @@ import by.it_academy.jd2.storage.api.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.auditing.config.IsNewAwareAuditingHandlerBeanDefinitionParser;
 
 
 @Configuration
@@ -30,16 +31,23 @@ public class RootConfig {
     }
 
     @Bean
-    public IMessageView messageView(IMessageRepository repository){
+    public IMessageView messageView(IMessageRepository repository) {
         return new MessageView(repository);
     }
 
     @Bean
-    public IMedicalCardView medicalCardView(IMedicalCardRepository repository, IDiagnosisRepository diagnosisRepository)
-    {return new MedicalCardView(repository,diagnosisRepository);}
+    public IMedicalCardView medicalCardView(IMedicalCardRepository repository, IDiagnosisRepository diagnosisRepository) {
+        return new MedicalCardView(repository, diagnosisRepository);
+    }
 
     @Bean
-    public IDiagnosisView diagnosisView(IDiagnosisRepository repository){return new DiagnosisView(repository);}
+    public IDiagnosisView diagnosisView(IDiagnosisRepository repository) {
+        return new DiagnosisView(repository);
+    }
 
+    @Bean
+    public IDepartementView departementView(IDepartamentRepository repository) {
+        return new DepartamentView(repository);
+    }
 
 }

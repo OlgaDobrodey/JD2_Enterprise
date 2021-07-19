@@ -21,48 +21,62 @@
 <div class="container">
     <div class="main-body">
 
-            <form method="post" action="message">
-                <div class="row">
-                <div class="col">
+        <form method="post" action="message">
+            <div class="row">
+                <div class="col-4">
 
-                    Кому:<select name="userReceiver">
-                    <optgroup label="Доктора">
+                    Send:<select class="form-select" name="userReceiver">
+                    <optgroup label="Doctors">
                         <c:forEach var="doctor" items="${doctors}">
-                            <option value="${doctor.login}"> ${doctor.surname}<br></option>
+                            <c:if test="${doctor.login!=sessionScope.user.login}">
+                                <option value="${doctor.login}"> ${doctor.surname}<br></option>
+                            </c:if>
                         </c:forEach>
                     </optgroup>
                     <c:if test="${patients!=null}">
-                        <optgroup label="Пациенты">
+                        <optgroup label="Patients">
                             <c:forEach var="patient" items="${patients}">
-                                <option value="${patient.login}"> ${patient.surname}<br></option>
+                                <c:if test="${patient.login!=sessionScope.user.login}">
+                                    <option value="${patient.login}"> ${patient.surname}<br></option>
+                                </c:if>
                             </c:forEach></optgroup>
                     </c:if>
-
                 </select>
-                </div>
-                <div class="col">
-
-
-                    <c:forEach var="message" items="${listMessages}">
-                        <td>${message.id_message}</td>
-                        <td>${message.sender.surname}</td>
-                        <td>${message.receiver.surname}</td>
-                        <td>${message.message}</td>
-                        <td>${message.date_msg.toString().substring(0, 19)}</td>
-                        <br>
-                    </c:forEach>
-                    Сообщение:<br>
-                    <input type="text" name="message"/>
                     <br><br>
-                    <button type="submit">Отправить</button>
-                    <button type="reset">Очистить</button>
+                    Сообщение:<br>
+                    <div>
+                        <input type="text" class="form-control" name="message" placeholder="Enter text here..."/></div>
+                    <br><button class="btn btn-info" type="submit">Send</button>
+                    <button class="btn btn-info" type="reset">Сlear</button>
+                </div>
+                <div class="col-8">
+                    <c:if test="${listMessages!=null}">
+                    <table  class="table" >
+<%--                        //table-striped table-info"--%>
+                        <tbody>
+                        <tr class="text-info">
+                            <th width="25%" class="text-info">Date</th>
+                            <th width="20%">Sender</th>
+                            <th width="20%">Receiver</th>
+                            <th width="35%">Message</th>
+                        </tr>
+                        <c:forEach var="message" items="${listMessages}">
+                            <tr>
+                                <td>${message.date_msg.toString().substring(0, 19)}</td>
+                                <td>${message.sender.surname} ${message.sender.given_name}</td>
+                                <td>${message.receiver.surname} ${message.receiver.given_name}</td>
+                                <td>${message.message}</td>
 
-                </div>
-                </div>
-            </form>
-        </div>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table></c:if>
+
+                       </div>
+            </div>
+        </form>
     </div>
-
+</div>
 
 
 <%@include file="footer.jsp" %>

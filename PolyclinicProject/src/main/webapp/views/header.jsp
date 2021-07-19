@@ -19,28 +19,28 @@
                         <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/Home">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page"
+                        <a class="nav-link" aria-current="page"
                            href="${pageContext.request.contextPath}/AboutUs">ABOUT
                             US</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page"
+                        <a class="nav-link" aria-current="page"
                            href="${pageContext.request.contextPath}/Departments">DEPARTMENTS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page"
+                        <a class="nav-link" aria-current="page"
                            href="${pageContext.request.contextPath}/Disease">DISEASE</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page"
+                        <a class="nav-link" aria-current="page"
                            href="${pageContext.request.contextPath}/Contact">CONTACT</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page"
+                        <a class="nav-link" aria-current="page"
                            href="${pageContext.request.contextPath}/allPassports">Passports</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page"
+                        <a class="nav-link" aria-current="page"
                            href="${pageContext.request.contextPath}/allAddress">Address</a>
                     </li>
 
@@ -50,13 +50,13 @@
                         <c:when test="${sessionScope.user == null}">
 
                             <li class="nav-item">
-                                <a class="nav-link active"  aria-current="page"
+                                <a class="nav-link"  aria-current="page"
                                    href="${pageContext.request.contextPath}/signIn">Sign In</a>
                             </li>
                         </c:when>
                         <c:otherwise>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page"
+                                <a class="nav-link" aria-current="page"
                                    href="${pageContext.request.contextPath}/chat">CHAT</a>
                             </li>
                             <li class="nav-item dropdown">

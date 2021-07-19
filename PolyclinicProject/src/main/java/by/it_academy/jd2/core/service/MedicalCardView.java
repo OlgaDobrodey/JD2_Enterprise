@@ -1,14 +1,13 @@
 package by.it_academy.jd2.core.service;
 
-import by.it_academy.jd2.core.model.Diagnosis;
-import by.it_academy.jd2.core.model.MedicalCard;
-import by.it_academy.jd2.core.model.Status;
-import by.it_academy.jd2.core.model.User;
+import by.it_academy.jd2.core.model.medical.Diagnosis;
+import by.it_academy.jd2.core.model.medical.MedicalCard;
+import by.it_academy.jd2.core.model.medical.Status;
+import by.it_academy.jd2.core.model.people.User;
 import by.it_academy.jd2.core.service.api.IMedicalCardView;
 import by.it_academy.jd2.storage.api.IDiagnosisRepository;
 import by.it_academy.jd2.storage.api.IMedicalCardRepository;
 
-import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 
