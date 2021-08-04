@@ -39,11 +39,11 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                 <a class="text-info" aria-current="page"
-                                   href="${pageContext.request.contextPath}/${sessionScope.user.login}">My acount</a>
+                                   href="${pageContext.request.contextPath}/${sessionScope.user.username}">My acount</a>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                 <a class="text-info" aria-current="page"
-                                   href="${pageContext.request.contextPath}/${sessionScope.user.login}/medicalCart">Medical
+                                   href="${pageContext.request.contextPath}/${sessionScope.user.username}/medicalCart">Medical
                                     cart</a>
                             </li>
                         </ul>
@@ -80,7 +80,7 @@
 
                                     <tr>
                                         <td>${card.doctor.surname}</td>
-                                        <td><a class="link-dark" href="${pageContext.request.contextPath}/${sessionScope.user.login}/medicalCart/${card.id}">${card.diagnosis}</a></td>
+                                        <td><a class="link-dark" href="${pageContext.request.contextPath}/${sessionScope.user.username}/medicalCart/${card.id}">${card.diagnosis}</a></td>
                                         <td>${history.get(card)}</td>
 
                                     </tr>

@@ -2,8 +2,8 @@ package by.it_academy.jd2.core.utils;
 
 
 public class Constants {
-    public static final String LOGIN = "login";
-    public static final String PASSWORD = "psw";
+    public static final String LOGIN = "username";
+    public static final String PASSWORD = "password";
     public static final String NAME = "name";
     public static final String PHONE = "phone";
     public static final String FORMAT_DATE = "dd.MM.yyyy hh:mm:ss";

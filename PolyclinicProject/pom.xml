@@ -37,9 +37,20 @@
             </properties>
         </profile>
     </profiles>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-bom</artifactId>
+                <version>5.5.1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
+    <!--JAVAX-->
     <dependencies>
-        <!--JAVAX-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -69,7 +80,7 @@
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.8.1</version>
         </dependency>
-<!--        Junit-->
+        <!--        Junit-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -88,24 +99,39 @@
             <artifactId>c3p0</artifactId>
             <version>0.9.5.5</version>
         </dependency>
-        <!--SPRING-->
-
-    <dependency>
-        <groupId>org.springframework.data</groupId>
-        <artifactId>spring-data-jpa</artifactId>
-        <version>2.5.1</version>
-    </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20210307</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>2.5.1</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>5.3.8</version>
         </dependency>
-        <!--JAKSON-->
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.12.3</version>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-oauth2-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-oauth2-jose</artifactId>
+        </dependency>
+
 
         <!--POSTGRES-->
         <dependency>
@@ -113,7 +139,7 @@
             <artifactId>postgresql</artifactId>
             <version>42.2.19</version>
         </dependency>
-<!-- HIBERNATE-->
+        <!-- HIBERNATE-->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -132,6 +158,23 @@
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>7.0.1.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.22</version>
+        </dependency>
+        <!--JAKSON-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.12.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.12.3</version>
         </dependency>
     </dependencies>
 
@@ -191,7 +234,7 @@
                 <configuration>
                     <inputEncoding>UTF-8</inputEncoding>
                     <outputEncoding>UTF-8</outputEncoding>
-<!--                    <generateReports>true</generateReports>-->
+                    <!--                    <generateReports>true</generateReports>-->
                 </configuration>
             </plugin>
             <plugin>
@@ -212,12 +255,12 @@
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.6</version>
                 <configuration>
-<!--                    <excludes>-->
-<!--                        <exclude>by/it_academy/jd2/web/**/*</exclude>-->
-<!--                        <exclude>by/it_academy/jd2/core/Constants.*</exclude>-->
-<!--                        <exclude>by/it_academy/jd2/core/storage/*.*</exclude>-->
-<!--                        <exclude>by/it_academy/jd2/core/tool/api/*.*</exclude>-->
-<!--                    </excludes>-->
+                    <!--                    <excludes>-->
+                    <!--                        <exclude>by/it_academy/jd2/web/**/*</exclude>-->
+                    <!--                        <exclude>by/it_academy/jd2/core/Constants.*</exclude>-->
+                    <!--                        <exclude>by/it_academy/jd2/core/storage/*.*</exclude>-->
+                    <!--                        <exclude>by/it_academy/jd2/core/tool/api/*.*</exclude>-->
+                    <!--                    </excludes>-->
                 </configuration>
                 <executions>
                     <execution>

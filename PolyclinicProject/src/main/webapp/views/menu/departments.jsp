@@ -52,7 +52,7 @@
         </div>
         <c:if test="${sessionScope.user.role==Role.ADMIN}">
             <h4>Create new department</h4>
-            <form name="Departments" method="post">
+            <form name="departments" method="post">
                 <div class="row">
 
                     <div class="col-lg-4">

@@ -4,8 +4,8 @@ package by.it_academy.jd2.web.jsp;
 import by.it_academy.jd2.core.model.chat.Message;
 import by.it_academy.jd2.core.model.people.Role;
 import by.it_academy.jd2.core.model.people.User;
-import by.it_academy.jd2.core.service.api.IMessageView;
-import by.it_academy.jd2.core.service.api.IUserView;
+import by.it_academy.jd2.core.service.api.chat.IMessageView;
+import by.it_academy.jd2.core.service.api.people.IUserView;
 import by.it_academy.jd2.core.utils.Constants;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,12 +46,6 @@ public class Chats extends HttpServlet {
         return "/views/indexChats.jsp";
     }
 
-//    @GetMapping(value = "/chat/{login}")
-//    public String getCardDoctor(Model model, @PathVariable String login) {
-//        model.addAttribute("doctor", this.userView.searchUserLogin(login));
-//        return "/views/indexChats.jsp";
-//    }
-
     @PostMapping(value = "/message")
     protected String doMessage(Model model,
                                @RequestParam(name = Constants.USER_RECEIVER) String userReceiverLogin,
@@ -76,24 +70,7 @@ public class Chats extends HttpServlet {
         }
         model.addAttribute("doctor", receiver);
         model.addAttribute("listMessages", this.messageView.findAllMessageWithSenderAndReceiver(sender, receiver));
-
-
-//        Set<String> set = userView.getUsersLogin();   //список логинов всех пользователей
-//        model.addAttribute("setUsers", set);
-
-//        session.setAttribute("send", true);      //aгумент отвечающий за дополнительный коментарий "Cобщение отправлено"
         return "/views/indexChats.jsp";
     }
-
-
-//    @GetMapping(value = "/chats")
-//    public String chat(Model model, HttpServletRequest req) throws ServletException, IOException {
-//        HttpSession session = req.getSession();
-//        User userSender = (User) session.getAttribute("userSender");
-//        final List<String> s = messageView.printMessasgeUserLogin(userSender);
-//        model.addAttribute("printMSG", s);
-//        return "/indexChats.jsp";
-//
-//    }
 
 }

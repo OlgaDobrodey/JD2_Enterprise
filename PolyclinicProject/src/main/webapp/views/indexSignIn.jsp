@@ -32,13 +32,13 @@
 
         <h3>Please sign in</h3>
         <br>
-        <label for="login">Login</label><br>
-        <input type="text" name="login" class="form-control input-block" placeholder="Input login" id="login"
+        <label for="username">Login</label><br>
+        <input type="text" name="username" class="form-control input-block" placeholder="Input login" id="username"
                required>
 
-        <label for="psw">Password</label><br>
-        <input type="password" name="psw" class="form-control input-block" placeholder="
-medical card number" id="psw"
+        <label for="password">Password</label><br>
+        <input type="password" name="password" class="form-control input-block" placeholder="
+medical card number" id="password"
                required>
         <br>
         <input type="submit" class="btn btn-secondary" value="Sign In">

@@ -1,6 +1,10 @@
 package by.it_academy.jd2.config;
 
+import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 
 public class MyWebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -18,4 +22,6 @@ public class MyWebApplicationInitializer extends AbstractAnnotationConfigDispatc
     protected String[] getServletMappings() {
         return new String[]{"/"};
     }
+
+
 }

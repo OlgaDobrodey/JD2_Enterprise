@@ -1,8 +1,5 @@
 package by.it_academy.jd2.core.model.people;
 
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.GenerationTime;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -10,9 +7,13 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "passports", schema = "polyclinic")
 public class Passport {
+
+
     @Id
-    @Generated(GenerationTime.NEVER)
-    private String id_passport;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    @Column(name = "id_passport")
+    private String idPassport;
     private String identification;
     private String code_state;
     private String nationality;
@@ -30,8 +31,8 @@ public class Passport {
     public Passport() {
     }
 
-    public Passport(String id_passport, String identification, String code_state, String nationality, LocalDate date_birthday, Sex sex, LocalDate data_issue, LocalDate data_expiry, String place_birth, User users) {
-        this.id_passport = id_passport;
+    public Passport(String idPassport, String identification, String code_state, String nationality, LocalDate date_birthday, Sex sex, LocalDate data_issue, LocalDate data_expiry, String place_birth, User users) {
+        this.idPassport = idPassport;
         this.identification = identification;
         this.code_state = code_state;
         this.nationality = nationality;
@@ -43,12 +44,20 @@ public class Passport {
         this.users = users;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getId_passport() {
-        return id_passport;
+        return idPassport;
     }
 
     public void setId_passport(String id_passport) {
-        this.id_passport = id_passport;
+        this.idPassport = id_passport;
     }
 
     public String getIdentification() {
@@ -121,5 +130,23 @@ public class Passport {
 
     public void setUsers(User users) {
         this.users = users;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Passport{" +
+                "id=" + id +
+                ", idPassport='" + idPassport + '\'' +
+                ", identification='" + identification + '\'' +
+                ", code_state='" + code_state + '\'' +
+                ", nationality='" + nationality + '\'' +
+                ", date_birthday=" + date_birthday +
+                ", sex=" + sex +
+                ", data_issue=" + data_issue +
+                ", data_expiry=" + data_expiry +
+                ", place_birth='" + place_birth + '\'' +
+                ", users=" + users +
+                '}';
     }
 }

@@ -37,11 +37,11 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                 <a class="text-info" aria-current="page"
-                                   href="${pageContext.request.contextPath}/${sessionScope.user.login}">My acount</a>
+                                   href="${pageContext.request.contextPath}/${sessionScope.user.username}">My acount</a>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                 <a class="text-info" aria-current="page"
-                                   href="${pageContext.request.contextPath}/${sessionScope.user.login}/medicalCart">Medical
+                                   href="${pageContext.request.contextPath}/${sessionScope.user.username}/medicalCart">Medical
                                     cart</a>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
@@ -50,7 +50,7 @@
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                 <a class="text-info" aria-current="page"
-                                   href="${pageContext.request.contextPath}/allPatients">All Patients</a>
+                                   href="${pageContext.request.contextPath}/patients">All Patients</a>
                             </li>
                         </ul>
                     </div>
@@ -71,7 +71,7 @@
                                                 doctort's medical card</h5></div>
                                     </div>
                                     <p><input type="button" class="btn btn-info"
-                                              onclick="location.href='${pageContext.request.contextPath}/${sessionScope.user.login}/newNote';"
+                                              onclick="location.href='${pageContext.request.contextPath}/${sessionScope.user.username}/newNote';"
                                               value="New Diagnosis"/></p>
                                     <c:if test="${history.size()==0}">
                                         <div class="row">
@@ -91,7 +91,7 @@
 
                                             <tr>
                                                 <td>${card.patient.surname}</td>
-                                                <td><a class="link-dark" href="${pageContext.request.contextPath}/${card.patient.login}/medicalCart/${card.id}">${card.diagnosis}</a></td>
+                                                <td><a class="link-dark" href="${pageContext.request.contextPath}/${card.patient.username}/medicalCart/${card.id}">${card.diagnosis}</a></td>
                                                 <td>${history.get(card)}</td>
 
                                             </tr>

@@ -26,8 +26,8 @@
         <h3>Please sign up</h3>
         <p>Пожалуйста, заполните эту форму, чтобы создать учетную запись.</p>
         <br>
-        <label for="login">Login</label>
-        <input type="text" class="form-control input-block" name="login" placeholder="Input login" id="login" required>
+        <label for="username">Login</label>
+        <input type="text" class="form-control input-block" name="username" placeholder="Input login" id="username" required>
         <br>
         <label for="password">Password</label>
         <input type="password" id="password" class="form-control input-block" placeholder="Input password" name="psw"

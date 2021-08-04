@@ -19,7 +19,7 @@
     <form action="newNote" method="post" required>
         <br><h4 class="text-info text-center">CREATE A NEW DIAGNOSIS</h4>
         <p><input type="button" class="btn btn-info"
-                  onclick="location.href='${pageContext.request.contextPath}/${sessionScope.user.login}/medicalCart';"
+                  onclick="location.href='${pageContext.request.contextPath}/${sessionScope.user.username}/medicalCart';"
                   value="Back Medical Card"/></p>
         <div class="mb-3">
             <label for="doctor" class="form-label">Doctor</label>

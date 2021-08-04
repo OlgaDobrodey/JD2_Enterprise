@@ -2,7 +2,11 @@ package by.it_academy.jd2.web.jsp;
 
 
 import by.it_academy.jd2.core.model.people.*;
-import by.it_academy.jd2.core.service.api.*;
+import by.it_academy.jd2.core.service.api.medical.IDiagnosisView;
+import by.it_academy.jd2.core.service.api.medical.IMedicalCardView;
+import by.it_academy.jd2.core.service.api.people.IAddressView;
+import by.it_academy.jd2.core.service.api.people.IPassportView;
+import by.it_academy.jd2.core.service.api.people.IUserView;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,6 +46,7 @@ public class NewSave {
         return "/views/indexSignUp.jsp";
 
     }
+
     @GetMapping(value = "/departament")
     public String setNewDepartamenr(HttpServletRequest req) {
         HttpSession session = req.getSession(false);
@@ -120,31 +125,31 @@ public class NewSave {
             model.addAttribute("sexList", Sex.values());
             return "/views/users/newUser.jsp";
         }
-        if (this.passportView.findPassportByIdOrIdentification(id_passport, identification)) {
-            model.addAttribute("errorPassport", "error");
-            model.addAttribute("roleList", Role.values());
-            model.addAttribute("sexList", Sex.values());
-            return "/views/users/newUser.jsp";
-        }
-        Address addressSave = this.addressView.saveAddress(
-                city.isBlank() ? null : city,
-                street.isBlank() ? null : street,
-                house.isBlank() ? null : house,
-                flat.isBlank() ? null : flat);
+//        if (this.passportView.findPassportByIdOrIdentification(id_passport, identification)) {
+//            model.addAttribute("errorPassport", "error");
+//            model.addAttribute("roleList", Role.values());
+//            model.addAttribute("sexList", Sex.values());
+//            return "/views/users/newUser.jsp";
+//        }
+//        Address addressSave = this.addressView.saveAddress(
+//                city.isBlank() ? null : city,
+//                street.isBlank() ? null : street,
+//                house.isBlank() ? null : house,
+//                flat.isBlank() ? null : flat);
 
         final Role valueOf = Role.valueOf(role);
-        User user = this.userView.saveUser(login, password, valueOf, surname, given_name,
-                email.isBlank() ? null : email, phone, info.isBlank() ? null : info, position.isBlank() ? null : position, addressSave);
+//        User user = this.userView.saveUser(login, password, valueOf, surname, given_name,
+//                email.isBlank() ? null : email, phone, info.isBlank() ? null : info, position.isBlank() ? null : position, addressSave);
 
         Sex sex = Sex.valueOf(sex_string);
         LocalDate date_birthday = LocalDate.parse(date_birthday_string);
         LocalDate data_expiry = LocalDate.parse(data_expiry_string);
         LocalDate data_issue = LocalDate.parse(data_issue_string);
 
-        Passport passportSave = this.passportView.savePassport(id_passport, identification, code_state, nationality, date_birthday, sex, data_issue, data_expiry, place_birth, user);
-
-        model.addAttribute("userCard", user);
-        model.addAttribute("passport", passportSave);
+       // String passportMessage = this.passportView.savePassport(id_passport, identification, code_state, nationality, date_birthday, sex, data_issue, data_expiry, place_birth, user);
+//        Passport passportSave = this.passportView.findPassport(user);
+//        model.addAttribute("userCard", user);
+//        model.addAttribute("passport", passportSave);
 
         return "/views/users/cardUser.jsp";
     }

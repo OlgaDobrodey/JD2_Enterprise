@@ -15,12 +15,38 @@
 </head>
 <body>
 <%@include file="../header.jsp" %>
-ADMIN the main man
-<p><input type="button" onclick="location.href='${pageContext.request.contextPath}/admin/user';" value="Creat User" /></p>
-<p><input type="button" onclick="location.href='${pageContext.request.contextPath}/airports';" value="Delete User" /></p>
-<p><input type="button" onclick="location.href='${pageContext.request.contextPath}/airports';" value="Update User" /></p>
-<p><input type="button" onclick="location.href='${pageContext.request.contextPath}/allPatients';" value="All Patients" /></p>
-<p><input type="button" onclick="location.href='${pageContext.request.contextPath}/Departments';" value="New Departament" formmethod="get"/></p>
+<div class="contentContainer">
+    <div class="row">
+        <div class="col-ln-6">
+            <p><input type="button" class="btn btn-info"
+                      onclick="location.href='${pageContext.request.contextPath}/users';" value="Users"/></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-ln-6">
+            <p><input type="button" class="btn btn-info"
+                      onclick="location.href='${pageContext.request.contextPath}/Departments';" value="New Departament"
+                      formmethod="get"/></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-ln-6">
+            <p><input type="button" class="btn btn-info"
+                      onclick="location.href='${pageContext.request.contextPath}/address';" value="Address"
+                      formmethod="get"/></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-ln-6">
+            <p><input type="button" class="btn btn-info"
+                      onclick="location.href='${pageContext.request.contextPath}/passports';" value="Passports"
+                      formmethod="get"/></p>
+        </div>
+    </div>
+
+
+</div>
 <%@include file="../footer.jsp" %>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"

@@ -2,11 +2,13 @@ package by.it_academy.jd2.web.jsp;
 
 import by.it_academy.jd2.core.model.medical.Diagnosis;
 import by.it_academy.jd2.core.model.medical.MedicalCard;
+import by.it_academy.jd2.core.model.people.Sex;
 import by.it_academy.jd2.core.model.people.User;
-import by.it_academy.jd2.core.service.api.IDiagnosisView;
-import by.it_academy.jd2.core.service.api.IMedicalCardView;
-import by.it_academy.jd2.core.service.api.IPassportView;
-import by.it_academy.jd2.core.service.api.IUserView;
+import by.it_academy.jd2.core.service.api.medical.IDiagnosisView;
+import by.it_academy.jd2.core.service.api.medical.IMedicalCardView;
+import by.it_academy.jd2.core.service.api.people.IAddressView;
+import by.it_academy.jd2.core.service.api.people.IPassportView;
+import by.it_academy.jd2.core.service.api.people.IUserView;
 import by.it_academy.jd2.core.utils.Constants;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,12 +27,15 @@ public class UsersInfo {
     private final IPassportView passportView;
     private final IMedicalCardView medicalCardView;
     private final IDiagnosisView diagnosisView;
+    private final IAddressView addressView;
 
-    public UsersInfo(IUserView userView, IPassportView passportView, IMedicalCardView medicalCardView, IDiagnosisView diagnosisView) {
+
+    public UsersInfo(IUserView userView, IPassportView passportView, IMedicalCardView medicalCardView, IDiagnosisView diagnosisView, IAddressView addressView) {
         this.userView = userView;
         this.passportView = passportView;
         this.medicalCardView = medicalCardView;
         this.diagnosisView = diagnosisView;
+        this.addressView = addressView;
     }
 
     @GetMapping(value = "/{user}")
@@ -68,6 +73,20 @@ public class UsersInfo {
 
         return "/views/users/cardUser.jsp";
     }
+
+    @GetMapping(value = "/passports/{id}")
+    public String editPassport(Model model, @PathVariable ("id") Integer id){
+        model.addAttribute("passport", this.passportView.findPassportById(id));
+        model.addAttribute("userList",this.userView.getAllUsers());
+        model.addAttribute("sexList", Sex.values());
+        return "/views/edit/editPassport.jsp";
+    }
+    @GetMapping(value = "/address/{id}")
+    public String editAddress(Model model, @PathVariable ("id") Integer id){
+        model.addAttribute("address", this.addressView.findAddressById(id));
+        return "/views/edit/editAddress.jsp";
+    }
+
 
 
 

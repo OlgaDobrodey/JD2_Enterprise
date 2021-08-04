@@ -1,19 +1,18 @@
 package by.it_academy.jd2.core.model.people;
 
 
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.GenerationTime;
-
 import javax.persistence.*;
 
 @Entity(name = "User")
 @Table(name = "users", schema = "polyclinic")
 public class User {
     @Id
-    @Generated(GenerationTime.NEVER)
-    @Column(name = "login")
-    private String login;
-    @Column(name = "psw")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name ="id")
+    private Integer id;
+    @Column(name = "username")
+    private String username;
+    @Column(name = "password")
     private String password;
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
@@ -36,20 +35,20 @@ public class User {
     @Column(name = "link")
     private String link;
 
+    @Column(name = "google_id")
+    private String googleId;
+
+    @Column(name = "github_id")
+    private String githubId;
     @OneToOne
     @JoinColumn(name = "address")
     private Address addresses;
 
-//    @OneToOne
-//    @JoinColumn(name = "id_passport")
-//   // @Column(name = "passport")
-//    private Passport passports;
-
     public User() {
     }
 
-    public User(String login, String password, Role role, String surname, String given_name, String email, String phone, String info, String position, Address addresses) {
-        this.login = login;
+    public User(String username, String password, Role role, String surname, String given_name, String email, String phone, String info, String position, Address addresses) {
+        this.username = username;
         this.password = password;
         this.role = role;
         this.surname = surname;
@@ -61,12 +60,20 @@ public class User {
         this.addresses = addresses;
     }
 
-    public String getLogin() {
-        return login;
+    public Integer getId() {
+        return id;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -157,10 +164,26 @@ public class User {
         this.link = link;
     }
 
+    public String getGoogleId() {
+        return googleId;
+    }
+
+    public void setGoogleId(String googleId) {
+        this.googleId = googleId;
+    }
+
+    public String getGithubId() {
+        return githubId;
+    }
+
+    public void setGithubId(String githubId) {
+        this.githubId = githubId;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "login='" + login + '\'' +
+                "login='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", role=" + role +
                 ", surname='" + surname + '\'' +

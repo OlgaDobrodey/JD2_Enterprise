@@ -26,7 +26,7 @@
                         <img src="${psp.link}" alt="${psp.surname}" class="card-img-top">
                         <div class="card-body text-center">
                             <h5 class="card-title text-info ">
-                                <a href="${pageContext.request.contextPath}/doctor/${psp.login}">${psp.surname} ${psp.given_name}</a>
+                                <a href="${pageContext.request.contextPath}/doctor/${psp.username}">${psp.surname} ${psp.given_name}</a>
                             </h5>
                             <p class="text-secondary mb-1">${psp.position}</p>
                             <p class="text-muted font-size-sm">${psp.email}</p>
@@ -40,12 +40,7 @@
 </div>
 
 <style type="text/css">
-    body {
-        background: #f7f7ff;
-        margin-top: 20px;
-    }
-
-    .card {
+     .card {
         position: relative;
         display: flex;
         flex-direction: column;

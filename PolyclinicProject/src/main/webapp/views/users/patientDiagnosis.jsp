@@ -37,7 +37,7 @@
     </c:forEach>
 
     <p><input type="button" class="btn btn-info"
-              onclick="location.href='${pageContext.request.contextPath}/${sessionScope.user.login}/medicalCart';"
+              onclick="location.href='${pageContext.request.contextPath}/${sessionScope.user.username}/medicalCart';"
               value="Medical card"/></p>
     </tbody>
 </table>

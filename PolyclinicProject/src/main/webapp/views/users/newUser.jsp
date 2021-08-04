@@ -30,8 +30,8 @@
                         <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin"
                              class="rounded-circle p-1 bg-info" width="110"></div>
                         <div class="mb-3"><br>
-                            <label for="login" class="form-label">Login</label>
-                            <input type="text" name="login" class="form-control" id="login" required>
+                            <label for="username" class="form-label">Login</label>
+                            <input type="text" name="username" class="form-control" id="username" required>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>

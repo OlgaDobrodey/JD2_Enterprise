@@ -15,7 +15,8 @@ public class JacksonConfig {
     @Bean
     public Jackson2ObjectMapperBuilder objectMapperBuilder(){
         Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder();
-        builder.propertyNamingStrategy(PropertyNamingStrategy.UPPER_CAMEL_CASE);//настройка название имен
+        builder.propertyNamingStrategy(PropertyNamingStrategy.UPPER_CAMEL_CASE);
+
         return builder;
     }
 

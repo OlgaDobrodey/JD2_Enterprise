@@ -56,4 +56,15 @@ public class Address {
     public void setFlat(String flat) {
         this.flat = flat;
     }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", house='" + house + '\'' +
+                ", flat='" + flat + '\'' +
+                '}';
+    }
 }

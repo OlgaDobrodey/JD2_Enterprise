@@ -28,16 +28,16 @@
                     Send:<select class="form-select" name="userReceiver">
                     <optgroup label="Doctors">
                         <c:forEach var="doctor" items="${doctors}">
-                            <c:if test="${doctor.login!=sessionScope.user.login}">
-                                <option value="${doctor.login}"> ${doctor.surname}<br></option>
+                            <c:if test="${doctor.username!=sessionScope.user.username}">
+                                <option value="${doctor.username}"> ${doctor.surname}<br></option>
                             </c:if>
                         </c:forEach>
                     </optgroup>
                     <c:if test="${patients!=null}">
                         <optgroup label="Patients">
                             <c:forEach var="patient" items="${patients}">
-                                <c:if test="${patient.login!=sessionScope.user.login}">
-                                    <option value="${patient.login}"> ${patient.surname}<br></option>
+                                <c:if test="${patient.username!=sessionScope.user.username}">
+                                    <option value="${patient.username}"> ${patient.surname}<br></option>
                                 </c:if>
                             </c:forEach></optgroup>
                     </c:if>
