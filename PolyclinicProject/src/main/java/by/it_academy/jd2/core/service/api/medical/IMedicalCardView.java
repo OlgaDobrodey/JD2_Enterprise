@@ -11,4 +11,6 @@ public interface IMedicalCardView {
     MedicalCard findMedicalCardById(Integer id);
     List<MedicalCard> findMedicalCardForCard(User doctor, User patient, String diagnosis);
     MedicalCard saveMedicalCard(User doctor, User patient, String diagnosis);
+
+    void deleteMedicalCard(MedicalCard medicalCard);
 }

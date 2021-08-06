@@ -2,6 +2,7 @@ package by.it_academy.jd2.web.jsp;
 
 import by.it_academy.jd2.core.model.medical.Diagnosis;
 import by.it_academy.jd2.core.model.medical.MedicalCard;
+import by.it_academy.jd2.core.model.people.Role;
 import by.it_academy.jd2.core.model.people.Sex;
 import by.it_academy.jd2.core.model.people.User;
 import by.it_academy.jd2.core.service.api.medical.IDiagnosisView;
@@ -85,6 +86,13 @@ public class UsersInfo {
     public String editAddress(Model model, @PathVariable ("id") Integer id){
         model.addAttribute("address", this.addressView.findAddressById(id));
         return "/views/edit/editAddress.jsp";
+    }
+
+    @GetMapping(value = "/users/{id}")
+    public String editUser(Model model, @PathVariable ("id") Integer id){
+        model.addAttribute("roleList", Role.values());
+        model.addAttribute("user", this.userView.findUserById(id));
+        return "/views/edit/editUser.jsp";
     }
 
 

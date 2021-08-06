@@ -38,11 +38,11 @@
             data: JSON.stringify(user),
             contentType: "application/json",
             success: function (responseData) {
-                window.location.href = responseData.redirect;
+                window.location.href = "${pageContext.request.contextPath}/users";
                 alert('Success save ');
             },
             error: function (responseData) {
-                window.location.href = responseData.redirect;
+                window.location.href ="${pageContext.request.contextPath}/users";
                 alert('Error save');
             }
         });
@@ -170,7 +170,7 @@
             </td>
             <td>
                 <input type="button" class="btn btn-info"
-                       onclick="location.href='${pageContext.request.contextPath}/passports/${psp.id}';"
+                       onclick="location.href='${pageContext.request.contextPath}/users/${psp.id}';"
                        value="Update"/>
             </td>
         </tr>

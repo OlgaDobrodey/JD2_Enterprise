@@ -26,8 +26,9 @@ public interface IUserView {
 
     List<User> getAllUsers();
 
-    User createUser(Map<String, Object> map);
+    User findUserById(Integer id);
 
+    User updateUser(User user, Integer id);
 
 
 

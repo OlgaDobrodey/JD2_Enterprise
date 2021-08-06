@@ -5,6 +5,7 @@ import by.it_academy.jd2.core.model.people.Role;
 import by.it_academy.jd2.core.model.people.User;
 import by.it_academy.jd2.core.service.api.people.IUserView;
 import by.it_academy.jd2.storage.api.people.IUserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 import java.util.*;
@@ -12,9 +13,11 @@ import java.util.*;
 public class UserView implements IUserView {
 
     private final IUserRepository repository;
+    private PasswordEncoder passwordEncoder;
 
-    public UserView(IUserRepository repository) {
+    public UserView(IUserRepository repository, PasswordEncoder passwordEncoder) {
         this.repository = repository;
+        this.passwordEncoder = passwordEncoder;
 
     }
 
@@ -23,7 +26,7 @@ public class UserView implements IUserView {
         return this.repository.save(user);
     }
 
-       @Override
+    @Override
     public List<User> getAllUsers() {
         final List<User> userList = this.repository.findAll();
         return userList;
@@ -62,20 +65,26 @@ public class UserView implements IUserView {
     }
 
     @Override
-    public User createUser( Map<String, Object> map) {
-        User user = new User();
-        user.setUsername((String)map.get("username"));
+    public User findUserById(Integer id) {
+        return this.repository.findUserById(id);
+    }
 
-//
-//                "password": $("#identification").val(),
-//                "surname": $("#code_state").val(),
-//                "given_name": $("#nationality").val(),
-//                "role": $("#date_birthday").val(),
-//                "position": $("#sex").val(),
-//                "phone": $("#data_issue").val(),
-//                "email": $("#data_expiry").val(),
-//                "info": $("#place_birth").val(),
+    @Override
+    public User updateUser(User user, Integer id) {
 
-        return null;
+        User usersave = this.repository.findUserById(id);
+        usersave.setSurname(user.getSurname());
+        usersave.setUsername(user.getUsername());
+        if (!usersave.getPassword().equals(user.getPassword())) {
+            usersave.setPassword(this.passwordEncoder.encode(user.getPassword()));
+        }
+        usersave.setGiven_name(user.getGiven_name());
+        usersave.setRole(user.getRole());
+        usersave.setPosition(user.getPosition());
+        usersave.setEmail(user.getEmail());
+        usersave.setPhone(user.getPhone());
+        usersave.setInfo(user.getInfo());
+
+        return this.repository.save(usersave);
     }
 }

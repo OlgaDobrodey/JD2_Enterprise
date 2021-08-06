@@ -25,6 +25,7 @@ import by.it_academy.jd2.storage.api.people.IUserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 @Configuration
@@ -33,8 +34,8 @@ public class RootConfig {
 
 
     @Bean
-    public IUserView userView(IUserRepository repository) {
-        return new UserView(repository);
+    public IUserView userView(IUserRepository repository, PasswordEncoder passwordEncoder) {
+        return new UserView(repository , passwordEncoder);
     }
 
     @Bean

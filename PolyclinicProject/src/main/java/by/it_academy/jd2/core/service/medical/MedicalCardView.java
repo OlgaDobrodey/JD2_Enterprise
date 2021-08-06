@@ -61,5 +61,10 @@ public class MedicalCardView implements IMedicalCardView {
         return this.repository.save(card);
     }
 
+    @Override
+    public void deleteMedicalCard(MedicalCard medicalCard) {
+
+    }
+
 
 }
