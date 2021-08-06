@@ -26,7 +26,7 @@
     <div class="row">
         <div class="col-ln-6">
             <p><input type="button" class="btn btn-info"
-                      onclick="location.href='${pageContext.request.contextPath}/Departments';" value="New Departament"
+                      onclick="location.href='${pageContext.request.contextPath}/departments';" value="Departaments"
                       formmethod="get"/></p>
         </div>
     </div>

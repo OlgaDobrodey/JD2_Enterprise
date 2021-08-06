@@ -46,11 +46,11 @@
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                 <a class="text-info" aria-current="page"
-                                   href="${pageContext.request.contextPath}/newUser">New Patient</a>
+                                   href="${pageContext.request.contextPath}/users">New Patient</a>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                 <a class="text-info" aria-current="page"
-                                   href="${pageContext.request.contextPath}/patients">All Patients</a>
+                                   href="${pageContext.request.contextPath}/users">All Patients</a>
                             </li>
                         </ul>
                     </div>
