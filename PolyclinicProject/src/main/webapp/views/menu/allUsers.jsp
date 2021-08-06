@@ -42,30 +42,13 @@
                 alert('Success save ');
             },
             error: function (responseData) {
-                window.location.href ="${pageContext.request.contextPath}/users";
+                window.location.href = "${pageContext.request.contextPath}/users";
                 alert('Error save');
             }
         });
     }
 </script>
-<script>
-    function deleteUser(id) {
-        $.ajax({
-            type: "DELETE",
-            url: "${pageContext.request.contextPath}/users/" + id,
-            contentType: "application/json",
-            success: function (responseData) {
-                window.location.href = responseData.redirect;
-                alert('Success delete');
 
-            },
-            error: function (responseData) {
-                window.location.href = responseData.redirect;
-                alert('Error delete');
-            }
-        });
-    }
-</script>
 <c:if test="${sessionScope.user.role==Role.ADMIN}">
     <div class="container">
         <h4 class="text-info text-center">CREATE A NEW USER</h4>
@@ -149,7 +132,7 @@
         <th>Position</th>
         <th>Info</th>
         <th></th>
-        <th></th>
+
     </tr>
     <c:forEach items="${requestScope.users}"
                var="psp">
@@ -164,10 +147,6 @@
             <td>${psp.phone}</td>
             <td>${psp.position}</td>
             <td>${psp.info}</td>
-            <td>
-                <button type="button" class="btn btn-info" onclick="deleteUser('${psp.id}')"> Delete
-                </button>
-            </td>
             <td>
                 <input type="button" class="btn btn-info"
                        onclick="location.href='${pageContext.request.contextPath}/users/${psp.id}';"

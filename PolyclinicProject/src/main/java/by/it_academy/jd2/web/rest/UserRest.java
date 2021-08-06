@@ -58,20 +58,6 @@ public class UserRest {
     }
 
 
-    @DeleteMapping(value = "/users/{username}", produces = {"application/json"})
-    public ResponseEntity<?> deleteUser(@PathVariable("username") String username) {
-        try {
-            return new ResponseEntity<>(HttpStatus.OK);
-        } catch (RuntimeException e) {
-            String message = e.getMessage();
-            if (message == null || message.isEmpty()) {
-                message = "Произошла неизвестная ошибка";
-            }
-            return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-
     @PatchMapping(value = "/users/{id}", produces = {"application/json"})
     public ResponseEntity<?> updateUser(HttpServletRequest request, @PathVariable("id") Integer id) throws IOException {
         User user = objectMapper.readValue(request.getReader().readLine(), User.class);

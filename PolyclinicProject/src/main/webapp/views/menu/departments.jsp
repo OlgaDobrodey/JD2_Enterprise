@@ -39,7 +39,7 @@
                         <img src="${dpt.linkImage}" alt="${dpt.nameArticle}" class="card-img-top">
                         <div class="card-body text-center text-info">
                             <h5 class="card-title text-info ">
-                                <a href="${pageContext.request.contextPath}/Departments/${dpt.idDepartments}">${dpt.nameArticle}</a>
+                                <a href="${pageContext.request.contextPath}/departments/${dpt.idDepartments}">${dpt.nameArticle}</a>
                             </h5>
                             <p class="text-secondary mb-1">${dpt.shotText}</p>
 
