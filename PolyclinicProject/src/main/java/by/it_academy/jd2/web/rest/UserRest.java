@@ -64,7 +64,7 @@ public class UserRest {
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (RuntimeException e) {
             String message = e.getMessage();
-            if(message == null || message.isEmpty()){
+            if (message == null || message.isEmpty()) {
                 message = "Произошла неизвестная ошибка";
             }
             return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -73,21 +73,9 @@ public class UserRest {
 
 
     @PatchMapping(value = "/users/{id}", produces = {"application/json"})
-    public ResponseEntity<?>  updateUser(HttpServletRequest request, @PathVariable("id") Integer id) throws IOException {
+    public ResponseEntity<?> updateUser(HttpServletRequest request, @PathVariable("id") Integer id) throws IOException {
         User user = objectMapper.readValue(request.getReader().readLine(), User.class);
-        this.userView.updateUser(user,id);
-        System.out.println("1");
-        System.out.println(request.toString());
-        String json = request.getReader().readLine();
-        System.out.println("json="+json);
-        try {
-            //   User user = this.objectMapper.readValue(request.getReader().readLine(), User.class);}
-        } catch (RuntimeException e){
-            System.out.println(e.getMessage()+"\n   " + e);
-        }
-        System.out.println("2");
-        //this.userView.updateUser(user,id);
-        System.out.println("3");
+        this.userView.updateUser(user, id);
         return new ResponseEntity<>(HttpStatus.OK);
 
     }
