@@ -27,12 +27,6 @@ public class AddressView implements IAddressView {
     }
 
     @Override
-    public Address findAddressWithParameter(String city, String street, String house, String flat) {
-        return this.repository.findAddressByCityAndStreetAndHouseAndFlat(city, street, house, flat);
-    }
-
-
-    @Override
     public Address saveAddress(Address address) {
         return this.repository.save(address);
 

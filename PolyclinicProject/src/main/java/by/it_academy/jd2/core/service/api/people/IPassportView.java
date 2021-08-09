@@ -1,11 +1,10 @@
 package by.it_academy.jd2.core.service.api.people;
 
 import by.it_academy.jd2.core.model.people.Passport;
-import by.it_academy.jd2.core.model.people.Sex;
+
 import by.it_academy.jd2.core.model.people.User;
 import org.springframework.dao.DataIntegrityViolationException;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 

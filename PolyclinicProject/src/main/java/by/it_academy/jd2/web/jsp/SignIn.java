@@ -44,7 +44,7 @@ public class SignIn {
             req.getSession().setAttribute(Constants.USER, user);
             return user.getRole().getPathToProfile();
         } else {
-            return "/views/indexSignIn.jsp";
+            return "indexSignIn";
         }
     }
 }

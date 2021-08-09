@@ -28,23 +28,14 @@ import java.util.Map;
 
 @RestController
 public class UserRest {
-    private IDepartementView departementView;
-    private IPassportView passportView;
+
     private IUserView userView;
-    private IAddressView addressView;
     private ObjectMapper objectMapper;
-    private IMedicalCardView medicalCardView;
-    private IDiagnosisView diagnosisView;
     private PasswordEncoder passwordEncoder;
 
-    public UserRest(IDepartementView departementView, IPassportView passportView, IUserView userView, IAddressView addressView, ObjectMapper objectMapper, IMedicalCardView medicalCardView, IDiagnosisView diagnosisView, PasswordEncoder passwordEncoder) {
-        this.departementView = departementView;
-        this.passportView = passportView;
+    public UserRest(IUserView userView,ObjectMapper objectMapper, PasswordEncoder passwordEncoder) {
         this.userView = userView;
-        this.addressView = addressView;
         this.objectMapper = objectMapper;
-        this.medicalCardView = medicalCardView;
-        this.diagnosisView = diagnosisView;
         this.passwordEncoder = passwordEncoder;
     }
 

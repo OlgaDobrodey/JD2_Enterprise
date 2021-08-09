@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IAddressRepository extends JpaRepository<Address,Integer> {
    Address findAddressById(Integer id);
-    Address findAddressByCityAndStreetAndHouseAndFlat(String city, String street, String house, String flat);
+
 }

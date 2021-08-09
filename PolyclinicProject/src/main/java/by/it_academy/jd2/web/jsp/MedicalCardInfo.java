@@ -27,14 +27,12 @@ import java.util.Map;
 @Controller
 public class MedicalCardInfo {
     private final IUserView userView;
-    private final IPassportView passportView;
     private final IMedicalCardView medicalCardView;
     private final IDiagnosisView diagnosisView;
 
-    public MedicalCardInfo(IUserView userView, IPassportView passportView,
+    public MedicalCardInfo(IUserView userView,
                            IMedicalCardView medicalCardView, IDiagnosisView diagnosisView) {
         this.userView = userView;
-        this.passportView = passportView;
         this.medicalCardView = medicalCardView;
         this.diagnosisView = diagnosisView;
     }
@@ -43,7 +41,7 @@ public class MedicalCardInfo {
     public String setNewNote(Model model) {
         model.addAttribute("doctors", this.userView.searchAllDoctors());
         model.addAttribute("patients", this.userView.searchAllPatients());
-        return "/views/medcard/newNote.jsp";
+        return "medcard/newNote";
     }
 
     @PostMapping(value = "/{login}/newNote")
@@ -67,7 +65,7 @@ public class MedicalCardInfo {
         model.addAttribute("doctors", this.userView.searchAllDoctors());
         model.addAttribute("patients", this.userView.searchAllPatients());
 
-        return "/views/medcard/newNote.jsp";
+        return "medcard/newNote";
     }
 
     @GetMapping(value = "/{login}/medicalCart/{id}")
@@ -80,7 +78,7 @@ public class MedicalCardInfo {
         model.addAttribute("diagnosis", allByCard);
         model.addAttribute("userPatient", userView.searchUserLogin(login));
 
-        return "/views/users/patientDiagnosis.jsp";
+        return "users/patientDiagnosis";
     }
 
     @GetMapping(value = "/{login}/medicalCart")
@@ -90,7 +88,6 @@ public class MedicalCardInfo {
             return "/views/indexSignIn.jsp";
         }
         final User user = userView.searchUserLogin(login);
-        //  User user = (User) session.getAttribute(Constants.USER);
         Map<MedicalCard, Status> historyMap = new HashMap<>();
         List<MedicalCard> medicalCard = new ArrayList<>();
         if (user.getRole() == Role.PATIENT) {

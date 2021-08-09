@@ -1,9 +1,9 @@
 package by.it_academy.jd2.core.model.people;
 
 public enum Role {
-    ADMIN("/views/users/userAdmin.jsp"),
-    DOCTOR("/views/users/userDoctor.jsp"),
-    PATIENT("/views/users/userPatient.jsp");
+    ADMIN("users/userAdmin"),
+    DOCTOR("users/userDoctor"),
+    PATIENT("users/userPatient");
 
     private final String pathToProfile;
 
@@ -14,5 +14,7 @@ public enum Role {
     public String getPathToProfile() {
         return pathToProfile;
     }
+
+
 }
 

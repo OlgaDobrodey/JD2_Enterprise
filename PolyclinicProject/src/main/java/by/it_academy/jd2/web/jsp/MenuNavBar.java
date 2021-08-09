@@ -39,7 +39,7 @@ public class MenuNavBar extends HttpServlet {
     @GetMapping(value = "/about_us")
     public String aboutUs(Model model) {
         model.addAttribute("doctors", userView.searchAllDoctors());
-        return "/views/menu/aboutUs.jsp";
+        return "menu/aboutUs";
     }
 
     @GetMapping(value = "/users")
@@ -49,29 +49,28 @@ public class MenuNavBar extends HttpServlet {
             model.addAttribute("roleList", Role.values());
         }
         model.addAttribute("users", this.userView.getAllUsers());
-        return "/views/menu/allUsers.jsp";
+        return "menu/allUsers";
     }
 
     @GetMapping(value = "/home")
-    public String home(Model model) {
-        return "/views/menu/home.jsp";
+    public String home() {
+        return "menu/home";
     }
 
     @GetMapping(value = "/contact")
-    public String contact(Model model) {
-        return "/views/menu/contact.jsp";
+    public String contact() {
+        return "menu/contact";
     }
 
     @GetMapping(value = "/disease")
-    public String disease(Model model) {
-        // model.addAttribute("doctors", userView.searchAllDoctors());
-        return "/views/menu/disease.jsp";
+    public String disease() {
+        return "menu/disease";
     }
 
     @GetMapping(value = "/departments")
     public String departments(Model model) {
         model.addAttribute("department", this.departementView.findAll());
-        return "/views/menu/departments.jsp";
+        return "menu/departments";
     }
 
 
@@ -87,21 +86,21 @@ public class MenuNavBar extends HttpServlet {
             model.addAttribute("sexList", Sex.values());
         }
             model.addAttribute("passports", passportView.findAllPassport());
-        return "/views/menu/allPassports.jsp";
+        return "menu/allPassports";
     }
 
     @GetMapping(value = "/address")
     public String getAllAddress(Model model) {
         model.addAttribute("userList",userView.getAllUsers());
         model.addAttribute("address", addressView.findAllAddress());
-        return "/views/menu/allAddress.jsp";
+        return "menu/allAddress";
     }
 
     @GetMapping(value = "/departments/{idDepartments}")
     public String departments(Model model, @PathVariable String idDepartments) {
         model.addAttribute("department", this.departementView.findAll());
         model.addAttribute("departmentSearch", this.departementView.findDepartamentById(idDepartments));
-        return "/views/menu/departments.jsp";
+        return "menu/departments";
     }
 
 

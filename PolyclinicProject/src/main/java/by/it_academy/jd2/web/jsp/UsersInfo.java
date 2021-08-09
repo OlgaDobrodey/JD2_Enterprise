@@ -47,14 +47,14 @@ public class UsersInfo {
         }
         User user = (User) session.getAttribute(Constants.USER);
         return user.getRole().getPathToProfile();
-                //Role.pathRoleUser((User) session.getAttribute(Constants.USER));
+
     }
 
     @GetMapping(value = "/doctor/{login}")
     public String getCardDoctor(Model model, @PathVariable String login) {
         model.addAttribute("userCard", this.userView.searchUserLogin(login));
         model.addAttribute("doctor", true);
-        return "/views/users/cardUser.jsp";
+        return "users/cardUser";
     }
 
     @GetMapping(value = "/patient/{login}")
@@ -72,7 +72,7 @@ public class UsersInfo {
         model.addAttribute("passport", this.passportView.findPassport(user));
         model.addAttribute("history",historyMap);
 
-        return "/views/users/cardUser.jsp";
+        return "users/cardUser";
     }
 
     @GetMapping(value = "/passports/{id}")
@@ -80,19 +80,19 @@ public class UsersInfo {
         model.addAttribute("passport", this.passportView.findPassportById(id));
         model.addAttribute("userList",this.userView.getAllUsers());
         model.addAttribute("sexList", Sex.values());
-        return "/views/edit/editPassport.jsp";
+        return "edit/editPassport";
     }
     @GetMapping(value = "/address/{id}")
     public String editAddress(Model model, @PathVariable ("id") Integer id){
         model.addAttribute("address", this.addressView.findAddressById(id));
-        return "/views/edit/editAddress.jsp";
+        return "edit/editAddress";
     }
 
     @GetMapping(value = "/users/{id}")
     public String editUser(Model model, @PathVariable ("id") Integer id){
         model.addAttribute("roleList", Role.values());
         model.addAttribute("user", this.userView.findUserById(id));
-        return "/views/edit/editUser.jsp";
+        return "edit/editUser";
     }
 
 

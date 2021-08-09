@@ -13,8 +13,6 @@ public class JacksonConfig {
     @Bean
     public ObjectMapper objectMapper(){
         ObjectMapper mapper = new ObjectMapper();
-//        mapper.enable(SerializationFeature.WRITE_ENUMS_USING_TO_STRING);
-//        mapper.enable(DeserializationFeature.READ_ENUMS_USING_TO_STRING);
         return mapper;
     }
 
@@ -25,13 +23,4 @@ public class JacksonConfig {
         return builder;
     }
 
-
-    /**
-     * Support for Java date and time API.
-     * @return the corresponding Jackson module.
-     */
-//    @Bean
-//    public JavaTimeModule javaTimeModule() {
-//        return new JavaTimeModule();
-//    }
 }

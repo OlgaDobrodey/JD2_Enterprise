@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IAddressView {
     List<Address> findAllAddress();
-    Address findAddressWithParameter(String city, String street, String house, String flat);
+
     Address saveAddress(Address address);
     Address findAddressById(Integer id);
     void deleteAddress(Integer id);

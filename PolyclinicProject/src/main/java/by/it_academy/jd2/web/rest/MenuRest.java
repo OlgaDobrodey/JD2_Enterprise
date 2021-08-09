@@ -24,17 +24,11 @@ import java.io.IOException;
 @RestController
 public class MenuRest {
     private IDepartementView departementView;
-    private IPassportView passportView;
-    private IUserView userView;
-    private IAddressView addressView;
-    private ObjectMapper objectMapper;
 
-    public MenuRest(IDepartementView departementView, IPassportView passportView, IUserView userView, IAddressView addressView, ObjectMapper objectMapper) {
-        this.passportView = passportView;
-        this.departementView = departementView;
-        this.userView = userView;
-        this.addressView = addressView;
-        this.objectMapper = objectMapper;
+
+    public MenuRest(IDepartementView departementView) {
+             this.departementView = departementView;
+
     }
 
     @PostMapping(value = "/departments")
@@ -51,33 +45,7 @@ public class MenuRest {
         department.setLinkImage(linkImage);
         this.departementView.save(department);
         request.setAttribute("department", this.departementView.findAll());
-        request.getRequestDispatcher("/views/menu/departments.jsp").forward(request, response);
+        request.getRequestDispatcher("menu/departments").forward(request, response);
     }
-
-
-    //    @PostMapping(value = "/address")
-//    protected void createAddress(HttpServletRequest request, HttpServletResponse response,
-//                                 @RequestParam(name = "city") String city,
-//                                 @RequestParam(name = "street") String street,
-//                                 @RequestParam(name = "house") String house,
-//                                 @RequestParam(name = "flat") String flat,
-//                                 @RequestParam(name = "user") String userLogin)
-//            throws ServletException, IOException {
-//        String addressSave = this.addressView.saveAddress(
-//                city.isBlank() ? null : city,
-//                street.isBlank() ? null : street,
-//                house.isBlank() ? null : house,
-//                flat.isBlank() ? null : flat);
-//        final Address addressWithParameter = this.addressView.findAddressWithParameter(city, street, house, flat);
-//        User updateUser = userView.searchUserLogin(userLogin);
-//        updateUser.setAddresses(addressWithParameter);
-//        userView.saveUser(updateUser);
-//        request.setAttribute("MessageAddress", addressSave);
-//        request.setAttribute("address", addressView.findAllAddress());
-//        request.getRequestDispatcher("/views/menu/allAddress.jsp").forward(request, response);
-//    }
-
-
-
 }
 

@@ -43,7 +43,7 @@ public class Chats extends HttpServlet {
         if (sender.getRole() == Role.DOCTOR) {
             model.addAttribute("patients", userView.searchAllPatients());
         }
-        return "/views/indexChats.jsp";
+        return "indexChats";
     }
 
     @PostMapping(value = "/message")
@@ -65,12 +65,12 @@ public class Chats extends HttpServlet {
 
         messageView.saveMessage(message);
         model.addAttribute("doctors", this.userView.searchAllDoctors());
-        if (sender.getRole().equals("DOCTOR")) {
+        if (sender.getRole().equals(Role.DOCTOR)) {
             model.addAttribute("patients", userView.searchAllPatients());
         }
         model.addAttribute("doctor", receiver);
         model.addAttribute("listMessages", this.messageView.findAllMessageWithSenderAndReceiver(sender, receiver));
-        return "/views/indexChats.jsp";
+        return "indexChats";
     }
 
 }

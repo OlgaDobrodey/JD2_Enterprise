@@ -1,7 +1,7 @@
 package by.it_academy.jd2.core.model.menu;
 
 import javax.persistence.*;
-import java.util.Objects;
+
 
 @Entity
 @Table(name = "departments", schema = "polyclinic")

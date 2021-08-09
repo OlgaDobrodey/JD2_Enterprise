@@ -23,11 +23,6 @@ public class MessageView implements IMessageView {
     }
 
     @Override
-    public List<Message> findAllMessage() {
-        return this.repository.findAll();
-    }
-
-    @Override
     public List<Message> findAllMessageWithSenderAndReceiver(User sender, User receiver) {
         final List<Message> messageBySenderAndReceiver = this.repository.findMessageBySenderAndReceiver(sender, receiver);
         final List<Message> messageByReceiverAndSender = this.repository.findMessageBySenderAndReceiver(receiver, sender);
