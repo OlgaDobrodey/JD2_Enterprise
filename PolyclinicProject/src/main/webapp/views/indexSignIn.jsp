@@ -20,15 +20,7 @@
 <main class="container">
     <br>
 
-    <c:if test="${Boolean.parseBoolean(invalidUserLogin)}">
-        <h4><span style='color: red;'>Не верный логин или пароль<br>
-           Авторизация не выполнена, попробуйте снова!
-        </span></h4>
-    </c:if>
-    <%request.setAttribute("invalidUserLogin", false);%>
-
-
-    <form action="signIn" method="post" required>
+    <form  class="form-signin" method="POST" action="/PolyclinicProject-0.0/login">
 
         <h3>Please sign in</h3>
         <br>
@@ -37,8 +29,7 @@
                required>
 
         <label for="password">Password</label><br>
-        <input type="password" name="password" class="form-control input-block" placeholder="
-medical card number" id="password"
+        <input type="password" name="password" class="form-control input-block"  id="password"
                required>
         <br>
         <input type="submit" class="btn btn-secondary" value="Sign In">

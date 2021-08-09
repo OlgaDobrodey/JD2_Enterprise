@@ -30,52 +30,23 @@ public class SignIn {
         this.passportView = passportView;
     }
 
-    @GetMapping(value = "/signIn")
-    public String doCheckAuthorization(HttpServletRequest req) {
-        HttpSession session = req.getSession(false);
-        if (!session.isNew()) {
-            session.removeAttribute(Constants.USER);
-        }
-        return "/views/indexSignIn.jsp";
-    }
+//    @GetMapping(value = "/signIn")
+//    public String doCheckAuthorization(HttpServletRequest req) {
+//        return "/views/indexSignIn.jsp";
+//    }
 
-    @Transactional
-    @PostMapping(value = "/signIn")
-    protected String doGetAuthorization(Model model,
-                                        @RequestParam(name = "username") String username,
-                                        @RequestParam(name = "password") String password,
+    @GetMapping(value = "/profile")
+    protected String doGetAuthorization(Principal principal,
                                         HttpServletRequest req) {
-
-        User user = userView.searchUserLoginAndPsw(username, password);
-
+        User user = userView.searchUserLoginAndPsw(principal.getName(), userView.searchUserLogin(principal.getName()).getPassword());
         if (user != null) {
             req.getSession().setAttribute(Constants.PASSPORT, passportView.findPassport(user));
             req.getSession().setAttribute(Constants.USER, user);
             return user.getRole().getPathToProfile();
         } else {
-
-            model.addAttribute("invalidUserLogin", true);      // Дополнительного комментарий "Не верный логин или пароль"                                      // Авторизация не выполнена, попробуйте снова!
             return "/views/indexSignIn.jsp";
-
         }
-
     }
-//    @GetMapping(value = "/signIn")
-//    protected String doGetAuthorization(Principal principal,
-//                                        HttpServletRequest req, Model model) {
-//        userView.searchUserLogin(principal.getName());
-//        User user = userView.searchUserLoginAndPsw(principal.getName(), userView.searchUserLogin(principal.getName()).getPassword());
-//        if (user != null) {
-//            req.getSession().setAttribute(Constants.PASSPORT, passportView.findPassport(user));
-//            req.getSession().setAttribute(Constants.USER, user);
-//            return user.getRole().getPathToProfile();
-//        } else {
-//            model.addAttribute("invalidUserLogin", true);      // Дополнительного комментарий "Не верный логин или пароль"                                      // Авторизация не выполнена, попробуйте снова!
-//            return "/views/indexSignIn.jsp";
-//        }
-//    }
-
-
 }
 
 

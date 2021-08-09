@@ -47,7 +47,7 @@ public class PersistencyConfig {
         factory.setPackagesToScan("by.it_academy.jd2.core.model");
         factory.setDataSource(dataSource);
         Properties properties = new Properties();
-        properties.setProperty("hibernate.dialect", "org.hibernate.spatial.dialect.postgis.PostgisPG10Dialect");
+        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL10Dialect");
         //properties.setProperty("hibernate.hbm2ddl","none");
         properties.setProperty("hibernate.hbm2ddl.auto", "update");
         properties.setProperty("show_sql", "true");

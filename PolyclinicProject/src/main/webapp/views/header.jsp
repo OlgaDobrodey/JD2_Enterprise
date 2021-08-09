@@ -53,7 +53,7 @@
 
                             <li class="nav-item">
                                 <a class="nav-link"  aria-current="page"
-                                   href="${pageContext.request.contextPath}/signIn">Sign In</a>
+                                   href="${pageContext.request.contextPath}/login">Sign In</a>
                             </li>
                         </c:when>
                         <c:otherwise>
@@ -70,7 +70,7 @@
                                     <li><a class="dropdown-item"
                                            href="${pageContext.request.contextPath}/${sessionScope.user.username}"
                                            methods="get">Acount</a></li>
-                                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/signIn"
+                                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/logout"
                                            methods="get">Exit</a></li>
 
                                 </ul>
