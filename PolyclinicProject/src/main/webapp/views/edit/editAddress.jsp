@@ -30,7 +30,7 @@
             "flat": $("#flat").val(),
         };
         $.ajax({
-            type: "PATCH",
+            type: "PUT",
             url: "${pageContext.request.contextPath}/address/" +${address.id},
             data: JSON.stringify(address),
             contentType: "application/json",

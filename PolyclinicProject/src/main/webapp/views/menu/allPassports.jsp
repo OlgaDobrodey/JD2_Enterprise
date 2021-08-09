@@ -42,13 +42,12 @@
             data: JSON.stringify(passport),
             contentType: "application/json",
             success: function (responseData) {
-                // var s = sessionStorage.getItem("message").valueOf();
-                window.location.href = responseData.redirect;
-                alert('Success save ');
+                window.location.href = "${pageContext.request.contextPath}/passports",
+                    alert(responseData.responseText);
             },
             error: function (responseData) {
-                window.location.href = responseData.redirect;
-                alert('Error save');
+                window.location.href = "${pageContext.request.contextPath}/passports",
+                    alert(responseData.responseText);
             }
         });
     }
@@ -58,16 +57,15 @@
         $.ajax({
             type: "DELETE",
             url: "${pageContext.request.contextPath}/passports/" + id,
-            //data: JSON.stringify(passport),
             contentType: "application/json",
             success: function (responseData) {
-                window.location.href = responseData.redirect;
-                alert('Success delete');
+                window.location.href = "${pageContext.request.contextPath}/passports",
+                    alert(responseData.responseText);
 
             },
             error: function (responseData) {
-                window.location.href = responseData.redirect;
-                alert('Error delete');
+                window.location.href = "${pageContext.request.contextPath}/passports",
+                    alert(responseData.responseText);
             }
         });
     }
@@ -76,7 +74,6 @@
 <c:if test="${sessionScope.user.role==Role.ADMIN}">
 <div class="container">
     <h4 class="text-info text-center">Create new passport</h4>
-<%--    <h6 class="text-danger text-center">${MessagePassport}</h6>--%>
 
     <div class="row">
         <div class="col-lg-4">
@@ -136,11 +133,11 @@
                     </c:forEach>
                 </select></div>
 
-<%--        </div>--%>
+                <%--        </div>--%>
+        </div>
+
+
     </div>
-
-
-</div>
     <button type="button" class="btn btn-info" onclick="sendPassport()"> SAVE</button>
     <br><br>
     </c:if>
@@ -191,10 +188,10 @@
         </tbody>
     </table>
 </div>
-    <%@include file="../footer.jsp" %>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-            crossorigin="anonymous"></script>
+<%@include file="../footer.jsp" %>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

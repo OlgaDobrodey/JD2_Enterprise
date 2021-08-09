@@ -7,11 +7,16 @@ import javax.persistence.*;
 public class Address {
 
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    @Column(name="city")
     private String city;
+    @Column(name="street")
     private String street;
+    @Column(name="house")
     private String house;
+    @Column(name="flat")
     private String flat;
 
     public Address() {

@@ -28,7 +28,7 @@
             "identification": $("#identification").val(),
             "code_state": $("#code_state").val(),
             "nationality": $("#nationality").val(),
-            "date_birthday": $("#date_birthday").val(),
+             "date_birthday": $("#date_birthday").val(),
             "sex": $("#sex").val(),
             "data_issue": $("#data_issue").val(),
             "data_expiry": $("#data_expiry").val(),
@@ -42,12 +42,12 @@
             data: JSON.stringify(passport),
             contentType: "application/json",
             success: function (responseData) {
-                window.location.href = responseData.redirect;
-                alert(responseData.message);
+                window.location.href = "${pageContext.request.contextPath}/passports";
+                alert(responseData.responseText);
             },
-            error:function (responseData) {
+            error: function (responseData) {
                 window.location.href = "${pageContext.request.contextPath}/passports",
-                alert('Error update');
+                    alert(responseData.responseText);
             },
         });
     }
@@ -57,8 +57,7 @@
 <div class="container">
     <h4 class="text-info text-center">Update new passport</h4>
     <h6 class="text-danger text-center">${MessagePassport}</h6>
-        <%--    <form name="passports/${passport.id}" method="post" >--%>
-        <%--        <input type="hidden" name="_method" value="PATCH">--%>
+
     <div class="row">
         <div class="col-lg-4">
             <div class="mb-3">

@@ -12,7 +12,7 @@ import java.util.Map;
 public interface IPassportView {
     List<Passport> findAllPassport();
     Passport findPassport(User user);
-//    Passport findPassportByIdOrIdentification(String id_passport, String identification);
+
 
 
    Passport savePassport(Passport passport) throws DataIntegrityViolationException;

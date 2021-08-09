@@ -14,14 +14,22 @@ public class Passport {
     private Integer id;
     @Column(name = "id_passport")
     private String idPassport;
+    @Column(name = "identification")
     private String identification;
+    @Column(name = "code_state")
     private String code_state;
+    @Column(name = "nationality")
     private String nationality;
+    @Column(name = "date_birthday")
     private LocalDate date_birthday;
+    @Column(name = "sex")
     @Enumerated(EnumType.STRING)
     private Sex sex;
+    @Column(name = "data_issue")
     private LocalDate data_issue;
+    @Column(name = "data_expiry")
     private LocalDate data_expiry;
+    @Column(name = "place_birth")
     private String place_birth;
 
     @OneToOne

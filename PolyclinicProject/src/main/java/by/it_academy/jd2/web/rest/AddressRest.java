@@ -1,16 +1,12 @@
 package by.it_academy.jd2.web.rest;
 
 import by.it_academy.jd2.core.model.people.Address;
-import by.it_academy.jd2.core.model.people.Passport;
 import by.it_academy.jd2.core.model.people.User;
 import by.it_academy.jd2.core.service.api.medical.IDepartementView;
 import by.it_academy.jd2.core.service.api.people.IAddressView;
 import by.it_academy.jd2.core.service.api.people.IPassportView;
 import by.it_academy.jd2.core.service.api.people.IUserView;
-import by.it_academy.jd2.web.PathResponse;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
@@ -56,8 +52,9 @@ public class AddressRest {
         return  new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PatchMapping(value = "/address/{id}", produces = {"application/json"})
-    public ResponseEntity<Object> update(HttpServletRequest request, HttpServletResponse response, Model model, @PathVariable("id") Integer id) throws IOException {
+    @PutMapping(value = "/address/{id}", produces = {"application/json"})
+    public ResponseEntity<?> update(
+            HttpServletRequest request, HttpServletResponse response, Model model, @PathVariable("id") Integer id) throws IOException {
         Address address = objectMapper.readValue(request.getReader().readLine(), Address.class);
         address = addressView.updateAddress(address, id);
         return new ResponseEntity<>(HttpStatus.OK);
