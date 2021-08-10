@@ -46,7 +46,7 @@
     }
 </script>
 
-<c:if test="${sessionScope.user.role==Role.ADMIN}">
+
 <div class="container">
     <h4 class="text-info text-center">Update new address</h4>
 
@@ -82,7 +82,7 @@
     </div>
         <%--    </form>--%>
 
-    </c:if>
+
 
 
     <%@include file="../footer.jsp" %>

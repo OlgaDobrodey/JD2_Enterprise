@@ -53,7 +53,7 @@
     }
 </script>
 
-<c:if test="${sessionScope.user.role==Role.ADMIN}">
+
 <div class="container">
     <h4 class="text-info text-center">Update new passport</h4>
     <h6 class="text-danger text-center">${MessagePassport}</h6>
@@ -139,7 +139,7 @@
         <%--        onclick="sendPassport()--%>
         <%--    </form>--%>
 
-    </c:if>
+
 
 
     <%@include file="../footer.jsp" %>

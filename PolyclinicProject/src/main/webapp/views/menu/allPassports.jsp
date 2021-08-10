@@ -71,7 +71,6 @@
     }
 </script>
 
-<c:if test="${sessionScope.user.role==Role.ADMIN}">
 <div class="container">
     <h4 class="text-info text-center">Create new passport</h4>
 
@@ -140,7 +139,7 @@
     </div>
     <button type="button" class="btn btn-info" onclick="sendPassport()"> SAVE</button>
     <br><br>
-    </c:if>
+
 
     <table class="table table-striped table-info">
         <tbody>

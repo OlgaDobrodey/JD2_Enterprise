@@ -43,11 +43,10 @@ public class MenuNavBar extends HttpServlet {
     }
 
     @GetMapping(value = "/users")
-    public String getAllPatients(HttpServletRequest req,Model model) {
-        User user =(User)req.getSession().getAttribute(Constants.USER);
-        if ((user!=null)&&(user.getRole() == Role.ADMIN)){
-            model.addAttribute("roleList", Role.values());
-        }
+    public String getAllPatients(HttpServletRequest req, Model model) {
+        User user = (User) req.getSession().getAttribute(Constants.USER);
+
+        model.addAttribute("roleList", Role.values());
         model.addAttribute("users", this.userView.getAllUsers());
         return "menu/allUsers";
     }
@@ -80,18 +79,18 @@ public class MenuNavBar extends HttpServlet {
         if (session.isNew()) {
             return "/views/indexSignIn.jsp";
         }
-        User user =(User)session.getAttribute(Constants.USER);
-        if ((user!=null)&&(user.getRole() == Role.ADMIN)){
-           model.addAttribute("userList",this.userView.getAllUsers());
-            model.addAttribute("sexList", Sex.values());
-        }
-            model.addAttribute("passports", passportView.findAllPassport());
+        User user = (User) session.getAttribute(Constants.USER);
+
+        model.addAttribute("userList", this.userView.getAllUsers());
+        model.addAttribute("sexList", Sex.values());
+
+        model.addAttribute("passports", passportView.findAllPassport());
         return "menu/allPassports";
     }
 
     @GetMapping(value = "/address")
     public String getAllAddress(Model model) {
-        model.addAttribute("userList",userView.getAllUsers());
+        model.addAttribute("userList", userView.getAllUsers());
         model.addAttribute("address", addressView.findAllAddress());
         return "menu/allAddress";
     }

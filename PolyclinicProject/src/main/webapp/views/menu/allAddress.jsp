@@ -17,7 +17,7 @@
 </head>
 <body>
 <%@include file="../header.jsp" %>
-<c:if test="${sessionScope.user.role==Role.ADMIN}">
+
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script>
     function sendAddress() {
@@ -105,7 +105,6 @@
         </div>
 <%--    </form>--%>
 
-    </c:if>
 
     <table class="table table-striped table-info">
         <tbody>

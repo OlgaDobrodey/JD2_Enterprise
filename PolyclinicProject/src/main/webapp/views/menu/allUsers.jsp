@@ -49,7 +49,7 @@
     }
 </script>
 
-<c:if test="${sessionScope.user.role==Role.ADMIN}">
+
     <div class="container">
         <h4 class="text-info text-center">CREATE A NEW USER</h4>
         <h6 class="text-danger text-center">${MessageUser}</h6>
@@ -120,7 +120,7 @@
 
     </div>
 
-</c:if>
+
 <table class="table table-striped table-info">
     <tbody>
     <tr>
